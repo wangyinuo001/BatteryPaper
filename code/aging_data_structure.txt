@@ -1,0 +1,75 @@
+XJTU Battery Dataset Structure Analysis
+============================================================
+
+Dataset 1: Batch-1 - 2C_battery-1.mat
+  time: shape=(1, 390), dtype=object
+  voltage: shape=(1, 390), dtype=object
+  capacity: shape=(1, 390), dtype=object
+  temperature: shape=(1, 390), dtype=object
+
+Dataset 2: Batch-1 - 2C_battery-1.mat
+  capacity: shape=(1, 1), dtype=object
+  voltage: shape=(1, 1), dtype=object
+  cycle: shape=(1, 1), dtype=object
+  time: shape=(1, 1), dtype=object
+
+Dataset 3: Batch-2 - 3C_battery-1.mat
+  time: shape=(1, 299), dtype=object
+  voltage: shape=(1, 299), dtype=object
+  capacity: shape=(1, 299), dtype=object
+  temperature: shape=(1, 299), dtype=object
+
+Dataset 4: Batch-2 - 3C_battery-1.mat
+  capacity: shape=(1, 1), dtype=object
+  voltage: shape=(1, 1), dtype=object
+  cycle: shape=(1, 1), dtype=object
+  time: shape=(1, 1), dtype=object
+
+Dataset 5: Batch-3 - R2.5_battery-1.mat
+  time: shape=(1, 592), dtype=object
+  voltage: shape=(1, 592), dtype=object
+  capacity: shape=(1, 592), dtype=object
+  temperature: shape=(1, 592), dtype=object
+
+Dataset 6: Batch-3 - R2.5_battery-1.mat
+  capacity: shape=(1, 1), dtype=object
+  voltage: shape=(1, 1), dtype=object
+  cycle: shape=(1, 1), dtype=object
+  time: shape=(1, 1), dtype=object
+
+Dataset 7: Batch-4 - R3_battery-1.mat
+  time: shape=(1, 799), dtype=object
+  voltage: shape=(1, 799), dtype=object
+  capacity: shape=(1, 799), dtype=object
+  temperature: shape=(1, 799), dtype=object
+
+Dataset 8: Batch-4 - R3_battery-1.mat
+  capacity: shape=(1, 1), dtype=object
+  voltage: shape=(1, 1), dtype=object
+  cycle: shape=(1, 1), dtype=object
+  time: shape=(1, 1), dtype=object
+
+Dataset 9: Batch-5 - RW_battery-1.mat
+  time: shape=(1, 197), dtype=object
+  voltage: shape=(1, 197), dtype=object
+  capacity: shape=(1, 197), dtype=object
+  temperature: shape=(1, 197), dtype=object
+
+Dataset 10: Batch-5 - RW_battery-1.mat
+  capacity: shape=(1, 1), dtype=object
+  voltage: shape=(1, 1), dtype=object
+  cycle: shape=(1, 1), dtype=object
+  time: shape=(1, 1), dtype=object
+
+Dataset 11: Batch-6 - Sim_satellite_battery-1.mat
+  time: shape=(1, 949), dtype=object
+  voltage: shape=(1, 949), dtype=object
+  capacity: shape=(1, 949), dtype=object
+  temperature: shape=(1, 949), dtype=object
+
+Dataset 12: Batch-6 - Sim_satellite_battery-1.mat
+  capacity: shape=(1, 1), dtype=object
+  voltage: shape=(1, 1), dtype=object
+  cycle: shape=(1, 1), dtype=object
+  time: shape=(1, 1), dtype=object
+

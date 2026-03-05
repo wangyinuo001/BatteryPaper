@@ -1,0 +1,27 @@
+AGING MODEL PARAMETERS (XJTU Battery Dataset - Batch-1)
+============================================================
+
+1. Internal Resistance Growth (Power Law with Offset)
+   R(N) = R0_nom * (1 + beta_R * N^gamma)
+   R0_nom = 0.0584 Ohm
+   beta_R = 0.001229
+   gamma = 1.0850
+
+2. Capacity Fade with Calendar Time (Full)
+   Q(t) = Q0_nom * (1 - alpha_Q * N^gamma - kappa * sqrt(ts) * exp(-Ea/(Rg*T)) * f(SOC))
+   Q0_nom = 2.0060 Ah
+   kappa = 124187.141033 day^-0.5
+
+   Ea = 50000 J/mol
+   Rg = 8.314 J/(mol*K)
+   lambda = 1.50
+   SOC = 0.80
+
+3. Capacity-Resistance Linear Correlation
+   Q = Q0_nom - kQ * (R - R0_nom)
+   kQ = 7.7231 Ah/Ohm
+   alpha_Q = 0.000256
+
+4. Standard Electrode Potential
+   E0 = 3.5673 V (nearly constant)
+   Coefficient of Variation = 0.92%

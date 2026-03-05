@@ -1,0 +1,19 @@
+% Bootstrap CI Table
+\begin{table}[htbp]
+\centering
+\caption{95\% bootstrap confidence intervals for key metrics ($n_{\text{boot}}=2000$)}
+\label{tab:bootstrap_ci}
+\begin{tabular}{lccc}
+\hline
+Metric & Estimate & 95\% CI & Unit \\
+\hline
+Shepherd RMSE (Batch-1) & 21.58 & [19.98, 22.43] & mV \\
+TTE (Standby) & 19.673 & [18.944, 20.415] & hours \\
+TTE (Navigation) & 9.027 & [8.688, 9.366] & hours \\
+TTE (Gaming) & 3.794 & [3.654, 3.937] & hours \\
+TTE (Video) & 6.371 & [6.133, 6.612] & hours \\
+TTE (Reading) & 9.648 & [9.290, 10.011] & hours \\
+Cross-batch RMSE gap (B2-B1) & -1.22 & [-4.42, 0.22] & mV \\
+\hline
+\end{tabular}
+\end{table}

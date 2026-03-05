@@ -291,30 +291,40 @@ def identify_thevenin_params(time_s, voltage, current, Q0, order=1):
     Q_total = capacity[-1]
     soc = 1 - capacity / Q_total
 
-    # Fit OCV polynomial from data (approximate: use voltage at very low current)
+    # Fit OCV polynomial from data
     ocv_coeffs = fit_ocv_soc(soc, voltage, degree=6)
+
+    # Downsample for fast optimization (keep every Nth point)
+    n_target = 500  # points for fitting
+    step = max(1, len(time_s) // n_target)
+    idx_ds = np.arange(0, len(time_s), step)
+    time_ds = time_s[idx_ds]
+    voltage_ds = voltage[idx_ds]
+    current_ds = current[idx_ds]
+    soc_ds = soc[idx_ds]
+    n_ds = len(idx_ds)
+
+    from scipy.optimize import differential_evolution
 
     if order == 1:
         def cost(params):
             R0, R1, C1 = params
-            if R0 < 0 or R1 < 0 or C1 < 10:
-                return 1e10
-            model = TheveninFirstOrder(Q0=Q0, R0=R0, R1=R1, C1=C1,
-                                       ocv_coeffs=ocv_coeffs)
-            # Simulate with actual current profile
             v_rc1 = 0.0
-            errors = []
-            for i in range(len(time_s)):
-                I = np.abs(current[i])
-                V_pred = model.terminal_voltage(soc[i], I, v_rc1)
-                errors.append((V_pred - voltage[i]) ** 2)
-                if i < len(time_s) - 1:
-                    dt_i = time_s[i + 1] - time_s[i]
-                    dv = I / C1 - v_rc1 / (R1 * C1)
-                    v_rc1 += dv * dt_i
-            return np.mean(errors)
+            mse = 0.0
+            for i in range(n_ds):
+                I = abs(current_ds[i])
+                ocv = ocv_polynomial(soc_ds[i], ocv_coeffs)
+                V_pred = ocv - R0 * I - v_rc1
+                err = V_pred - voltage_ds[i]
+                if not np.isfinite(err):
+                    return 1e10
+                mse += err ** 2
+                if i < n_ds - 1:
+                    dt_i = time_ds[i + 1] - time_ds[i]
+                    v_rc1 += (I / C1 - v_rc1 / (R1 * C1)) * dt_i
+                    v_rc1 = np.clip(v_rc1, -2.0, 2.0)
+            return mse / n_ds
 
-        from scipy.optimize import differential_evolution
         bounds = [(0.01, 0.3), (0.005, 0.2), (100, 50000)]
         result = differential_evolution(cost, bounds, maxiter=200, seed=42, tol=1e-6)
         R0, R1, C1 = result.x
@@ -327,22 +337,25 @@ def identify_thevenin_params(time_s, voltage, current, Q0, order=1):
     elif order == 2:
         def cost(params):
             R0, R1, C1, R2, C2 = params
-            if R0 < 0 or R1 < 0 or R2 < 0 or C1 < 10 or C2 < 10:
-                return 1e10
             v_rc1, v_rc2 = 0.0, 0.0
-            errors = []
-            for i in range(len(time_s)):
-                I = np.abs(current[i])
-                ocv = ocv_polynomial(soc[i], ocv_coeffs)
+            mse = 0.0
+            for i in range(n_ds):
+                I = abs(current_ds[i])
+                ocv = ocv_polynomial(soc_ds[i], ocv_coeffs)
                 V_pred = ocv - R0 * I - v_rc1 - v_rc2
-                errors.append((V_pred - voltage[i]) ** 2)
-                if i < len(time_s) - 1:
-                    dt_i = time_s[i + 1] - time_s[i]
+                err = V_pred - voltage_ds[i]
+                if not np.isfinite(err):
+                    return 1e10
+                mse += err ** 2
+                if i < n_ds - 1:
+                    dt_i = time_ds[i + 1] - time_ds[i]
                     v_rc1 += (I / C1 - v_rc1 / (R1 * C1)) * dt_i
                     v_rc2 += (I / C2 - v_rc2 / (R2 * C2)) * dt_i
-            return np.mean(errors)
+                    # Numerical stability: clip RC voltages
+                    v_rc1 = np.clip(v_rc1, -2.0, 2.0)
+                    v_rc2 = np.clip(v_rc2, -2.0, 2.0)
+            return mse / n_ds
 
-        from scipy.optimize import differential_evolution
         bounds = [(0.01, 0.3), (0.005, 0.15), (100, 20000),
                   (0.005, 0.15), (1000, 100000)]
         result = differential_evolution(cost, bounds, maxiter=300, seed=42, tol=1e-6)

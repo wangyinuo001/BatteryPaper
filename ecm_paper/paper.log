@@ -1,11 +1,11 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.3.11)  11 MAR 2026 16:13
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.2) (preloaded format=pdflatex 2026.3.11)  11 MAR 2026 16:58
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **./paper.tex
 (paper.tex
 LaTeX2e <2025-11-01>
-L3 programming layer <2025-12-24>
+L3 programming layer <2026-01-19>
 
 (C:\Users\wangy\AppData\Local\Programs\MiKTeX\tex/latex/elsarticle\elsarticle.c
 ls
@@ -14,7 +14,7 @@ Document Class: elsarticle 2026/01/09, 3.5: Elsevier Ltd
 Package: fontenc 2025/07/18 v2.1d Standard LaTeX package
 )
 (C:\Users\wangy\AppData\Local\Programs\MiKTeX\tex/latex/l3kernel\expl3.sty
-Package: expl3 2025-12-24 L3 programming layer (loader) 
+Package: expl3 2026-01-19 L3 programming layer (loader) 
 
 (C:\Users\wangy\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-pdf
 tex.def
@@ -676,8 +676,14 @@ Package: algorithmic 2009/08/24 v0.1 Document Style `algorithmic'
 \ALC@tlm=\skip66
 \algorithmicindent=\skip67
 )
+(C:\Users\wangy\AppData\Local\Programs\MiKTeX\tex/latex/sttools\stfloats.sty
+Package: stfloats 2025/06/18 v3.4 Improve float mechanism and baselineskip sett
+ings
+\@dblbotnum=\count332
+\c@dblbotnumber=\count333
+)
 (C:\Users\wangy\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hyperref.sty
-Package: hyperref 2025-07-12 v7.01o Hypertext links for LaTeX
+Package: hyperref 2026-01-29 v7.01p Hypertext links for LaTeX
 
 (C:\Users\wangy\AppData\Local\Programs\MiKTeX\tex/latex/kvsetkeys\kvsetkeys.sty
 Package: kvsetkeys 2022-10-05 v1.19 Key value parser (HO)
@@ -692,7 +698,7 @@ Package: pdfescape 2019/12/09 v1.15 Implements pdfTeX's escape features (HO)
 ) (C:\Users\wangy\AppData\Local\Programs\MiKTeX\tex/latex/hycolor\hycolor.sty
 Package: hycolor 2020-01-27 v1.10 Color options for hyperref/bookmark (HO)
 ) (C:\Users\wangy\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\nameref.sty
-Package: nameref 2025-06-21 v2.57 Cross-referencing by name of section
+Package: nameref 2026-01-29 v2.58 Cross-referencing by name of section
 
 (C:\Users\wangy\AppData\Local\Programs\MiKTeX\tex/latex/refcount\refcount.sty
 Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
@@ -704,7 +710,7 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 (C:\Users\wangy\AppData\Local\Programs\MiKTeX\tex/latex/kvoptions\kvoptions.sty
 Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
 ))
-\c@section@level=\count332
+\c@section@level=\count334
 )
 (C:\Users\wangy\AppData\Local\Programs\MiKTeX\tex/generic/stringenc\stringenc.s
 ty
@@ -712,36 +718,36 @@ Package: stringenc 2019/11/29 v1.12 Convert strings between diff. encodings (HO
 )
 )
 \@linkdim=\dimen194
-\Hy@linkcounter=\count333
-\Hy@pagecounter=\count334
+\Hy@linkcounter=\count335
+\Hy@pagecounter=\count336
  (C:\Users\wangy\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\pd1enc.def
-File: pd1enc.def 2025-07-12 v7.01o Hyperref: PDFDocEncoding definition (HO)
+File: pd1enc.def 2026-01-29 v7.01p Hyperref: PDFDocEncoding definition (HO)
 Now handling font encoding PD1 ...
 ... no UTF-8 mapping file for font encoding PD1
 ) (C:\Users\wangy\AppData\Local\Programs\MiKTeX\tex/generic/intcalc\intcalc.sty
 Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
 )
-\Hy@SavedSpaceFactor=\count335
+\Hy@SavedSpaceFactor=\count337
  (C:\Users\wangy\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\puenc.def
-File: puenc.def 2025-07-12 v7.01o Hyperref: PDF Unicode definition (HO)
+File: puenc.def 2026-01-29 v7.01p Hyperref: PDF Unicode definition (HO)
 Now handling font encoding PU ...
 ... no UTF-8 mapping file for font encoding PU
 )
-Package hyperref Info: Option `colorlinks' set `true' on input line 4066.
-Package hyperref Info: Hyper figures OFF on input line 4195.
-Package hyperref Info: Link nesting OFF on input line 4200.
-Package hyperref Info: Hyper index ON on input line 4203.
-Package hyperref Info: Plain pages OFF on input line 4210.
-Package hyperref Info: Backreferencing OFF on input line 4215.
+Package hyperref Info: Option `colorlinks' set `true' on input line 4072.
+Package hyperref Info: Hyper figures OFF on input line 4201.
+Package hyperref Info: Link nesting OFF on input line 4206.
+Package hyperref Info: Hyper index ON on input line 4209.
+Package hyperref Info: Plain pages OFF on input line 4216.
+Package hyperref Info: Backreferencing OFF on input line 4221.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
-Package hyperref Info: Bookmarks ON on input line 4462.
-\c@Hy@tempcnt=\count336
+Package hyperref Info: Bookmarks ON on input line 4468.
+\c@Hy@tempcnt=\count338
 
 (C:\Users\wangy\AppData\Local\Programs\MiKTeX\tex/latex/url\url.sty
 \Urlmuskip=\muskip18
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
-LaTeX Info: Redefining \url on input line 4801.
+LaTeX Info: Redefining \url on input line 4807.
 \XeTeXLinkMargin=\dimen195
 
 (C:\Users\wangy\AppData\Local\Programs\MiKTeX\tex/generic/bitset\bitset.sty
@@ -752,26 +758,26 @@ Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
 Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO
 )
 ))
-\Fld@menulength=\count337
+\Fld@menulength=\count339
 \Field@Width=\dimen196
 \Fld@charsize=\dimen197
-Package hyperref Info: Hyper figures OFF on input line 6078.
-Package hyperref Info: Link nesting OFF on input line 6083.
-Package hyperref Info: Hyper index ON on input line 6086.
-Package hyperref Info: backreferencing OFF on input line 6093.
-Package hyperref Info: Link coloring ON on input line 6096.
-Package hyperref Info: Link coloring with OCG OFF on input line 6103.
-Package hyperref Info: PDF/A mode OFF on input line 6108.
-\Hy@abspage=\count338
-\c@Item=\count339
-\c@Hfootnote=\count340
+Package hyperref Info: Hyper figures OFF on input line 6084.
+Package hyperref Info: Link nesting OFF on input line 6089.
+Package hyperref Info: Hyper index ON on input line 6092.
+Package hyperref Info: backreferencing OFF on input line 6099.
+Package hyperref Info: Link coloring ON on input line 6102.
+Package hyperref Info: Link coloring with OCG OFF on input line 6109.
+Package hyperref Info: PDF/A mode OFF on input line 6114.
+\Hy@abspage=\count340
+\c@Item=\count341
+\c@Hfootnote=\count342
 )
 Package hyperref Info: Driver (autodetected): hpdftex.
 
 (C:\Users\wangy\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hpdftex.def
-File: hpdftex.def 2025-07-12 v7.01o Hyperref driver for pdfTeX
-\Fld@listcount=\count341
-\c@bookmark@seq@number=\count342
+File: hpdftex.def 2026-01-29 v7.01p Hyperref driver for pdfTeX
+\Fld@listcount=\count343
+\c@bookmark@seq@number=\count344
 
 (C:\Users\wangy\AppData\Local\Programs\MiKTeX\tex/latex/rerunfilecheck\rerunfil
 echeck.sty
@@ -799,10 +805,10 @@ Package siunitx Info: Option "multi-part-units = single" has been deprecated
 (siunitx)             Use "separate-uncertainty-units = single" as a
 (siunitx)             replacement.
 
-\c@proposition=\count343
+\c@proposition=\count345
 Package translations Info: No language package found. I am going to use `englis
-h' as default language. on input line 71.
-LaTeX Font Info:    Trying to load font information for T1+txr on input line 71
+h' as default language. on input line 88.
+LaTeX Font Info:    Trying to load font information for T1+txr on input line 88
 .
 
 (C:\Users\wangy\AppData\Local\Programs\MiKTeX\tex/latex/txfonts\t1txr.fd
@@ -811,62 +817,62 @@ File: t1txr.fd 2000/12/15 v3.1
 (paper.aux)
 \openout1 = `paper.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/txmi/m/it on input line 71.
+LaTeX Font Info:    Checking defaults for OML/txmi/m/it on input line 88.
 LaTeX Font Info:    Trying to load font information for OML+txmi on input line 
-71.
+88.
 
 (C:\Users\wangy\AppData\Local\Programs\MiKTeX\tex/latex/txfonts\omltxmi.fd
 File: omltxmi.fd 2000/12/15 v3.1
 )
-LaTeX Font Info:    ... okay on input line 71.
-LaTeX Font Info:    Checking defaults for OMS/txsy/m/n on input line 71.
+LaTeX Font Info:    ... okay on input line 88.
+LaTeX Font Info:    Checking defaults for OMS/txsy/m/n on input line 88.
 LaTeX Font Info:    Trying to load font information for OMS+txsy on input line 
-71.
+88.
 
 (C:\Users\wangy\AppData\Local\Programs\MiKTeX\tex/latex/txfonts\omstxsy.fd
 File: omstxsy.fd 2000/12/15 v3.1
 )
-LaTeX Font Info:    ... okay on input line 71.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 71.
-LaTeX Font Info:    ... okay on input line 71.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 71.
-LaTeX Font Info:    ... okay on input line 71.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 71.
-LaTeX Font Info:    ... okay on input line 71.
-LaTeX Font Info:    Checking defaults for OMX/txex/m/n on input line 71.
+LaTeX Font Info:    ... okay on input line 88.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 88.
+LaTeX Font Info:    ... okay on input line 88.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 88.
+LaTeX Font Info:    ... okay on input line 88.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 88.
+LaTeX Font Info:    ... okay on input line 88.
+LaTeX Font Info:    Checking defaults for OMX/txex/m/n on input line 88.
 LaTeX Font Info:    Trying to load font information for OMX+txex on input line 
-71.
+88.
 
 (C:\Users\wangy\AppData\Local\Programs\MiKTeX\tex/latex/txfonts\omxtxex.fd
 File: omxtxex.fd 2000/12/15 v3.1
 )
-LaTeX Font Info:    ... okay on input line 71.
-LaTeX Font Info:    Checking defaults for U/txexa/m/n on input line 71.
-LaTeX Font Info:    Trying to load font information for U+txexa on input line 7
-1.
+LaTeX Font Info:    ... okay on input line 88.
+LaTeX Font Info:    Checking defaults for U/txexa/m/n on input line 88.
+LaTeX Font Info:    Trying to load font information for U+txexa on input line 8
+8.
 
 (C:\Users\wangy\AppData\Local\Programs\MiKTeX\tex/latex/txfonts\utxexa.fd
 File: utxexa.fd 2000/12/15 v3.1
 )
-LaTeX Font Info:    ... okay on input line 71.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 71.
-LaTeX Font Info:    ... okay on input line 71.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 71.
-LaTeX Font Info:    ... okay on input line 71.
+LaTeX Font Info:    ... okay on input line 88.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 88.
+LaTeX Font Info:    ... okay on input line 88.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 88.
+LaTeX Font Info:    ... okay on input line 88.
 
 (C:\Users\wangy\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mk
 ii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count344
+\scratchcounter=\count346
 \scratchdimen=\dimen198
 \scratchbox=\box73
-\nofMPsegments=\count345
-\nofMParguments=\count346
+\nofMPsegments=\count347
+\nofMParguments=\count348
 \everyMPshowfont=\toks38
-\MPscratchCnt=\count347
+\MPscratchCnt=\count349
 \MPscratchDim=\dimen199
-\MPnumerator=\count348
-\makeMPintoPDFobject=\count349
+\MPnumerator=\count350
+\makeMPintoPDFobject=\count351
 \everyMPtoPDFconversion=\toks39
 )
 (C:\Users\wangy\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-b
@@ -916,7 +922,7 @@ File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 LaTeX Encoding Info:    Redeclaring text command \k (encoding T1) on input line
- 71.
+ 88.
 
 (C:\Users\wangy\AppData\Local\Programs\MiKTeX\tex/latex/translations/dicts\tran
 slations-basic-dictionary-english.trsl
@@ -924,481 +930,157 @@ File: translations-basic-dictionary-english.trsl (english translation file `tra
 nslations-basic-dictionary')
 )
 Package translations Info: loading dictionary `translations-basic-dictionary' f
-or `english'. on input line 71.
-Package hyperref Info: Link coloring ON on input line 71.
+or `english'. on input line 88.
+Package hyperref Info: Link coloring ON on input line 88.
  (paper.out) (paper.out)
 \@outlinefile=\write4
 \openout4 = `paper.out'.
 
 LaTeX Font Info:    Font shape `T1/txr/b/n' in size <10> not available
-(Font)              Font shape `T1/txr/bx/n' tried instead on input line 98.
+(Font)              Font shape `T1/txr/bx/n' tried instead on input line 115.
 LaTeX Font Info:    Trying to load font information for OT1+txr on input line 1
-03.
+39.
 
 (C:\Users\wangy\AppData\Local\Programs\MiKTeX\tex/latex/txfonts\ot1txr.fd
 File: ot1txr.fd 2000/12/15 v3.1
 )
 LaTeX Font Info:    Trying to load font information for U+txmia on input line 1
-03.
+39.
 
 (C:\Users\wangy\AppData\Local\Programs\MiKTeX\tex/latex/txfonts\utxmia.fd
 File: utxmia.fd 2000/12/15 v3.1
 )
-LaTeX Font Info:    Trying to load font information for U+msa on input line 103
+LaTeX Font Info:    Trying to load font information for U+msa on input line 139
 .
 
 (C:\Users\wangy\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 103
+LaTeX Font Info:    Trying to load font information for U+msb on input line 139
 .
 
 (C:\Users\wangy\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Trying to load font information for U+txsyc on input line 1
-03.
+39.
 
 (C:\Users\wangy\AppData\Local\Programs\MiKTeX\tex/latex/txfonts\utxsyc.fd
 File: utxsyc.fd 2000/12/15 v3.1
 )
-
-Package natbib Warning: Citation `Benkhelifa2016' on page 1 undefined on input 
-line 165.
-
-
-Package natbib Warning: Citation `Carroll2010' on page 1 undefined on input lin
-e 166.
+Underfull \hbox (badness 2173) in paragraph at lines 143--147
+\T1/txr/m/n/10 power man-age-ment, health-aware charge schedul-ing, and
+ []
 
 
-Package natbib Warning: Citation `Chen2014' on page 1 undefined on input line 1
-66.
-
-
-Package natbib Warning: Citation `Benkhelifa2016' on page 1 undefined on input 
-line 167.
-
-
-Package natbib Warning: Citation `Liu2019ECM' on page 1 undefined on input line
- 167.
-
-
-Package natbib Warning: Citation `Doyle1993' on page 1 undefined on input line 
-170.
-
-
-Package natbib Warning: Citation `Newman2004' on page 1 undefined on input line
- 170.
-
-
-Package natbib Warning: Citation `Mama2024' on page 1 undefined on input line 1
-70.
-
-
-Package natbib Warning: Citation `Chemali2018' on page 1 undefined on input lin
-e 171.
-
-
-Package natbib Warning: Citation `Richardson2017' on page 1 undefined on input 
-line 171.
-
-
-Package natbib Warning: Citation `Dai2011' on page 1 undefined on input line 17
-1.
-
-
-Package natbib Warning: Citation `Hu2012' on page 1 undefined on input line 172
-.
-
-
-Package natbib Warning: Citation `You2018' on page 1 undefined on input line 17
-2.
-
-
-Package natbib Warning: Citation `Shepherd1965' on page 1 undefined on input li
-ne 173.
-
-
-Package natbib Warning: Citation `Fuller2014' on page 1 undefined on input line
- 174.
+Underfull \hbox (badness 1122) in paragraph at lines 155--159
+\T1/txr/m/n/10 charg-ing patterns---both within the en-ergy con-ver-sion and
+ []
 
 [1{C:/Users/wangy/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/wa
 ngy/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc}
 
 
 ]
-
-Package natbib Warning: Citation `Carroll2010' on page 2 undefined on input lin
-e 176.
-
-
-Package natbib Warning: Citation `Chen2014' on page 2 undefined on input line 1
-76.
-
-
-Package natbib Warning: Citation `Murmuria2012' on page 2 undefined on input li
-ne 176.
-
-
-Package natbib Warning: Citation `Xu2020' on page 2 undefined on input line 177
-.
-
-
-Package natbib Warning: Citation `Lauridsen2014' on page 2 undefined on input l
-ine 177.
-
-
-Package natbib Warning: Citation `Sun2018' on page 2 undefined on input line 17
-7.
-
-
-Package natbib Warning: Citation `Negri2006' on page 2 undefined on input line 
-177.
-
-
-Package natbib Warning: Citation `Vetter2005' on page 2 undefined on input line
- 178.
-
-
-Package natbib Warning: Citation `Benson2012' on page 2 undefined on input line
- 178.
-
-
-Package natbib Warning: Citation `Li2019' on page 2 undefined on input line 178
-.
-
-
-Package natbib Warning: Citation `Kou2017' on page 2 undefined on input line 17
-8.
-
-
-Package natbib Warning: Citation `Ali2020' on page 2 undefined on input line 17
-8.
-
-
-Package natbib Warning: Citation `Chen2025' on page 2 undefined on input line 1
-78.
-
-
-Package natbib Warning: Citation `He2017' on page 2 undefined on input line 178
-.
-
-
-Package natbib Warning: Citation `Liu2019ECM' on page 2 undefined on input line
- 179.
-
-
-Package natbib Warning: Citation `Liu2018ECM' on page 2 undefined on input line
- 179.
-
-
-Underfull \hbox (badness 3428) in paragraph at lines 181--184
+Underfull \hbox (badness 3428) in paragraph at lines 160--163
 \T1/txr/m/n/10 (iii) cou-pled temperature--aging dy-nam-ics into a uni-fied
  []
 
 
-Underfull \hbox (badness 1721) in paragraph at lines 181--184
+Underfull \hbox (badness 1721) in paragraph at lines 160--163
 \T1/txr/m/n/10 continuous-time TTE pre-dic-tion pipeline, nor val-i-dates it
  []
 
 
-Underfull \hbox (badness 1609) in paragraph at lines 181--184
+Underfull \hbox (badness 1609) in paragraph at lines 160--163
 \T1/txr/m/n/10 against strong ECM base-lines with sta-tis-ti-cal rigour, nor
  []
 
 
-Package natbib Warning: Citation `Carroll2010' on page 2 undefined on input lin
-e 186.
-
-
-Package natbib Warning: Citation `Chen2014' on page 2 undefined on input line 1
-86.
-
-
-Package natbib Warning: Citation `Lu2008' on page 2 undefined on input line 186
-.
-
-
-Package natbib Warning: Citation `XJTU2020' on page 2 undefined on input line 1
-86.
-
-
-Underfull \hbox (badness 2626) in paragraph at lines 184--187
+Underfull \hbox (badness 2626) in paragraph at lines 163--166
 \T1/txr/m/n/10 component power de-com-po-si-tion, Arrhenius--logistic
  []
 
 
-Underfull \hbox (badness 3826) in paragraph at lines 187--190
+Underfull \hbox (badness 2103) in paragraph at lines 163--166
+\T1/txr/m/n/10 tem-per-a-ture re-sponse, and power-law cy-cle/calendar
+ []
+
+
+Underfull \hbox (badness 3826) in paragraph at lines 166--169
 \T1/txr/m/n/10 Rint, Thévenin-1RC, Thévenin-2RC), the pro-posed
  []
 
 
-Underfull \hbox (badness 1571) in paragraph at lines 193--197
+Underfull \hbox (badness 1571) in paragraph at lines 172--176
 \T1/txr/m/n/10 grad-u-ated power re-duc-tion when SOC drops be-low
  []
 
-
-Package natbib Warning: Citation `Birkl2015' on page 2 undefined on input line 
-209.
-
-
-Package natbib Warning: Citation `Chen2025' on page 2 undefined on input line 2
-10.
-
-
-Package natbib Warning: Citation `Hu2012' on page 2 undefined on input line 212
-.
-
-
-Package natbib Warning: Citation `You2018' on page 2 undefined on input line 21
-2.
-
-
-Package natbib Warning: Citation `Shepherd1965' on page 2 undefined on input li
-ne 214.
-
-
-Package natbib Warning: Citation `Carroll2010' on page 2 undefined on input lin
-e 218.
-
-
-Package natbib Warning: Citation `Chen2014' on page 2 undefined on input line 2
-19.
-
-
-Package natbib Warning: Citation `Lauridsen2014' on page 2 undefined on input l
-ine 220.
-
-
-Package natbib Warning: Citation `Xu2020' on page 2 undefined on input line 220
-.
-
-
-Package natbib Warning: Citation `Sun2018' on page 2 undefined on input line 22
-0.
-
-
-Package natbib Warning: Citation `Negri2006' on page 2 undefined on input line 
-220.
-
-
-Package natbib Warning: Citation `Murmuria2012' on page 2 undefined on input li
-ne 221.
-
-
-Package natbib Warning: Citation `Lu2008' on page 2 undefined on input line 222
-.
-
 [2]
-
-Package natbib Warning: Citation `Ali2020' on page 3 undefined on input line 22
-6.
-
-
-Package natbib Warning: Citation `Chen2025' on page 3 undefined on input line 2
-26.
-
-
-Package natbib Warning: Citation `He2017' on page 3 undefined on input line 226
-.
-
-
-Package natbib Warning: Citation `Benson2012' on page 3 undefined on input line
- 226.
-
-
-Package natbib Warning: Citation `Vetter2005' on page 3 undefined on input line
- 227.
-
-
-Package natbib Warning: Citation `Kou2017' on page 3 undefined on input line 22
-8.
-
-
-Package natbib Warning: Citation `Li2019' on page 3 undefined on input line 228
-.
-
-
-Package natbib Warning: Citation `Vetter2005' on page 3 undefined on input line
- 228.
-
-
-Package natbib Warning: Citation `Yu2025' on page 3 undefined on input line 229
-.
-
-
-Package natbib Warning: Citation `Bhat2019' on page 3 undefined on input line 2
-30.
-
-
-Package natbib Warning: Citation `Bhat2021' on page 3 undefined on input line 2
-30.
-
-
-Package natbib Warning: Citation `Tian2020' on page 3 undefined on input line 2
-31.
-
-
-Package natbib Warning: Citation `Xiong2018' on page 3 undefined on input line 
-231.
-
-
-Package natbib Warning: Citation `Mama2024' on page 3 undefined on input line 2
-31.
-
 LaTeX Font Info:    Font shape `T1/txr/b/n' in size <9> not available
-(Font)              Font shape `T1/txr/bx/n' tried instead on input line 244.
+(Font)              Font shape `T1/txr/bx/n' tried instead on input line 227.
 
-Package natbib Warning: Citation `Doyle1993' on page 3 undefined on input line 
-244.
-
-
-Package natbib Warning: Citation `Hu2012' on page 3 undefined on input line 245
-.
-
-
-Package natbib Warning: Citation `You2018' on page 3 undefined on input line 24
-5.
-
-
-Package natbib Warning: Citation `Chemali2018' on page 3 undefined on input lin
-e 246.
-
-
-Package natbib Warning: Citation `Carroll2010' on page 3 undefined on input lin
-e 247.
-
-
-Underfull \hbox (badness 1163) in paragraph at lines 234--253
+Underfull \hbox (badness 1163) in paragraph at lines 213--232
 \T1/txr/m/n/10 mod-elling, component-level power dis-ag-gre-ga-tion, tem-per-
  []
 
 
-Underfull \hbox (badness 1189) in paragraph at lines 234--253
+Underfull \hbox (badness 1189) in paragraph at lines 213--232
 \T1/txr/m/n/10 a-ture cou-pling, and cy-cle/calendar aging---within a sin-gle
  []
 
-<fig_framework.pdf, id=250, 201.16354pt x 253.30635pt>
+<fig_framework.pdf, id=346, 201.16354pt x 253.30635pt>
 File: fig_framework.pdf Graphic file (type pdf)
 <use fig_framework.pdf>
-Package pdftex.def Info: fig_framework.pdf  used on input line 261.
+Package pdftex.def Info: fig_framework.pdf  used on input line 240.
 (pdftex.def)             Requested size: 252.0pt x 317.32785pt.
 
-Underfull \hbox (badness 2884) in paragraph at lines 256--264
+Underfull \hbox (badness 2884) in paragraph at lines 235--243
 \T1/txr/m/n/10 terminal-voltage dy-nam-ics ([]Ÿ[][]3.1[][][]), component-level 
 power
  []
 
 
-Underfull \hbox (badness 1701) in paragraph at lines 256--264
+Underfull \hbox (badness 1701) in paragraph at lines 235--243
 \T1/txr/m/n/10 and ag-ing dy-nam-ics ([]Ÿ[][]3.4[][][])---which are as-sem-bled
  into a
  []
 
 
-Package natbib Warning: Citation `Shepherd1965' on page 3 undefined on input li
-ne 267.
-
-
-Underfull \hbox (badness 1043) in paragraph at lines 269--270
+Underfull \hbox (badness 1043) in paragraph at lines 248--249
 []\T1/txr/m/it/10 Thermodynamic equi-lib-rium. \T1/txr/m/n/10 The open-circuit 
 volt-
  []
 
-
-Overfull \hbox (20.62976pt too wide) detected at line 276
-[][][]\OML/txmi/m/it/10 V[]\OT1/txr/m/n/10 ([]\OML/txmi/m/it/10 ; I\OT1/txr/m/n
-/10 ) = [] \OMS/txsy/m/n/10 ^^@ [] ^^@ [] \OT1/txr/m/n/10 + [] \OML/txmi/m/it/1
-0 :
- []
-
 [3 <./fig_framework.pdf>]
-
-Package natbib Warning: Citation `Carroll2010' on page 4 undefined on input lin
-e 304.
-
-
-Package natbib Warning: Citation `Chen2014' on page 4 undefined on input line 3
-04.
-
-
-Package natbib Warning: Citation `Lu2008' on page 4 undefined on input line 313
-.
-
-
-Underfull \hbox (badness 1755) in paragraph at lines 320--321
+Underfull \hbox (badness 1755) in paragraph at lines 301--302
  []\T1/txr/m/it/10 Computational, com-mu-ni-ca-tion, and base-line sub-sys-tems
 ..[]
  []
 
 
-Package natbib Warning: Citation `Carroll2010' on page 4 undefined on input lin
-e 327.
-
-
-Package natbib Warning: Citation `Chen2014' on page 4 undefined on input line 3
-27.
-
-
-Package natbib Warning: Citation `Ali2020' on page 4 undefined on input line 34
-5.
-
-
-Package natbib Warning: Citation `Benson2012' on page 4 undefined on input line
- 352.
-
-
-Package natbib Warning: Citation `He2017' on page 4 undefined on input line 352
-.
-
-
-Package natbib Warning: Citation `Bhat2019' on page 4 undefined on input line 3
-56.
-
-
-Package natbib Warning: Citation `Bhat2021' on page 4 undefined on input line 3
-56.
-
-[4]
-
-Package natbib Warning: Citation `Vetter2005' on page 5 undefined on input line
- 364.
-
-
-Underfull \hbox (badness 2753) in paragraph at lines 364--366
+Underfull \hbox (badness 2753) in paragraph at lines 345--347
 []\T1/txr/m/n/10 Repeated charge--discharge cy-cling de-grades cell per-
  []
 
 
-Underfull \hbox (badness 1297) in paragraph at lines 364--366
+Underfull \hbox (badness 1297) in paragraph at lines 345--347
 \T1/txr/m/n/10 for-mance through SEI layer growth, lithium plat-ing, and
  []
 
-
-Package natbib Warning: Citation `Vetter2005' on page 5 undefined on input line
- 384.
-
-
-Package natbib Warning: Citation `Vetter2005' on page 5 undefined on input line
- 394.
-
-
-Package natbib Warning: Citation `Li2019' on page 5 undefined on input line 394
-.
-
-
-Underfull \hbox (badness 1082) in paragraph at lines 410--411
+[4]
+Underfull \hbox (badness 1082) in paragraph at lines 391--392
 \T1/txr/m/n/10 treated as slowly vary-ing ex-ter-nal pa-ram-e-ters (quasi-stati
 c
  []
 
 [5]
 LaTeX Font Info:    Trying to load font information for TS1+txr on input line 4
-50.
+31.
  (C:\Users\wangy\AppData\Local\Programs\MiKTeX\tex/latex/txfonts\ts1txr.fd
 File: ts1txr.fd 2000/12/15 v3.1
 )
-Overfull \hbox (8.20065pt too wide) in paragraph at lines 451--452
+Overfull \hbox (0.15765pt too wide) in paragraph at lines 432--433
 []\T1/txr/m/it/10 Bounds: $\OML/txmi/m/it/10 I \OMS/txsy/m/n/10 2 \OT1/txr/m/n/
 10 [0\OML/txmi/m/it/10 ; I[]\OT1/txr/m/n/10 ]$ \T1/txr/m/n/10 with $\OML/txmi/m
 /it/10 I[] \OT1/txr/m/n/10 = [](5\OML/txmi/m/it/10 P[]=V[];  \OT1/txr/m/n/10 10
@@ -1406,295 +1088,254 @@ Overfull \hbox (8.20065pt too wide) in paragraph at lines 451--452
  []
 
 
-Package natbib Warning: Citation `Doyle1993' on page 6 undefined on input line 
-487.
-
-
-Package natbib Warning: Citation `Chemali2018' on page 6 undefined on input lin
-e 487.
-
-
-Package natbib Warning: Citation `Xiong2018' on page 6 undefined on input line 
-489.
-
-
-Package natbib Warning: Citation `Wang2024ECM' on page 6 undefined on input lin
-e 489.
-
-
-Package natbib Warning: Citation `XJTU2020' on page 6 undefined on input line 4
-95.
-
-
-Underfull \hbox (badness 2302) in paragraph at lines 501--502
+Underfull \hbox (badness 2302) in paragraph at lines 482--483
 \T1/txr/m/n/10 Each cell record con-tains time-stamped volt-age, cur-rent,
  []
 
 
-Package natbib Warning: Citation `Carroll2010' on page 6 undefined on input lin
-e 506.
-
-
-Package natbib Warning: Citation `Chen2014' on page 6 undefined on input line 5
-06.
-
-
-Package natbib Warning: Citation `Lu2008' on page 6 undefined on input line 506
-.
-
-
-Package natbib Warning: Citation `Murmuria2012' on page 6 undefined on input li
-ne 506.
-
-[6]
-Underfull \hbox (badness 1097) in paragraph at lines 511--516
+Underfull \hbox (badness 1097) in paragraph at lines 492--497
  []\T1/txr/m/it/10 Data pre-pro-cess-ing..[] \T1/txr/m/n/10 Dis-charge seg-ment
 s are ex-tracted by
  []
 
 
-Underfull \hbox (badness 2103) in paragraph at lines 523--525
+Underfull \hbox (badness 2103) in paragraph at lines 504--506
 []\T1/txr/m/n/10 We com-pare the pro-posed Shepherd-based frame-work
  []
 
 
-Underfull \hbox (badness 1297) in paragraph at lines 523--525
+Underfull \hbox (badness 1297) in paragraph at lines 504--506
 \T1/txr/m/n/10 against four volt-age mod-els span-ning the interpretability--
  []
 
 
-Underfull \hbox (badness 1231) in paragraph at lines 525--527
+Underfull \hbox (badness 1231) in paragraph at lines 506--508
 []\T1/txr/bx/n/10 Nernst-Based Model (NBM): \T1/txr/m/n/10 A ther-mo-dy-nam-i-c
 ally
  []
 
-
-Overfull \hbox (16.75482pt too wide) in paragraph at lines 552--563
- [][] 
- []
-
-<fig_voltage_trajectory.pdf, id=368, 483.81384pt x 320.47182pt>
+[6]
+<fig_voltage_trajectory.pdf, id=500, 483.81384pt x 320.47182pt>
 File: fig_voltage_trajectory.pdf Graphic file (type pdf)
 <use fig_voltage_trajectory.pdf>
-Package pdftex.def Info: fig_voltage_trajectory.pdf  used on input line 614.
+Package pdftex.def Info: fig_voltage_trajectory.pdf  used on input line 597.
 (pdftex.def)             Requested size: 522.0pt x 345.7621pt.
-[7]
-<fig_cross_batch.pdf, id=387, 237.22086pt x 246.28773pt>
+<fig_cross_batch.pdf, id=502, 237.22086pt x 246.28773pt>
 File: fig_cross_batch.pdf Graphic file (type pdf)
 <use fig_cross_batch.pdf>
-Package pdftex.def Info: fig_cross_batch.pdf  used on input line 650.
+Package pdftex.def Info: fig_cross_batch.pdf  used on input line 633.
 (pdftex.def)             Requested size: 252.0pt x 261.63121pt.
 
-Underfull \hbox (badness 1496) in paragraph at lines 630--656
+Underfull \hbox (badness 1496) in paragraph at lines 613--639
 []\T1/txr/m/n/10 To test trans-fer-abil-ity, we ap-ply the pa-ram-e-ters fit-te
 d
  []
 
-<fig_scenario_comparison.pdf, id=391, 455.20972pt x 210.35901pt>
+<fig_scenario_comparison.pdf, id=506, 455.20972pt x 210.35901pt>
 File: fig_scenario_comparison.pdf Graphic file (type pdf)
 <use fig_scenario_comparison.pdf>
-Package pdftex.def Info: fig_scenario_comparison.pdf  used on input line 701.
+Package pdftex.def Info: fig_scenario_comparison.pdf  used on input line 684.
 (pdftex.def)             Requested size: 522.0pt x 241.2337pt.
-<fig_ablation_heatmap.pdf, id=395, 469.51813pt x 331.30661pt>
+[7] [8 <./fig_voltage_trajectory.pdf>]
+<fig_ablation_heatmap.pdf, id=549, 469.51813pt x 331.30661pt>
 File: fig_ablation_heatmap.pdf Graphic file (type pdf)
 <use fig_ablation_heatmap.pdf>
-Package pdftex.def Info: fig_ablation_heatmap.pdf  used on input line 729.
+Package pdftex.def Info: fig_ablation_heatmap.pdf  used on input line 712.
 (pdftex.def)             Requested size: 522.0pt x 368.3512pt.
-[8]
-Underfull \hbox (badness 2426) in paragraph at lines 761--763
+
+Underfull \hbox (badness 2426) in paragraph at lines 746--748
  []\T1/txr/m/it/10 Aging dy-nam-ics..[] \T1/txr/m/n/10 Ag-ing im-por-tance grow
 s mono-ton-i-cally
  []
 
 
-Underfull \hbox (badness 2951) in paragraph at lines 765--767
+Underfull \hbox (badness 2951) in paragraph at lines 750--752
  []\T1/txr/m/it/10 Component de-com-po-si-tion..[] \T1/txr/m/n/10 Re-plac-ing t
 he five-component
  []
 
-<fig_sensitivity_tornado.pdf, id=411, 257.87541pt x 223.7548pt>
+<fig_sensitivity_tornado.pdf, id=552, 257.87541pt x 223.7548pt>
 File: fig_sensitivity_tornado.pdf Graphic file (type pdf)
 <use fig_sensitivity_tornado.pdf>
-Package pdftex.def Info: fig_sensitivity_tornado.pdf  used on input line 799.
+Package pdftex.def Info: fig_sensitivity_tornado.pdf  used on input line 784.
 (pdftex.def)             Requested size: 252.0pt x 218.66707pt.
-[9 <./fig_voltage_trajectory.pdf>]
-<fig_temperature_tte.pdf, id=442, 266.12572pt x 236.6469pt>
+[9 <./fig_cross_batch.pdf>]
+<fig_temperature_tte.pdf, id=601, 266.12572pt x 236.6469pt>
 File: fig_temperature_tte.pdf Graphic file (type pdf)
 <use fig_temperature_tte.pdf>
-Package pdftex.def Info: fig_temperature_tte.pdf  used on input line 827.
+Package pdftex.def Info: fig_temperature_tte.pdf  used on input line 812.
 (pdftex.def)             Requested size: 252.0pt x 224.08385pt.
-<fig_dynamic_scenario.pdf, id=444, 484.37845pt x 317.3845pt>
+ [10 <./fig_scenario_comparison.pdf>]
+<fig_dynamic_scenario.pdf, id=623, 484.37845pt x 317.3845pt>
 File: fig_dynamic_scenario.pdf Graphic file (type pdf)
 <use fig_dynamic_scenario.pdf>
-Package pdftex.def Info: fig_dynamic_scenario.pdf  used on input line 842.
+Package pdftex.def Info: fig_dynamic_scenario.pdf  used on input line 827.
 (pdftex.def)             Requested size: 522.0pt x 342.03403pt.
- [10 <./fig_cross_batch.pdf>]
-<fig_residual_analysis.pdf, id=485, 496.12648pt x 325.25075pt>
+<fig_residual_analysis.pdf, id=625, 496.12648pt x 325.25075pt>
 File: fig_residual_analysis.pdf Graphic file (type pdf)
 <use fig_residual_analysis.pdf>
-Package pdftex.def Info: fig_residual_analysis.pdf  used on input line 854.
+Package pdftex.def Info: fig_residual_analysis.pdf  used on input line 839.
 (pdftex.def)             Requested size: 522.0pt x 342.20824pt.
 
-Underfull \hbox (badness 1694) in paragraph at lines 847--857
+Underfull \hbox (badness 1694) in paragraph at lines 832--842
 \T1/txr/m/n/10 age pre-dic-tions be-yond ag-gre-gate met-rics, we per-form a
  []
 
-
-Package natbib Warning: Citation `Vetter2005' on page 11 undefined on input lin
-e 861.
-
-<fig_aging_curves.pdf, id=487, 478.20102pt x 223.50186pt>
+<fig_aging_curves.pdf, id=628, 478.20102pt x 223.50186pt>
 File: fig_aging_curves.pdf Graphic file (type pdf)
 <use fig_aging_curves.pdf>
-Package pdftex.def Info: fig_aging_curves.pdf  used on input line 864.
+Package pdftex.def Info: fig_aging_curves.pdf  used on input line 849.
 (pdftex.def)             Requested size: 522.0pt x 243.9771pt.
-
-Underfull \hbox (badness 1902) in paragraph at lines 876--879
+[11 <./fig_ablation_heatmap.pdf>]
+Underfull \hbox (badness 1902) in paragraph at lines 861--864
 []\T1/txr/bx/n/10 Health-aware bud-get-ing. \T1/txr/m/n/10 Af-ter 800 cy-cles, 
 TTE
  []
 
-[11 <./fig_scenario_comparison.pdf>]
-<fig_energy_management.pdf, id=516, 484.37845pt x 316.97557pt>
+<fig_energy_management.pdf, id=672, 484.37845pt x 316.97557pt>
 File: fig_energy_management.pdf Graphic file (type pdf)
 <use fig_energy_management.pdf>
-Package pdftex.def Info: fig_energy_management.pdf  used on input line 902.
+Package pdftex.def Info: fig_energy_management.pdf  used on input line 887.
 (pdftex.def)             Requested size: 522.0pt x 341.59332pt.
 
-Underfull \hbox (badness 1348) in paragraph at lines 907--909
+Underfull \hbox (badness 1348) in paragraph at lines 892--894
  []\T1/txr/m/it/10 Discussion..[] \T1/txr/m/n/10 Threshold-based power sav-ing 
 is com-mon in
  []
 
-[12 <./fig_ablation_heatmap.pdf>]
-
-Package natbib Warning: Citation `Lipu2022' on page 13 undefined on input line 
-938.
-
-
-Package natbib Warning: Citation `Liu2019ECM' on page 13 undefined on input lin
-e 938.
-
-
-Underfull \hbox (badness 1314) in paragraph at lines 920--940
+[12 <./fig_sensitivity_tornado.pdf> <./fig_temperature_tte.pdf>]
+Underfull \hbox (badness 1314) in paragraph at lines 905--925
 \T1/txr/m/n/10 the pro-posed model-predictive strat-egy with rep-re-sen-ta-tive
 
  []
 
 
-Underfull \hbox (badness 1762) in paragraph at lines 943--946
+Underfull \hbox (badness 1454) in paragraph at lines 905--925
+\T1/txr/m/n/10 gains will de-pend on user will-ing-ness to ac-cept re-duced
+ []
+
+
+Underfull \hbox (badness 1762) in paragraph at lines 928--931
 \T1/txr/m/n/10 that in-te-grates a mod-i-fied Shep-herd volt-age model, five-
  []
 
 
-Underfull \hbox (badness 1939) in paragraph at lines 946--947
+Underfull \hbox (badness 1939) in paragraph at lines 931--932
 []\T1/txr/m/n/10 The Shepherd-based for-mu-la-tion achieves a volt-age
  []
 
 
-Underfull \hbox (badness 1033) in paragraph at lines 946--947
+Underfull \hbox (badness 1033) in paragraph at lines 931--932
 \T1/txr/m/n/10 rel-a-tive to the Nernst base-line and $\OT1/txr/m/n/10 55$$%$ \
 T1/txr/m/n/10 rel-a-tive to
  []
 
-
-Underfull \hbox (badness 1810) in paragraph at lines 949--950
+[13 <./fig_dynamic_scenario.pdf>] [14 <./fig_residual_analysis.pdf> <./fig_agin
+g_curves.pdf>]
+Underfull \hbox (badness 1810) in paragraph at lines 934--935
 []\T1/txr/m/n/10 An op-ti-mised adap-tive en-ergy man-age-ment strat-egy
  []
 
-[13 <./fig_sensitivity_tornado.pdf> <./fig_temperature_tte.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 950--951
+
+Underfull \hbox (badness 10000) in paragraph at lines 935--936
 \T1/txr/m/n/10 low-power mi-cro-con-trollers ($[]\OT1/txr/m/n/10 1$$[]$ \T1/txr
 /m/n/10 com-pu-ta-tional
  []
 
 
-Package natbib Warning: Citation `Carroll2010' on page 14 undefined on input li
-ne 955.
-
-
-Package natbib Warning: Citation `Chen2014' on page 14 undefined on input line 
-955.
-
-
-Package natbib Warning: Citation `Lu2008' on page 14 undefined on input line 95
-5.
-
-
-Package natbib Warning: Citation `Fuller2014' on page 14 undefined on input lin
-e 958.
-
-
-Package natbib Warning: Citation `Mama2024' on page 14 undefined on input line 
-958.
-
-
-Underfull \hbox (badness 1460) in paragraph at lines 954--962
-\T1/txr/m/n/10 on real XJTU cell data un-der con-trolled constant-current
+Underfull \hbox (badness 1043) in paragraph at lines 939--947
+\T1/txr/m/n/10 from pub-lished hard-ware power mea-sure-ments [][[][][],[] [][]
+,[] [][]][].
  []
 
 
-Underfull \hbox (badness 8151) in paragraph at lines 964--965
+Underfull \hbox (badness 1331) in paragraph at lines 939--947
+\T1/txr/m/n/10 be di-rectly ver-i-fied against real-device mea-sure-ments, the
+ []
+
+[15 <./fig_energy_management.pdf>]
+Underfull \hbox (badness 8151) in paragraph at lines 949--950
 []\T1/txr/m/it/10 Homogeneous ag-ing: \T1/txr/m/n/10 Cell-to-cell vari-abil-ity
  and
  []
 
 
-Overfull \hbox (16.17395pt too wide) in paragraph at lines 965--966
-[]\T1/txr/m/it/10 Single chem-istry: \T1/txr/m/n/10 Re-sults are demon-strated 
-on NMC/graphite
- []
-
-
-Underfull \hbox (badness 2229) in paragraph at lines 969--976
+Underfull \hbox (badness 2229) in paragraph at lines 954--961
  []\T1/txr/m/it/10 Future work..[] \T1/txr/m/n/10 Planned ex-ten-sions in-clude
 : (i) val-i-da-tion
  []
 
 
-Underfull \hbox (badness 1077) in paragraph at lines 969--976
+Underfull \hbox (badness 1077) in paragraph at lines 954--961
 \T1/txr/m/n/10 us-age pro-files; (iv) in-te-gra-tion into An-droid's Pow-er-Man
 -
  []
 
 
-Underfull \hbox (badness 1675) in paragraph at lines 969--976
+Underfull \hbox (badness 1675) in paragraph at lines 954--961
 \T1/txr/m/n/10 stor-age for vehicle-to-grid (V2G) style de-mand re-sponse,
  []
 
-[14 <./fig_dynamic_scenario.pdf>]
 
-Package natbib Warning: Citation `XJTU2020' on page 15 undefined on input line 
-988.
-
-
-Underfull \hbox (badness 1199) in paragraph at lines 988--989
+Underfull \hbox (badness 1199) in paragraph at lines 973--974
 \T1/txr/m/n/10 and pro-cessed data sup-port-ing this study are avail-able at
  []
 
-[15 <./fig_residual_analysis.pdf>]
-No file paper.bbl.
+(paper.bbl
+Underfull \hbox (badness 1158) in paragraph at lines 17--27
+[]\T1/txr/m/n/10 E. Benkhe-lifa, T. Welsh, L. Tawal-beh, Y. Jarar-weh,
+ []
 
-Package natbib Warning: There were undefined citations.
 
-[16
+Underfull \hbox (badness 5924) in paragraph at lines 52--60
+[]\T1/txr/m/n/10 M. Doyle, T. F. Fuller, J. New-man,  Mod-el-
+ []
 
- <./fig_aging_curves.pdf>] [17 <./fig_energy_management.pdf>] (paper.aux)
+
+Underfull \hbox (badness 5374) in paragraph at lines 52--60
+\T1/txr/m/n/10 ing of gal-vano-s-tatic charge and dis-charge of the
+ []
+
+[16]
+Underfull \hbox (badness 1033) in paragraph at lines 191--201
+\T1/txr/m/n/10 J. O. Be-sen-hard, M. Win-ter, M. Wohlfahrt-Mehrens,
+ []
+
+
+Underfull \hbox (badness 1708) in paragraph at lines 271--280
+[]\T1/txr/m/n/10 Xi'an Jiao-tong Uni-ver-sity, XJTU lithium-ion bat-tery
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 271--280
+\T1/txr/m/n/10 18650 cells, [][]$\T1/cmtt/m/n/10 https : / / zenodo . org / rec
+ords /
+ []
+
+
+Underfull \hbox (badness 3118) in paragraph at lines 271--280
+\T1/cmtt/m/n/10 14227564$[][]\T1/txr/m/n/10 , 2020. Pub-licly avail-able bat-te
+ry cy-cling
+ []
+
+[17]) [18
+
+] (paper.aux)
  ***********
 LaTeX2e <2025-11-01>
-L3 programming layer <2025-12-24>
+L3 programming layer <2026-01-19>
  ***********
 Package rerunfilecheck Info: File `paper.out' has not changed.
 (rerunfilecheck)             Checksum: AC7F63073203397ABE249BFC70554D93;10002.
  ) 
 Here is how much of TeX's memory you used:
- 17384 strings out of 467871
- 325140 string characters out of 5418376
- 734149 words of memory out of 5000000
- 45826 multiletter control sequences out of 15000+600000
+ 17590 strings out of 467867
+ 328751 string characters out of 5418334
+ 734958 words of memory out of 5000000
+ 45992 multiletter control sequences out of 15000+600000
  704939 words of font info for 183 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,15n,88p,597b,1158s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,15n,88p,597b,1231s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\wangy\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt
 1000.pk> <C:\Users\wangy\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi60
 0\ectt0800.pk><C:/Users/wangy/AppData/Local/Programs/MiKTeX/fonts/type1/public/
@@ -1711,9 +1352,9 @@ a/Local/Programs/MiKTeX/fonts/type1/public/txfonts/txsy.pfb><C:/Users/wangy/App
 Data/Local/Programs/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><C:/Users/wangy/App
 Data/Local/Programs/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><C:/Users/wangy/App
 Data/Local/Programs/MiKTeX/fonts/type1/urw/times/utmri8a.pfb>
-Output written on paper.pdf (17 pages, 1906792 bytes).
+Output written on paper.pdf (18 pages, 1938608 bytes).
 PDF statistics:
- 931 PDF objects out of 1000 (max. 8388607)
- 171 named destinations out of 1000 (max. 500000)
+ 1088 PDF objects out of 1200 (max. 8388607)
+ 209 named destinations out of 1000 (max. 500000)
  464 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -32,7 +32,13 @@ import os
 # Default: 6th-order polynomial coefficients fitted from XJTU Batch-1
 # Will be overridden by fit_ocv_soc() if data is available
 DEFAULT_OCV_COEFFS = [
-    -25.132, 87.047, -120.810, 87.117, -34.869, 8.274, 3.237
+    -25.132,
+    87.047,
+    -120.810,
+    87.117,
+    -34.869,
+    8.274,
+    3.237,
 ]  # p6..p0 for np.polyval
 
 
@@ -59,8 +65,9 @@ class TheveninFirstOrder:
     V_terminal = OCV(SOC) - R0*I - V_RC1
     """
 
-    def __init__(self, Q0=2.0, R0=0.05, R1=0.02, C1=1000.0,
-                 V_cutoff=2.5, ocv_coeffs=None):
+    def __init__(
+        self, Q0=2.0, R0=0.05, R1=0.02, C1=1000.0, V_cutoff=2.5, ocv_coeffs=None
+    ):
         self.Q0 = Q0
         self.R0 = R0
         self.R1 = R1
@@ -105,25 +112,25 @@ class TheveninFirstOrder:
             fun=lambda t, y: self.dynamics(t, y, I_load),
             t_span=[0, t_max],
             y0=[0.0, soc_init],
-            method='RK45',
+            method="RK45",
             events=[stop_voltage, stop_soc],
             max_step=dt_eval,
-            rtol=1e-6, atol=1e-8,
+            rtol=1e-6,
+            atol=1e-8,
         )
 
         soc = np.clip(sol.y[1], 0.001, 1.0)
-        V = np.array([
-            self.terminal_voltage(s, I_load, vrc)
-            for s, vrc in zip(soc, sol.y[0])
-        ])
+        V = np.array(
+            [self.terminal_voltage(s, I_load, vrc) for s, vrc in zip(soc, sol.y[0])]
+        )
 
         return {
-            'time_s': sol.t,
-            'time_h': sol.t / 3600,
-            'soc': soc,
-            'voltage': V,
-            'current': np.full_like(sol.t, I_load),
-            'discharge_time_h': sol.t[-1] / 3600,
+            "time_s": sol.t,
+            "time_h": sol.t / 3600,
+            "soc": soc,
+            "voltage": V,
+            "current": np.full_like(sol.t, I_load),
+            "discharge_time_h": sol.t[-1] / 3600,
         }
 
     def simulate_cp_discharge(self, P_load, soc_init=1.0, dt=1.0):
@@ -155,10 +162,10 @@ class TheveninFirstOrder:
             voltages.append(V)
 
         return {
-            'time_h': np.array(times),
-            'soc': np.array(socs),
-            'voltage': np.array(voltages),
-            'discharge_time_h': times[-1],
+            "time_h": np.array(times),
+            "soc": np.array(socs),
+            "voltage": np.array(voltages),
+            "discharge_time_h": times[-1],
         }
 
 
@@ -170,8 +177,17 @@ class TheveninSecondOrder:
     V_terminal = OCV(SOC) - R0*I - V_RC1 - V_RC2
     """
 
-    def __init__(self, Q0=2.0, R0=0.05, R1=0.015, C1=1000.0,
-                 R2=0.025, C2=5000.0, V_cutoff=2.5, ocv_coeffs=None):
+    def __init__(
+        self,
+        Q0=2.0,
+        R0=0.05,
+        R1=0.015,
+        C1=1000.0,
+        R2=0.025,
+        C2=5000.0,
+        V_cutoff=2.5,
+        ocv_coeffs=None,
+    ):
         self.Q0 = Q0
         self.R0 = R0
         self.R1 = R1
@@ -218,25 +234,28 @@ class TheveninSecondOrder:
             fun=lambda t, y: self.dynamics(t, y, I_load),
             t_span=[0, t_max],
             y0=[0.0, 0.0, soc_init],
-            method='RK45',
+            method="RK45",
             events=[stop_voltage, stop_soc],
             max_step=dt_eval,
-            rtol=1e-6, atol=1e-8,
+            rtol=1e-6,
+            atol=1e-8,
         )
 
         soc = np.clip(sol.y[2], 0.001, 1.0)
-        V = np.array([
-            self.terminal_voltage(s, I_load, vrc1, vrc2)
-            for s, vrc1, vrc2 in zip(soc, sol.y[0], sol.y[1])
-        ])
+        V = np.array(
+            [
+                self.terminal_voltage(s, I_load, vrc1, vrc2)
+                for s, vrc1, vrc2 in zip(soc, sol.y[0], sol.y[1])
+            ]
+        )
 
         return {
-            'time_s': sol.t,
-            'time_h': sol.t / 3600,
-            'soc': soc,
-            'voltage': V,
-            'current': np.full_like(sol.t, I_load),
-            'discharge_time_h': sol.t[-1] / 3600,
+            "time_s": sol.t,
+            "time_h": sol.t / 3600,
+            "soc": soc,
+            "voltage": V,
+            "current": np.full_like(sol.t, I_load),
+            "discharge_time_h": sol.t[-1] / 3600,
         }
 
     def simulate_cp_discharge(self, P_load, soc_init=1.0, dt=1.0):
@@ -270,10 +289,10 @@ class TheveninSecondOrder:
             voltages.append(V)
 
         return {
-            'time_h': np.array(times),
-            'soc': np.array(socs),
-            'voltage': np.array(voltages),
-            'discharge_time_h': times[-1],
+            "time_h": np.array(times),
+            "soc": np.array(socs),
+            "voltage": np.array(voltages),
+            "discharge_time_h": times[-1],
         }
 
 
@@ -307,6 +326,7 @@ def identify_thevenin_params(time_s, voltage, current, Q0, order=1):
     from scipy.optimize import differential_evolution
 
     if order == 1:
+
         def cost(params):
             R0, R1, C1 = params
             v_rc1 = 0.0
@@ -318,7 +338,7 @@ def identify_thevenin_params(time_s, voltage, current, Q0, order=1):
                 err = V_pred - voltage_ds[i]
                 if not np.isfinite(err):
                     return 1e10
-                mse += err ** 2
+                mse += err**2
                 if i < n_ds - 1:
                     dt_i = time_ds[i + 1] - time_ds[i]
                     v_rc1 += (I / C1 - v_rc1 / (R1 * C1)) * dt_i
@@ -329,12 +349,16 @@ def identify_thevenin_params(time_s, voltage, current, Q0, order=1):
         result = differential_evolution(cost, bounds, maxiter=200, seed=42, tol=1e-6)
         R0, R1, C1 = result.x
         return {
-            'R0': R0, 'R1': R1, 'C1': C1,
-            'ocv_coeffs': ocv_coeffs, 'Q0': Q0,
-            'rmse_fit': np.sqrt(result.fun),
+            "R0": R0,
+            "R1": R1,
+            "C1": C1,
+            "ocv_coeffs": ocv_coeffs,
+            "Q0": Q0,
+            "rmse_fit": np.sqrt(result.fun),
         }
 
     elif order == 2:
+
         def cost(params):
             R0, R1, C1, R2, C2 = params
             v_rc1, v_rc2 = 0.0, 0.0
@@ -346,7 +370,7 @@ def identify_thevenin_params(time_s, voltage, current, Q0, order=1):
                 err = V_pred - voltage_ds[i]
                 if not np.isfinite(err):
                     return 1e10
-                mse += err ** 2
+                mse += err**2
                 if i < n_ds - 1:
                     dt_i = time_ds[i + 1] - time_ds[i]
                     v_rc1 += (I / C1 - v_rc1 / (R1 * C1)) * dt_i
@@ -356,14 +380,24 @@ def identify_thevenin_params(time_s, voltage, current, Q0, order=1):
                     v_rc2 = np.clip(v_rc2, -2.0, 2.0)
             return mse / n_ds
 
-        bounds = [(0.01, 0.3), (0.005, 0.15), (100, 20000),
-                  (0.005, 0.15), (1000, 100000)]
+        bounds = [
+            (0.01, 0.3),
+            (0.005, 0.15),
+            (100, 20000),
+            (0.005, 0.15),
+            (1000, 100000),
+        ]
         result = differential_evolution(cost, bounds, maxiter=300, seed=42, tol=1e-6)
         R0, R1, C1, R2, C2 = result.x
         return {
-            'R0': R0, 'R1': R1, 'C1': C1, 'R2': R2, 'C2': C2,
-            'ocv_coeffs': ocv_coeffs, 'Q0': Q0,
-            'rmse_fit': np.sqrt(result.fun),
+            "R0": R0,
+            "R1": R1,
+            "C1": C1,
+            "R2": R2,
+            "C2": C2,
+            "ocv_coeffs": ocv_coeffs,
+            "Q0": Q0,
+            "rmse_fit": np.sqrt(result.fun),
         }
 
 
@@ -403,14 +437,14 @@ class RintModel:
             voltages.append(V)
 
         return {
-            'time_h': np.array(times),
-            'soc': np.array(socs),
-            'voltage': np.array(voltages),
-            'discharge_time_h': times[-1],
+            "time_h": np.array(times),
+            "soc": np.array(socs),
+            "voltage": np.array(voltages),
+            "discharge_time_h": times[-1],
         }
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     print("Thevenin ECM Baselines loaded successfully.")
     print("Models: RintModel, TheveninFirstOrder, TheveninSecondOrder")
     print("Use identify_thevenin_params() to fit from data.")

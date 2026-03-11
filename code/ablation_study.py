@@ -84,7 +84,7 @@ def get_lumped_power(scenario_inputs):
     gps_on = int(scenario_inputs.get("gps", False))
 
     # Simple linear model: P = a0 + a1*brightness + a2*cpu + a3*net + a4*gps
-    P_base_mw = 150   # Base standby
+    P_base_mw = 150  # Base standby
     P_screen = brightness * 800
     P_cpu = cpu_load * 1200
     P_net = net_activity * 500
@@ -98,7 +98,7 @@ def run_full_model(scenario_name, scenario, aging_level, temperature_c=25):
     """FULL model: Shepherd + Temp + Aging + Component Decomposition."""
     power_model = BatteryModel(
         cycle_count=aging_level["cycle_count"],
-        calendar_time_hours=aging_level["calendar_hours"]
+        calendar_time_hours=aging_level["calendar_hours"],
     )
     q_retention, r_factor = power_model.get_aging_factors()
 
@@ -118,7 +118,7 @@ def run_no_temperature(scenario_name, scenario, aging_level, temperature_c=25):
     """Without temperature coupling: fix T=25°C in voltage model."""
     power_model = BatteryModel(
         cycle_count=aging_level["cycle_count"],
-        calendar_time_hours=aging_level["calendar_hours"]
+        calendar_time_hours=aging_level["calendar_hours"],
     )
     q_retention, r_factor = power_model.get_aging_factors()
 
@@ -152,7 +152,7 @@ def run_no_decomposition(scenario_name, scenario, aging_level, temperature_c=25)
     """Without component decomposition: use lumped power model."""
     power_model = BatteryModel(
         cycle_count=aging_level["cycle_count"],
-        calendar_time_hours=aging_level["calendar_hours"]
+        calendar_time_hours=aging_level["calendar_hours"],
     )
     q_retention, r_factor = power_model.get_aging_factors()
 
@@ -171,7 +171,7 @@ def run_no_polarization(scenario_name, scenario, aging_level, temperature_c=25):
     """Without Shepherd K term: remove i/SOC polarization."""
     power_model = BatteryModel(
         cycle_count=aging_level["cycle_count"],
-        calendar_time_hours=aging_level["calendar_hours"]
+        calendar_time_hours=aging_level["calendar_hours"],
     )
     q_retention, r_factor = power_model.get_aging_factors()
 
@@ -198,7 +198,7 @@ ABLATION_CONFIGS = {
 
 def main():
     script_dir = os.path.dirname(os.path.abspath(__file__))
-    results_dir = os.path.join(script_dir, '..', 'results')
+    results_dir = os.path.join(script_dir, "..", "results")
     os.makedirs(results_dir, exist_ok=True)
 
     rows = []
@@ -223,109 +223,138 @@ def main():
                     delta = tte - tte_full
                     delta_pct = (delta / tte_full * 100) if tte_full > 0 else 0
 
-                    rows.append({
-                        'Temperature (C)': temperature_c,
-                        'Aging': aging['label'],
-                        'Scenario': scenario_name,
-                        'Configuration': config_name,
-                        'TTE (h)': round(tte, 3),
-                        'Power (W)': round(power_w, 4),
-                        'Delta TTE (h)': round(delta, 3),
-                        'Delta TTE (%)': round(delta_pct, 2),
-                    })
+                    rows.append(
+                        {
+                            "Temperature (C)": temperature_c,
+                            "Aging": aging["label"],
+                            "Scenario": scenario_name,
+                            "Configuration": config_name,
+                            "TTE (h)": round(tte, 3),
+                            "Power (W)": round(power_w, 4),
+                            "Delta TTE (h)": round(delta, 3),
+                            "Delta TTE (%)": round(delta_pct, 2),
+                        }
+                    )
 
             # Print summary for this scenario
-            full_row = [r for r in rows if r['Scenario'] == scenario_name
-                        and r['Aging'] == aging['label']
-                        and r['Temperature (C)'] == temperature_c
-                        and r['Configuration'] == 'Full Model'][-1]
-            print(f"  {scenario_name:12s} Full={full_row['TTE (h)']:6.2f}h | ", end='')
+            full_row = [
+                r
+                for r in rows
+                if r["Scenario"] == scenario_name
+                and r["Aging"] == aging["label"]
+                and r["Temperature (C)"] == temperature_c
+                and r["Configuration"] == "Full Model"
+            ][-1]
+            print(f"  {scenario_name:12s} Full={full_row['TTE (h)']:6.2f}h | ", end="")
             for config_name in list(ABLATION_CONFIGS.keys())[1:]:
-                r = [r for r in rows if r['Scenario'] == scenario_name
-                     and r['Aging'] == aging['label']
-                     and r['Temperature (C)'] == temperature_c
-                     and r['Configuration'] == config_name][-1]
-                print(f"{config_name.split('(')[0].strip():18s}={r['Delta TTE (%)']:+6.1f}%  ", end='')
+                r = [
+                    r
+                    for r in rows
+                    if r["Scenario"] == scenario_name
+                    and r["Aging"] == aging["label"]
+                    and r["Temperature (C)"] == temperature_c
+                    and r["Configuration"] == config_name
+                ][-1]
+                print(
+                    f"{config_name.split('(')[0].strip():18s}={r['Delta TTE (%)']:+6.1f}%  ",
+                    end="",
+                )
             print()
 
     df = pd.DataFrame(rows)
 
     # Save full results
-    csv_path = os.path.join(results_dir, 'ablation_study.csv')
+    csv_path = os.path.join(results_dir, "ablation_study.csv")
     df.to_csv(csv_path, index=False)
     print(f"\nSaved: {csv_path}")
 
     # ====== Create summary pivot table ======
     # Average delta across scenarios per configuration, aging level, and temperature
-    summary = df[df['Configuration'] != 'Full Model'].groupby(
-        ['Configuration', 'Aging', 'Temperature (C)']
-    ).agg({
-        'Delta TTE (%)': 'mean',
-        'Delta TTE (h)': 'mean',
-    }).round(2).reset_index()
+    summary = (
+        df[df["Configuration"] != "Full Model"]
+        .groupby(["Configuration", "Aging", "Temperature (C)"])
+        .agg(
+            {
+                "Delta TTE (%)": "mean",
+                "Delta TTE (h)": "mean",
+            }
+        )
+        .round(2)
+        .reset_index()
+    )
 
-    summary_csv = os.path.join(results_dir, 'ablation_study_summary.csv')
+    summary_csv = os.path.join(results_dir, "ablation_study_summary.csv")
     summary.to_csv(summary_csv, index=False)
     print(f"Saved: {summary_csv}")
 
     # ====== LaTeX table: multi-temperature ======
-    tex_path = os.path.join(results_dir, 'ablation_study_table.tex')
+    tex_path = os.path.join(results_dir, "ablation_study_table.tex")
     # Table: rows = configurations, columns = scenarios, at T=25°C new battery
-    new_25 = df[(df['Aging'] == 'New (0 cycles)') & (df['Temperature (C)'] == 25)]
+    new_25 = df[(df["Aging"] == "New (0 cycles)") & (df["Temperature (C)"] == 25)]
 
-    with open(tex_path, 'w', encoding='utf-8') as f:
-        f.write('% Ablation Study Table\n')
-        f.write('\\begin{table}[htbp]\n')
-        f.write('\\centering\n')
-        f.write('\\caption{Ablation study: TTE (hours) for new battery at $T=25^\\circ$C '
-                'under different model configurations. Delta shows deviation from Full Model.}\n')
-        f.write('\\label{tab:ablation_study}\n')
+    with open(tex_path, "w", encoding="utf-8") as f:
+        f.write("% Ablation Study Table\n")
+        f.write("\\begin{table}[htbp]\n")
+        f.write("\\centering\n")
+        f.write(
+            "\\caption{Ablation study: TTE (hours) for new battery at $T=25^\\circ$C "
+            "under different model configurations. Delta shows deviation from Full Model.}\n"
+        )
+        f.write("\\label{tab:ablation_study}\n")
         scen_names = list(SCENARIOS.keys())
-        cols = 'l' + 'r' * len(scen_names)
-        f.write(f'\\begin{{tabular}}{{{cols}}}\n')
-        f.write('\\hline\n')
-        f.write('Configuration & ' + ' & '.join(scen_names) + ' \\\\\n')
-        f.write('\\hline\n')
+        cols = "l" + "r" * len(scen_names)
+        f.write(f"\\begin{{tabular}}{{{cols}}}\n")
+        f.write("\\hline\n")
+        f.write("Configuration & " + " & ".join(scen_names) + " \\\\\n")
+        f.write("\\hline\n")
 
         for config_name in ABLATION_CONFIGS.keys():
             values = []
             for sn in scen_names:
-                row = new_25[(new_25['Configuration'] == config_name) &
-                              (new_25['Scenario'] == sn)].iloc[0]
-                if config_name == 'Full Model':
+                row = new_25[
+                    (new_25["Configuration"] == config_name)
+                    & (new_25["Scenario"] == sn)
+                ].iloc[0]
+                if config_name == "Full Model":
                     values.append(f"{row['TTE (h)']:.2f}")
                 else:
-                    values.append(f"{row['TTE (h)']:.2f} ({row['Delta TTE (%)']:+.1f}\\%)")
+                    values.append(
+                        f"{row['TTE (h)']:.2f} ({row['Delta TTE (%)']:+.1f}\\%)"
+                    )
             f.write(f"{config_name} & " + " & ".join(values) + " \\\\\n")
 
-        f.write('\\hline\n')
-        f.write('\\end{tabular}\n')
-        f.write('\\end{table}\n')
+        f.write("\\hline\n")
+        f.write("\\end{tabular}\n")
+        f.write("\\end{table}\n")
 
         # Additional table: temperature effect on w/o Temperature ablation
-        f.write('\n% Temperature Module Contribution Across Temperatures\n')
-        f.write('\\begin{table}[htbp]\n')
-        f.write('\\centering\n')
-        f.write('\\caption{Temperature module contribution: TTE error (\\%) when temperature '
-                'coupling is removed, evaluated at different ambient temperatures.}\n')
-        f.write('\\label{tab:ablation_temperature}\n')
-        cols = 'l' + 'r' * len(scen_names)
-        f.write(f'\\begin{{tabular}}{{{cols}}}\n')
-        f.write('\\hline\n')
-        f.write('Temperature & ' + ' & '.join(scen_names) + ' \\\\\n')
-        f.write('\\hline\n')
+        f.write("\n% Temperature Module Contribution Across Temperatures\n")
+        f.write("\\begin{table}[htbp]\n")
+        f.write("\\centering\n")
+        f.write(
+            "\\caption{Temperature module contribution: TTE error (\\%) when temperature "
+            "coupling is removed, evaluated at different ambient temperatures.}\n"
+        )
+        f.write("\\label{tab:ablation_temperature}\n")
+        cols = "l" + "r" * len(scen_names)
+        f.write(f"\\begin{{tabular}}{{{cols}}}\n")
+        f.write("\\hline\n")
+        f.write("Temperature & " + " & ".join(scen_names) + " \\\\\n")
+        f.write("\\hline\n")
         for temp_c in TEMPERATURE_LEVELS:
-            temp_data = df[(df['Aging'] == 'New (0 cycles)') &
-                           (df['Temperature (C)'] == temp_c) &
-                           (df['Configuration'] == 'w/o Temperature')]
+            temp_data = df[
+                (df["Aging"] == "New (0 cycles)")
+                & (df["Temperature (C)"] == temp_c)
+                & (df["Configuration"] == "w/o Temperature")
+            ]
             values = []
             for sn in scen_names:
-                row = temp_data[temp_data['Scenario'] == sn].iloc[0]
+                row = temp_data[temp_data["Scenario"] == sn].iloc[0]
                 values.append(f"{row['Delta TTE (%)']:+.1f}\\%")
             f.write(f"$T={temp_c}^\\circ$C & " + " & ".join(values) + " \\\\\n")
-        f.write('\\hline\n')
-        f.write('\\end{tabular}\n')
-        f.write('\\end{table}\n')
+        f.write("\\hline\n")
+        f.write("\\end{tabular}\n")
+        f.write("\\end{table}\n")
 
     print(f"Saved: {tex_path}")
 
@@ -334,58 +363,69 @@ def main():
 
     # Panel 1: Ablation at T=25°C (as before)
     ax = axes[0]
-    configs_no_full = [c for c in ABLATION_CONFIGS.keys() if c != 'Full Model']
+    configs_no_full = [c for c in ABLATION_CONFIGS.keys() if c != "Full Model"]
     x = np.arange(len(SCENARIOS))
     width = 0.18
-    colors = ['#3b82f6', '#ef4444', '#f59e0b', '#10b981']
+    colors = ["#3b82f6", "#ef4444", "#f59e0b", "#10b981"]
 
     for i, config in enumerate(configs_no_full):
         deltas = []
         for sn in SCENARIOS.keys():
-            row = new_25[(new_25['Configuration'] == config) &
-                          (new_25['Scenario'] == sn)].iloc[0]
-            deltas.append(row['Delta TTE (%)'])
+            row = new_25[
+                (new_25["Configuration"] == config) & (new_25["Scenario"] == sn)
+            ].iloc[0]
+            deltas.append(row["Delta TTE (%)"])
         ax.bar(x + i * width, deltas, width, label=config, color=colors[i], alpha=0.85)
 
-    ax.set_xlabel('Usage Scenario')
-    ax.set_ylabel('TTE Change (%)')
-    ax.set_title('(a) Module Contribution at $T=25°C$ (New Battery)')
+    ax.set_xlabel("Usage Scenario")
+    ax.set_ylabel("TTE Change (%)")
+    ax.set_title("(a) Module Contribution at $T=25°C$ (New Battery)")
     ax.set_xticks(x + width * 1.5)
     ax.set_xticklabels(SCENARIOS.keys(), fontsize=8)
-    ax.legend(fontsize=7, loc='best')
-    ax.axhline(0, color='k', ls='--', lw=0.8)
-    ax.grid(axis='y', alpha=0.3)
+    ax.legend(fontsize=7, loc="best")
+    ax.axhline(0, color="k", ls="--", lw=0.8)
+    ax.grid(axis="y", alpha=0.3)
 
     # Panel 2: w/o Temperature across temperatures
     ax2 = axes[1]
-    temp_colors = {0: '#3b82f6', 25: '#6b7280', 40: '#ef4444'}
+    temp_colors = {0: "#3b82f6", 25: "#6b7280", 40: "#ef4444"}
     x2 = np.arange(len(SCENARIOS))
     width2 = 0.25
     for j, temp_c in enumerate(TEMPERATURE_LEVELS):
-        temp_data = df[(df['Aging'] == 'New (0 cycles)') &
-                       (df['Temperature (C)'] == temp_c) &
-                       (df['Configuration'] == 'w/o Temperature')]
-        deltas = [temp_data[temp_data['Scenario'] == sn].iloc[0]['Delta TTE (%)']
-                  for sn in SCENARIOS.keys()]
-        ax2.bar(x2 + j * width2, deltas, width2, label=f'T={temp_c}°C',
-                color=temp_colors[temp_c], alpha=0.85)
+        temp_data = df[
+            (df["Aging"] == "New (0 cycles)")
+            & (df["Temperature (C)"] == temp_c)
+            & (df["Configuration"] == "w/o Temperature")
+        ]
+        deltas = [
+            temp_data[temp_data["Scenario"] == sn].iloc[0]["Delta TTE (%)"]
+            for sn in SCENARIOS.keys()
+        ]
+        ax2.bar(
+            x2 + j * width2,
+            deltas,
+            width2,
+            label=f"T={temp_c}°C",
+            color=temp_colors[temp_c],
+            alpha=0.85,
+        )
 
-    ax2.set_xlabel('Usage Scenario')
-    ax2.set_ylabel('TTE Change (%)')
-    ax2.set_title('(b) Temperature Module: Error When Removed')
+    ax2.set_xlabel("Usage Scenario")
+    ax2.set_ylabel("TTE Change (%)")
+    ax2.set_title("(b) Temperature Module: Error When Removed")
     ax2.set_xticks(x2 + width2)
     ax2.set_xticklabels(SCENARIOS.keys(), fontsize=8)
     ax2.legend(fontsize=8)
-    ax2.axhline(0, color='k', ls='--', lw=0.8)
-    ax2.grid(axis='y', alpha=0.3)
+    ax2.axhline(0, color="k", ls="--", lw=0.8)
+    ax2.grid(axis="y", alpha=0.3)
 
-    plt.suptitle('Ablation Study', fontweight='bold', fontsize=13)
-    fig_path = os.path.join(results_dir, 'fig_ablation_study.png')
+    plt.suptitle("Ablation Study", fontweight="bold", fontsize=13)
+    fig_path = os.path.join(results_dir, "fig_ablation_study.png")
     plt.tight_layout()
-    plt.savefig(fig_path, dpi=300, bbox_inches='tight')
+    plt.savefig(fig_path, dpi=300, bbox_inches="tight")
     print(f"Saved: {fig_path}")
     plt.close()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

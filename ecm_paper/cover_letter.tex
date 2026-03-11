@@ -1,0 +1,105 @@
+\documentclass[12pt]{letter}
+\usepackage[a4paper,margin=2.5cm]{geometry}
+\usepackage{times}
+\usepackage{hyperref}
+
+\signature{%
+  Zhiqiang Li\\
+  College of Physics\\
+  Sichuan University\\
+  Chengdu 610064, China\\
+  \texttt{zhiqiangli@scu.edu.cn}
+}
+
+\address{%
+  College of Physics\\
+  Sichuan University\\
+  Chengdu 610064, China
+}
+
+\date{\today}
+
+\begin{document}
+
+\begin{letter}{%
+  Editor-in-Chief\\
+  \emph{Energy Conversion and Management}\\
+  Elsevier
+}
+
+\opening{Dear Editor,}
+
+We are pleased to submit our manuscript entitled
+\textbf{``A Unified Continuous-Time Electrochemical--Power Coupled Framework
+for Portable Energy Storage Management and Time-to-Empty Prediction''}
+for consideration for publication in \emph{Energy Conversion and Management}.
+
+\medskip
+\noindent\textbf{Scope and relevance.}\quad
+The manuscript presents a physics-based, continuous-time framework that
+couples a modified Shepherd electrochemical model with component-resolved
+power profiles to predict the time-to-empty (TTE) of lithium-ion cells
+in portable energy storage systems.  Unlike conventional coulomb-counting
+or data-driven approaches, our model is formulated entirely in closed-form
+ordinary differential equations (ODEs), enabling real-time execution on
+low-power microcontrollers (ARM Cortex-M class, $<$\,1\,kB RAM).
+We believe this work falls squarely within the scope of \emph{Energy
+Conversion and Management} because it addresses the \emph{system-level
+energy conversion chain}---from electrochemical state to workload-adaptive
+power delivery---and proposes an \emph{optimised energy management strategy}
+that demonstrably extends device runtime.
+
+\medskip
+\noindent\textbf{Key contributions.}\quad
+\begin{enumerate}
+  \item A unified ODE framework merging a modified Shepherd battery model
+        (RMSE 17.85\,$\pm$\,0.44\,mV on the eight-cell fitting set, with
+        cross-batch generalisation confirmed on 15 additional cells) with component-level
+        power demand, validated on the publicly available XJTU lithium-ion
+        battery dataset.
+  \item An adaptive energy management strategy delivering an estimated
+        6.1\,Wh energy saving per charge cycle ($\approx$\,2.2\,kWh per
+        device per year), outperforming commercial heuristics such as
+        Android Battery Saver and iOS Low Power Mode.
+  \item Comprehensive robustness analysis including cross-batch validation,
+        bootstrap confidence intervals, ablation studies, and parameter
+        sensitivity analysis, demonstrating model generalisability.
+  \item A semi-empirical cycle-ageing extension preserving the ODE
+        structure, enabling lifecycle energy planning.
+\end{enumerate}
+
+\medskip
+\noindent\textbf{Novelty statement.}\quad
+To the best of our knowledge, no prior work has combined a closed-form
+electrochemical battery model with component-resolved power coupling in
+a single ODE system that can be solved in real time for TTE prediction.
+Our framework bridges the gap between high-fidelity battery modelling
+and practical energy management on resource-constrained embedded platforms.
+
+\medskip
+\noindent\textbf{Ethical and authorship statements.}\quad
+This manuscript has not been published previously and is not under
+consideration elsewhere.  All authors have approved the manuscript and
+agree with its submission to \emph{Energy Conversion and Management}.
+No conflicts of interest exist.
+
+\medskip
+\noindent\textbf{Suggested reviewers.}\quad
+We respectfully suggest the following independent reviewers with relevant
+expertise:
+\begin{enumerate}
+  \item Prof.\ Kailong Liu, University of Warwick, UK ---
+        battery charging management, degradation-aware optimisation
+        (\texttt{kailong.liu@warwick.ac.uk})
+  \item Prof.\ Rui Xiong, Beijing Institute of Technology, China ---
+        battery state estimation, BMS
+        (\texttt{rxiong@bit.edu.cn})
+  \item Prof.\ Xiaosong Hu, Chongqing University, China ---
+        equivalent-circuit modelling, comparative battery studies
+        (\texttt{xiaosonghu@ieee.org})
+\end{enumerate}
+
+\closing{Yours sincerely,}
+
+\end{letter}
+\end{document}

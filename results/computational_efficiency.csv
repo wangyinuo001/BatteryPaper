@@ -1,0 +1,8 @@
+Model,Parameters,Wall_time_s,Sim_seconds,ms_per_sim_s,Speedup_vs_P2D
+Shepherd (Proposed),5,0.197,22928,0.0086,9070¡Á
+Rint,9,0.227,22928,0.0099,7879¡Á
+Th¨¦venin-1RC,10,0.221,22928,0.0097,8041¡Á
+Th¨¦venin-2RC,12,0.276,22928,0.0120,6500¡Á
+NBM,4,0.259,22928,0.0113,6903¡Á
+P2D (COMSOL),50+,~1800,22928,~78,1¡Á
+LSTM inference,~10k,~0.5,1 (per step),~0.5,¡ª

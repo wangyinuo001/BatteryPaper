@@ -8,7 +8,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from pub_style import apply_style, save_fig, COLORS, DOUBLE_COL
+from pub_style import apply_style, save_fig, COLORS, DOUBLE_COL, label_panel
 from main_model import MainBatteryModel
 
 apply_style()
@@ -71,7 +71,7 @@ def main():
     ax1_twin.set_ylabel("Internal resistance $R_0$ (mΩ)", color=COLORS["accent"])
     ax1.tick_params(axis="y", labelcolor=COLORS["shepherd"])
     ax1_twin.tick_params(axis="y", labelcolor=COLORS["accent"])
-    ax1.set_title("(a) Aging degradation trajectories", fontweight="bold", pad=6)
+    label_panel(ax1, "a")
 
     # Combined legend
     lines1, labels1 = ax1.get_legend_handles_labels()
@@ -99,14 +99,14 @@ def main():
                 xy=(n, tte),
                 xytext=(0, -12),
                 textcoords="offset points",
-                fontsize=6,
+                fontsize=7,
                 ha="center",
                 color=COLORS["gray"],
             )
 
     ax2.set_xlabel("Equivalent full cycles $N$")
     ax2.set_ylabel("Time-to-empty (h)")
-    ax2.set_title("(b) TTE degradation (Video Streaming)", fontweight="bold", pad=6)
+    label_panel(ax2, "b")
 
     save_fig(fig, "fig_aging_curves", results_dir)
 

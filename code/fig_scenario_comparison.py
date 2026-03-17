@@ -10,34 +10,48 @@ import matplotlib.pyplot as plt
 from matplotlib.patches import FancyBboxPatch
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from pub_style import apply_style, save_fig, COLORS, DOUBLE_COL
+from pub_style import (
+    apply_style,
+    save_fig,
+    COLORS,
+    DOUBLE_COL,
+    COMP_COLORS,
+    PHASE_COLORS,
+    label_panel,
+)
 
 apply_style()
 
-# Scenario data (from paper Table 5 + Table 6)
+# Scenario data (from model computation)
 SCENARIOS = {
     "Standby": {
         "power": 0.741,
-        "tte": 22.69,
-        "breakdown": {"Screen": 0, "SoC": 0, "Radio": 117.3, "GPS": 30, "Base": 120},
+        "tte": 22.64,
+        "breakdown": {
+            "Screen": 0,
+            "SoC": 204.0,
+            "Radio": 117.3,
+            "GPS": 300,
+            "Base": 120,
+        },
     },
     "Reading": {
         "power": 1.727,
-        "tte": 9.69,
+        "tte": 9.64,
         "breakdown": {
-            "Screen": 510.6,
-            "SoC": 408.0,
+            "Screen": 460.7,
+            "SoC": 612.0,
             "Radio": 234.6,
-            "GPS": 30,
+            "GPS": 300,
             "Base": 120,
         },
     },
     "Navigation": {
         "power": 1.845,
-        "tte": 9.07,
+        "tte": 9.02,
         "breakdown": {
-            "Screen": 510.6,
-            "SoC": 408.0,
+            "Screen": 460.7,
+            "SoC": 612.0,
             "Radio": 351.9,
             "GPS": 300,
             "Base": 120,
@@ -45,7 +59,7 @@ SCENARIOS = {
     },
     "Video": {
         "power": 2.598,
-        "tte": 6.42,
+        "tte": 6.37,
         "breakdown": {
             "Screen": 510.6,
             "SoC": 612.0,
@@ -56,24 +70,18 @@ SCENARIOS = {
     },
     "Gaming": {
         "power": 4.303,
-        "tte": 3.84,
+        "tte": 3.79,
         "breakdown": {
-            "Screen": 663.8,
-            "SoC": 1938.0,
-            "Radio": 1114.4,
-            "GPS": 30,
+            "Screen": 728.6,
+            "SoC": 2040.0,
+            "Radio": 1114.3,
+            "GPS": 300,
             "Base": 120,
         },
     },
 }
 
-COMP_COLORS = {
-    "Screen": "#FFB300",
-    "SoC": "#E53935",
-    "Radio": "#1E88E5",
-    "GPS": "#43A047",
-    "Base": "#8E24AA",
-}
+# Use COMP_COLORS from pub_style for consistency
 
 
 def main():
@@ -90,10 +98,11 @@ def main():
     )
 
     # ── (a) TTE bar chart ──
+    scenario_colors = [PHASE_COLORS.get(n, COLORS["accent"]) for n in names]
     bars = ax1.bar(
         range(len(names)),
         ttes,
-        color=[COLORS["accent"]] * len(names),
+        color=scenario_colors,
         edgecolor="white",
         alpha=0.85,
         width=0.6,
@@ -123,7 +132,7 @@ def main():
     ax1.set_xticks(range(len(names)))
     ax1.set_xticklabels(names, fontsize=7, rotation=20, ha="right")
     ax1.set_ylabel("Time-to-empty (h)")
-    ax1.set_title("(a) TTE under five usage scenarios", fontweight="bold", pad=6)
+    label_panel(ax1, "a")
     ax1.set_ylim(0, max(ttes) * 1.18)
 
     # ── (b) Stacked power breakdown ──
@@ -147,8 +156,8 @@ def main():
     ax2.set_xticks(range(len(names)))
     ax2.set_xticklabels(names, fontsize=7, rotation=20, ha="right")
     ax2.set_ylabel("Power consumption (mW)")
-    ax2.set_title("(b) Component power decomposition", fontweight="bold", pad=6)
-    ax2.legend(fontsize=6, loc="upper left", ncol=2)
+    label_panel(ax2, "b")
+    ax2.legend(fontsize=6.5, loc="upper left", ncol=2)
 
     save_fig(fig, "fig_scenario_comparison", results_dir)
 

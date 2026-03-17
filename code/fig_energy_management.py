@@ -21,7 +21,7 @@ sys.path.insert(0, os.path.dirname(__file__))
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
-from pub_style import apply_style, save_fig, COLORS, DOUBLE_COL
+from pub_style import apply_style, save_fig, COLORS, DOUBLE_COL_TALL, label_panel
 from main_model import MainBatteryModel
 
 RESULTS_DIR = os.path.join(os.path.dirname(__file__), "..", "results")
@@ -153,7 +153,7 @@ def generate(fig=None, axes=None):
     # ── Create figure ──
     if fig is None:
         fig, axes = plt.subplots(
-            2, 1, figsize=DOUBLE_COL, height_ratios=[1.2, 0.8], sharex=True
+            2, 1, figsize=DOUBLE_COL_TALL, height_ratios=[1.2, 0.8], sharex=True
         )
 
     ax_soc, ax_power = axes
@@ -207,9 +207,7 @@ def generate(fig=None, axes=None):
     ax_soc.set_ylabel("SOC (%)")
     ax_soc.set_ylim(0, 105)
     ax_soc.legend(loc="upper right", fontsize=6.5, framealpha=0.9)
-    ax_soc.text(
-        -0.08, 1.05, "(a)", transform=ax_soc.transAxes, fontsize=9, fontweight="bold"
-    )
+    label_panel(ax_soc, "a")
 
     # ── Panel (b): Power profile ──
     # Baseline: constant
@@ -237,7 +235,7 @@ def generate(fig=None, axes=None):
 
     # Energy saved annotation
     E_baseline = baseline["tte"] * P_GAMING  # Wh
-    E_adaptive = np.trapz(adaptive["power"], adaptive["time"])  # Wh
+    E_adaptive = np.trapezoid(adaptive["power"], adaptive["time"])  # Wh
     ax_power.text(
         0.55,
         0.85,
@@ -252,12 +250,9 @@ def generate(fig=None, axes=None):
     ax_power.set_ylabel("Power (W)")
     ax_power.set_ylim(0, 5.5)
     ax_power.legend(loc="upper right", fontsize=6.5)
-    ax_power.text(
-        -0.08, 1.05, "(b)", transform=ax_power.transAxes, fontsize=9, fontweight="bold"
-    )
+    label_panel(ax_power, "b")
 
     fig.align_ylabels(axes)
-    fig.tight_layout()
     save_fig(fig, "fig_energy_management", RESULTS_DIR)
     print(f"  ✓ Energy management figure saved")
 

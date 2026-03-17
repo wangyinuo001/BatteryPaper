@@ -27,25 +27,25 @@ apply_style()
 
 SCENARIOS = ["Standby", "Reading", "Navigation", "Video", "Gaming"]
 
-# Power breakdown data (from paper Table 5) — in watts
+# Power breakdown data (from model computation) — in watts
 POWER_DATA = {
     "Standby": {
         "Screen": 0.000,
-        "SoC": 0.000,
+        "SoC": 0.204,
         "Radio": 0.117,
-        "GPS": 0.030,
+        "GPS": 0.300,
         "Base": 0.120,
     },
     "Reading": {
-        "Screen": 0.511,
-        "SoC": 0.408,
+        "Screen": 0.461,
+        "SoC": 0.612,
         "Radio": 0.235,
-        "GPS": 0.030,
+        "GPS": 0.300,
         "Base": 0.120,
     },
     "Navigation": {
-        "Screen": 0.511,
-        "SoC": 0.408,
+        "Screen": 0.461,
+        "SoC": 0.612,
         "Radio": 0.352,
         "GPS": 0.300,
         "Base": 0.120,
@@ -58,10 +58,10 @@ POWER_DATA = {
         "Base": 0.120,
     },
     "Gaming": {
-        "Screen": 0.664,
-        "SoC": 1.938,
+        "Screen": 0.729,
+        "SoC": 2.040,
         "Radio": 1.114,
-        "GPS": 0.030,
+        "GPS": 0.300,
         "Base": 0.120,
     },
 }

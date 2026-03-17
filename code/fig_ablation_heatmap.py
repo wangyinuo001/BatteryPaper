@@ -10,7 +10,7 @@ import matplotlib.pyplot as plt
 from matplotlib.colors import TwoSlopeNorm
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from pub_style import apply_style, save_fig, DOUBLE_COL_TALL
+from pub_style import apply_style, save_fig, DOUBLE_COL_TALL, label_panel
 
 apply_style()
 
@@ -37,14 +37,16 @@ def main():
     axes = axes.flatten()
 
     titles = [
-        "(a) w/o Temperature",
-        "(b) w/o Aging",
-        "(c) w/o Component Decomp.",
-        "(d) w/o Polarisation ($K$=0)",
+        "w/o Temperature",
+        "w/o Aging",
+        "w/o Component Decomp.",
+        "w/o Polarization ($K$=0)",
     ]
+    panel_letters = ["a", "b", "c", "d"]
 
     for idx, (config, title) in enumerate(zip(configs, titles)):
         ax = axes[idx]
+        label_panel(ax, panel_letters[idx])
         sub = df[df["Configuration"] == config]
         matrix = np.zeros((3, 3))
         for i, t in enumerate(temps):
@@ -84,13 +86,6 @@ def main():
 
         plt.colorbar(im, ax=ax, shrink=0.7, label="ΔTTE (%)")
 
-    fig.suptitle(
-        "Ablation study: TTE error by removing each submodel",
-        fontsize=9,
-        fontweight="bold",
-        y=1.02,
-    )
-    plt.tight_layout()
     save_fig(fig, "fig_ablation_heatmap", results_dir)
 
 

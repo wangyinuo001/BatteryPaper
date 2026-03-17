@@ -15,26 +15,43 @@ import matplotlib.pyplot as plt
 from matplotlib.patches import Rectangle, FancyBboxPatch
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from pub_style import apply_style, save_fig, COLORS, DOUBLE_COL
+from pub_style import (
+    apply_style,
+    save_fig,
+    COLORS,
+    DOUBLE_COL_TALL,
+    PHASE_COLORS,
+    label_panel,
+)
 from main_model import MainBatteryModel
 
 apply_style()
 
 # Phase definitions
 PHASES = [
-    {"name": "Gaming", "power": 4.303, "duration": 30 * 60, "color": "#E53935"},
+    {
+        "name": "Gaming",
+        "power": 4.303,
+        "duration": 30 * 60,
+        "color": PHASE_COLORS["Gaming"],
+    },
     {
         "name": "Video Streaming",
         "power": 2.598,
         "duration": 60 * 60,
-        "color": "#1E88E5",
+        "color": PHASE_COLORS["Video Streaming"],
     },
-    {"name": "Reading", "power": 1.727, "duration": 90 * 60, "color": "#43A047"},
+    {
+        "name": "Reading",
+        "power": 1.727,
+        "duration": 90 * 60,
+        "color": PHASE_COLORS["Reading"],
+    },
     {
         "name": "Standby",
         "power": 0.741,
         "duration": None,
-        "color": "#FFB300",
+        "color": PHASE_COLORS["Standby"],
     },  # until empty
 ]
 
@@ -116,7 +133,7 @@ def main():
     fig, (ax1, ax2) = plt.subplots(
         2,
         1,
-        figsize=(7.48, 4.8),
+        figsize=DOUBLE_COL_TALL,
         gridspec_kw={"height_ratios": [1, 1], "hspace": 0.08},
         sharex=True,
     )
@@ -137,22 +154,27 @@ def main():
                 prev_phase = phase_arr[i]
                 start_t = end_t
 
-    # Phase labels (top panel)
+    # Phase labels (top panel) — stagger vertically to avoid overlap
+    v_top = max(result["voltage"])
     prev_phase = phase_arr[0]
     start_t = t[0]
+    label_idx = 0
     for i in range(1, len(t)):
         if phase_arr[i] != prev_phase or i == len(t) - 1:
             mid = (start_t + t[i]) / 2
+            disp_name = PHASES[prev_phase]["name"].replace(" Streaming", "")
+            y_off = 0.14 if label_idx % 2 == 0 else 0.05
             ax1.text(
                 mid,
-                max(result["voltage"]) + 0.03,
-                PHASES[prev_phase]["name"],
+                v_top + y_off,
+                disp_name,
                 ha="center",
                 va="bottom",
-                fontsize=6.5,
+                fontsize=6,
                 fontweight="bold",
                 color=PHASES[prev_phase]["color"],
             )
+            label_idx += 1
             prev_phase = phase_arr[i]
             start_t = t[i]
 
@@ -162,10 +184,9 @@ def main():
         2.5, color=COLORS["gray"], ls="--", lw=0.5, label="$V_{\\mathrm{cutoff}}$"
     )
     ax1.set_ylabel("Terminal voltage (V)")
-    ax1.set_title(
-        "Dynamic mixed-usage scenario (5000 mAh, 25°C)", fontweight="bold", pad=6
-    )
+    label_panel(ax1, "a")
     ax1.legend(fontsize=6.5, loc="lower left")
+    ax1.set_ylim(2.35, v_top + 0.38)
 
     # Panel (b): SOC
     ax2.plot(t, result["soc"] * 100, "-", color=COLORS["accent"], lw=1.0)
@@ -174,6 +195,7 @@ def main():
     )
     ax2.set_xlabel("Time (h)")
     ax2.set_ylabel("State of charge (%)")
+    label_panel(ax2, "b")
     ax2.legend(fontsize=6.5, loc="upper right")
 
     # Mark phase transitions

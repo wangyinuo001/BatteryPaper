@@ -1,3 +1,0 @@
-Evaluation,N,RMSE (mV),MAE (mV),MaxError (mV)
-Same-batch (B1→B1),8,21.58 ± 1.78,14.71 ± 1.98,280.1
-Cross-batch (B1→B2),15,20.36 ± 3.68,12.96 ± 4.71,284.0

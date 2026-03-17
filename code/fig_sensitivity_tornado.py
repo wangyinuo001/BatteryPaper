@@ -36,7 +36,7 @@ def main():
     df["max_sens"] = df[["delta_pct_neg", "delta_pct_pos"]].abs().max(axis=1)
     df = df.sort_values("max_sens", ascending=True).reset_index(drop=True)
 
-    fig, ax = plt.subplots(figsize=SINGLE_COL_TALL)
+    fig, ax = plt.subplots(figsize=(3.54, 2.8))
 
     y = np.arange(len(df))
     neg = df["delta_pct_neg"].values
@@ -62,20 +62,31 @@ def main():
     ax.set_yticks(y)
     ax.set_yticklabels(df["label"].values)
     ax.set_xlabel("ΔTTE (%)")
-    ax.set_title(
-        "Parameter sensitivity (±5 %, Video Streaming)", fontweight="bold", pad=6
-    )
+    ax.set_ylim(-0.5, len(df) - 0.5)
     ax.axvline(0, color="k", lw=0.5)
     ax.legend(fontsize=6.5, loc="lower right")
+    fig.subplots_adjust(left=0.18, bottom=0.15)
 
-    # Annotate values
+    # Annotate values — labels placed outside bar ends, aligned by value sign
+    all_vis = np.concatenate([neg, pos])
+    all_vis = all_vis[np.abs(all_vis) > 0.5]
+    left_x = all_vis[all_vis < 0].min() - 0.15 if np.any(all_vis < 0) else 0
+    right_x = all_vis[all_vis > 0].max() + 0.15 if np.any(all_vis > 0) else 0
+
     for i, (n, p) in enumerate(zip(neg, pos)):
-        if abs(n) > 0.5:
-            ax.text(n - 0.15, i, f"{n:+.1f}%", va="center", ha="right", fontsize=6)
-        if abs(p) > 0.5:
-            ax.text(p + 0.15, i, f"{p:+.1f}%", va="center", ha="left", fontsize=6)
+        for v in [n, p]:
+            if abs(v) > 0.5:
+                if v > 0:
+                    ax.text(
+                        right_x, i, f"{v:+.1f}%", va="center", ha="left", fontsize=6
+                    )
+                else:
+                    ax.text(
+                        left_x, i, f"{v:+.1f}%", va="center", ha="right", fontsize=6
+                    )
 
-    plt.tight_layout()
+    ax.set_xlim(left_x - 2.0, right_x + 2.0)
+
     save_fig(fig, "fig_sensitivity_tornado", results_dir)
 
 

@@ -14,7 +14,7 @@ from scipy import stats
 from scipy.io import loadmat
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from pub_style import apply_style, save_fig, COLORS, DOUBLE_COL_TALL
+from pub_style import apply_style, save_fig, COLORS, DOUBLE_COL_TALL, label_panel
 from run_all_baselines import load_discharge_data, shepherd_voltage
 
 apply_style()
@@ -86,7 +86,7 @@ def main():
     )
     ax.set_xlabel("Residual (mV)")
     ax.set_ylabel("Density")
-    ax.set_title("(a) Residual distribution", fontweight="bold", pad=4)
+    label_panel(ax, "a")
     ax.legend(fontsize=6.5)
 
     # (b) Residual vs SOC
@@ -126,7 +126,7 @@ def main():
     )
     ax.set_xlabel("SOC")
     ax.set_ylabel("Residual (mV)")
-    ax.set_title("(b) Residual vs. SOC", fontweight="bold", pad=4)
+    label_panel(ax, "b")
     ax.legend(fontsize=6.5)
 
     # (c) ACF
@@ -141,7 +141,7 @@ def main():
     ax.axhline(0, color="k", lw=0.4)
     ax.set_xlabel("Lag")
     ax.set_ylabel("Autocorrelation")
-    ax.set_title("(c) Residual ACF (Battery-1)", fontweight="bold", pad=4)
+    label_panel(ax, "c")
     ax.legend(fontsize=6.5, loc="upper right")
     ax.set_xlim(-1, 82)
 
@@ -162,10 +162,9 @@ def main():
     )
     ax.set_xlabel("Theoretical quantiles")
     ax.set_ylabel("Sample quantiles (mV)")
-    ax.set_title("(d) Normal Q-Q plot", fontweight="bold", pad=4)
+    label_panel(ax, "d")
     ax.legend(fontsize=6.5)
 
-    plt.tight_layout()
     save_fig(fig, "fig_residual_analysis", results_dir)
 
     # ── SOC-segmented error table ──

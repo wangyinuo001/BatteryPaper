@@ -8,17 +8,27 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from pub_style import apply_style, save_fig, COLORS, SINGLE_COL_TALL
+from pub_style import apply_style, save_fig, COLORS, SINGLE_COL_TALL, PHASE_COLORS
 from main_model import MainBatteryModel
 
 apply_style()
 
 SCENARIOS = [
-    {"name": "Standby", "power": 0.741, "color": "#FFB300", "ls": "-"},
-    {"name": "Reading", "power": 1.727, "color": "#43A047", "ls": "--"},
-    {"name": "Navigation", "power": 1.845, "color": "#1E88E5", "ls": "-."},
-    {"name": "Video", "power": 2.598, "color": "#8E24AA", "ls": ":"},
-    {"name": "Gaming", "power": 4.303, "color": "#E53935", "ls": "-"},
+    {"name": "Standby", "power": 0.741, "color": PHASE_COLORS["Standby"], "ls": "-"},
+    {"name": "Reading", "power": 1.727, "color": PHASE_COLORS["Reading"], "ls": "--"},
+    {
+        "name": "Navigation",
+        "power": 1.845,
+        "color": PHASE_COLORS["Navigation"],
+        "ls": "-.",
+    },
+    {
+        "name": "Video",
+        "power": 2.598,
+        "color": PHASE_COLORS["Video Streaming"],
+        "ls": ":",
+    },
+    {"name": "Gaming", "power": 4.303, "color": PHASE_COLORS["Gaming"], "ls": "-"},
 ]
 
 
@@ -46,11 +56,6 @@ def main():
 
     ax.set_xlabel("Time (h)")
     ax.set_ylabel("State of charge (%)")
-    ax.set_title(
-        "SOC discharge under five scenarios\n(5000 mAh, 25°C, new battery)",
-        fontweight="bold",
-        pad=6,
-    )
     ax.legend(fontsize=6, loc="upper right")
     ax.set_ylim(-2, 105)
     ax.set_xlim(0)

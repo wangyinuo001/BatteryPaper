@@ -22,17 +22,17 @@ import numpy as np
 from matplotlib.ticker import AutoMinorLocator
 
 # ═══════════════════════════════════════════════════════════════
-# Colour palette — Wong (2011) colourblind-safe, print-friendly
+# Colour palette — Tableau 10 muted, colourblind-safe
 # ═══════════════════════════════════════════════════════════════
 COLORS = {
-    "shepherd": "#D62728",  # vermillion-red  (proposed model)
-    "nbm": "#1F77B4",  # blue
-    "rint": "#FF7F0E",  # orange
-    "thev1": "#2CA02C",  # green
-    "thev2": "#9467BD",  # purple
-    "exp": "#1A1A1A",  # near-black (experimental data)
-    "accent": "#17BECF",  # cyan
-    "gray": "#7F7F7F",  # neutral
+    "shepherd": "#E15759",  # muted red   (proposed model)
+    "nbm": "#4E79A7",  # muted blue
+    "rint": "#F28E2B",  # muted orange
+    "thev1": "#59A14F",  # muted green
+    "thev2": "#B07AA1",  # muted purple
+    "exp": "#333333",  # near-black (experimental data)
+    "accent": "#76B7B2",  # muted teal
+    "gray": "#BAB0AC",  # warm gray
 }
 
 MODEL_COLORS = {
@@ -65,20 +65,20 @@ MODEL_LINESTYLES = {
 
 # Sub-component colours (power breakdown / pie charts)
 COMP_COLORS = {
-    "Screen": "#E53935",
-    "SoC": "#1E88E5",
-    "Radio": "#43A047",
-    "GPS": "#FFB300",
-    "Base": "#757575",
+    "Screen": "#E15759",
+    "SoC": "#4E79A7",
+    "Radio": "#59A14F",
+    "GPS": "#F28E2B",
+    "Base": "#BAB0AC",
 }
 
 # Phase colours for dynamic scenario
 PHASE_COLORS = {
-    "Gaming": "#E53935",
-    "Video Streaming": "#1E88E5",
-    "Reading": "#43A047",
-    "Standby": "#FFB300",
-    "Navigation": "#9467BD",
+    "Gaming": "#E15759",
+    "Video Streaming": "#4E79A7",
+    "Reading": "#59A14F",
+    "Standby": "#F28E2B",
+    "Navigation": "#B07AA1",
 }
 
 # ═══════════════════════════════════════════════════════════════

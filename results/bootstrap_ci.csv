@@ -1,8 +1,8 @@
 Metric,Estimate,95% CI Lower,95% CI Upper,Unit
 Shepherd RMSE (Batch-1),21.58,19.99,22.38,mV
-TTE (Standby),19.681,18.986,20.419,hours
-TTE (Navigation),9.031,8.716,9.372,hours
-TTE (Gaming),3.800,3.669,3.943,hours
-TTE (Video),6.375,6.156,6.615,hours
-TTE (Reading),9.653,9.317,10.013,hours
+TTE (Standby),22.649,21.866,23.512,hours
+TTE (Navigation),9.031,8.717,9.374,hours
+TTE (Gaming),3.801,3.669,3.942,hours
+TTE (Video),6.376,6.154,6.618,hours
+TTE (Reading),9.653,9.312,10.020,hours
 Cross-batch RMSE gap (B2-B1),-1.22,-3.88,0.07,mV

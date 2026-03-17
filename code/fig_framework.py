@@ -58,171 +58,178 @@ def main():
     script_dir = os.path.dirname(os.path.abspath(__file__))
     results_dir = os.path.join(script_dir, "..", "results")
 
-    fig, ax = plt.subplots(figsize=(3.54, 4.5))
+    fig, ax = plt.subplots(figsize=(3.54, 5.2))
     ax.set_xlim(0, 10)
-    ax.set_ylim(0, 14)
+    ax.set_ylim(0, 16)
     ax.axis("off")
+
+    # ── Box height convention ──
+    # 2-line boxes:  h = 1.1
+    # 3-line boxes:  h = 1.4
+    # 2-line + tall math: h = 1.2
 
     # ── Title ──
     ax.text(
         5,
-        13.5,
+        15.5,
         "Proposed Battery Model Framework",
         fontsize=9,
         fontweight="bold",
         ha="center",
         va="top",
-        color="#37474F",
+        color="#666666",
     )
 
-    # ── Input block ──
+    # ── Input block  (2 lines, h=1.1) ──
     draw_box(
         ax,
         5,
-        12.2,
-        6,
-        1.0,
+        14.0,
+        7.0,
+        1.1,
         "Inputs: Usage scenario, Temperature,\nBattery age (cycle count)",
-        "#ECEFF1",
-        "#455A64",
+        "#E8E6E4",
+        "#9E9895",
         fontsize=6,
     )
 
-    # ── Submodel 1: Shepherd Voltage ──
+    # ── Submodel 1: Shepherd Voltage  (3 lines, h=1.4) ──
     draw_box(
         ax,
         5,
-        10.3,
-        7.5,
-        1.2,
+        12.15,
+        8.2,
+        1.4,
         "Submodel 1: Shepherd Voltage\n"
-        "$V = E_0 - R(T)\\cdot I - K\\frac{I}{SOC} + A e^{-B(1-SOC)}$",
-        "#E3F2FD",
-        "#1565C0",
-        fontsize=5.5,
+        "$V = E_0 - R\\!\\cdot\\! I - K\\frac{I}{SOC}$\n"
+        "$\\quad + A\\,e^{-B(1-SOC)}$",
+        "#D6E4F0",
+        "#4E79A7",
+        fontsize=6,
     )
 
-    # ── Submodel 2: Temperature ──
+    # ── Submodel 2: Temperature  (3 lines, h=1.4) ──
     draw_box(
         ax,
         2.7,
-        8.0,
-        4.0,
-        1.2,
-        "Submodel 2:\nTemperature\n$R(T)$: Arrhenius\n$Q_0(T)$: Logistic",
-        "#FFF3E0",
-        "#E65100",
-        fontsize=5,
-    )
-
-    # ── Submodel 3: Component Decomposition ──
-    draw_box(
-        ax,
-        7.3,
-        8.0,
-        4.0,
-        1.2,
-        "Submodel 3:\nComponent Decomp.\n$P = \\sum_i P_i(\\xi_i)$",
-        "#E8F5E9",
-        "#2E7D32",
-        fontsize=5,
-    )
-
-    # ── Submodel 4: Aging ──
-    draw_box(
-        ax,
-        5,
-        5.8,
-        7.5,
-        1.2,
-        "Submodel 4: Aging Degradation\n"
-        "$Q(n) = Q_0 \\cdot (1 - \\alpha \\cdot n^\\beta)$",
-        "#FCE4EC",
-        "#C62828",
-        fontsize=5.5,
-    )
-
-    # ── Integration block ──
-    draw_box(
-        ax,
-        5,
-        3.8,
-        7.5,
-        1.0,
-        "ODE Integration: $\\frac{dSOC}{dt} = -\\frac{I(t)}{Q_0(T,n)}$\n"
-        "Coupling: $I = P_{\\mathrm{total}} / V(SOC, I, T)$",
-        "#F3E5F5",
-        "#6A1B9A",
-        fontsize=5.5,
-    )
-
-    # ── Output block ──
-    draw_box(
-        ax,
-        5,
-        2.2,
-        6,
-        1.0,
-        "Outputs: TTE, SOC(t), V(t),\nEnergy consumption profile",
-        "#C8E6C9",
-        "#2E7D32",
+        9.65,
+        4.3,
+        1.4,
+        "Submodel 2: Temperature\n$R(T)$: Arrhenius\n$Q_0(T)$: Logistic",
+        "#FDEBD0",
+        "#F28E2B",
         fontsize=6,
     )
 
-    # ── Validation box ──
+    # ── Submodel 3: Component Decomposition  (3 lines, h=1.4) ──
+    draw_box(
+        ax,
+        7.3,
+        9.65,
+        4.3,
+        1.4,
+        "Submodel 3:\nComponent Decomp.\n$P = \\sum_i P_i(\\xi_i)$",
+        "#DFF0D8",
+        "#59A14F",
+        fontsize=6,
+    )
+
+    # ── Submodel 4: Aging  (2 lines, h=1.1) ──
     draw_box(
         ax,
         5,
-        0.7,
-        6,
-        0.8,
-        "Validation: XJTU battery dataset (8 cells × 2 batches)",
-        "#FFF9C4",
-        "#F57F17",
+        7.45,
+        8.2,
+        1.1,
+        "Submodel 4: Aging Degradation\n" "$Q(n) = Q_0(1 - \\alpha \\cdot n^\\beta)$",
+        "#F5D5D5",
+        "#E15759",
+        fontsize=6,
+    )
+
+    # ── Integration block  (2 lines + tall math, h=1.2) ──
+    draw_box(
+        ax,
+        5,
+        5.45,
+        8.2,
+        1.2,
+        "ODE Integration\n"
+        "$\\frac{dSOC}{dt} = -\\frac{I(t)}{Q_0(T,n)}$,  "
+        "$I = \\frac{P_{\\mathrm{total}}}{V}$",
+        "#E8D8E8",
+        "#B07AA1",
+        fontsize=5.5,
+    )
+
+    # ── Output block  (2 lines, h=1.1) ──
+    draw_box(
+        ax,
+        5,
+        3.55,
+        7.0,
+        1.1,
+        "Outputs: TTE, SOC(t), V(t),\nEnergy consumption profile",
+        "#DFF0D8",
+        "#59A14F",
+        fontsize=6,
+    )
+
+    # ── Validation box  (2 lines, h=1.1) ──
+    draw_box(
+        ax,
+        5,
+        1.65,
+        8.2,
+        1.1,
+        "Validation: XJTU CC (8 cells × 2 batches)\n"
+        "+ NASA random-walk dynamic (4 cells × 200 cycles)",
+        "#FDEBD0",
+        "#F28E2B",
         fontsize=5.5,
         bold=False,
     )
 
-    # ── Arrows ──
-    draw_arrow(ax, 5, 11.7, 5, 10.9)
-    draw_arrow(ax, 3.5, 9.7, 2.7, 8.6)
-    draw_arrow(ax, 6.5, 9.7, 7.3, 8.6)
-    draw_arrow(ax, 2.7, 7.4, 3.5, 6.4)
-    draw_arrow(ax, 7.3, 7.4, 6.5, 6.4)
-    draw_arrow(ax, 5, 5.2, 5, 4.3)
-    draw_arrow(ax, 5, 3.3, 5, 2.7)
-    draw_arrow(ax, 5, 1.7, 5, 1.1)
+    # ── Arrows (start/end at box edges) ──
+    draw_arrow(ax, 5, 13.45, 5, 12.85)        # Input → Shepherd
+    draw_arrow(ax, 3.5, 11.45, 2.7, 10.35)    # Shepherd → Temp
+    draw_arrow(ax, 6.5, 11.45, 7.3, 10.35)    # Shepherd → Component
+    draw_arrow(ax, 2.7, 8.95, 3.5, 8.0)       # Temp → Aging
+    draw_arrow(ax, 7.3, 8.95, 6.5, 8.0)       # Component → Aging
+    draw_arrow(ax, 5, 6.9, 5, 6.05)           # Aging → Integration
+    draw_arrow(ax, 5, 4.85, 5, 4.1)           # Integration → Output
+    draw_arrow(ax, 5, 3.0, 5, 2.2)            # Output → Validation
 
     # ── Side annotations ──
     ax.text(
-        0.3,
-        10.3,
+        0.2,
+        12.15,
         "Physics\nLayer",
-        fontsize=5,
+        fontsize=6,
         ha="center",
-        color="#1565C0",
+        color="#4E79A7",
         style="italic",
         rotation=90,
         va="center",
     )
     ax.text(
-        0.3,
-        6.9,
+        0.2,
+        8.55,
         "Correction\nLayer",
-        fontsize=5,
+        fontsize=6,
         ha="center",
-        color="#E65100",
+        color="#F28E2B",
         style="italic",
         rotation=90,
         va="center",
     )
     ax.text(
-        0.3,
-        3.8,
+        0.2,
+        5.45,
         "Numerical\nLayer",
-        fontsize=5,
+        fontsize=6,
         ha="center",
-        color="#6A1B9A",
+        color="#B07AA1",
         style="italic",
         rotation=90,
         va="center",

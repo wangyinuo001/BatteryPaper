@@ -80,11 +80,11 @@ class MainBatteryModel:
 
     def get_resistance_at_temp(self, temp_k):
         """
-        Temperature-dependent resistance: R(T) = R₀·exp(-Er/(kB·T))
-        Normalized so R(T_ref) = R₀
+        Temperature-dependent resistance: R(T) = R₀·exp(+Er/(kB·T))
+        Arrhenius law: R increases at low T. Normalized so R(T_ref) = R₀
         """
-        arrhenius_ref = np.exp(-TEMP_R_ER / (TEMP_KB * TEMP_REF))
-        arrhenius_t = np.exp(-TEMP_R_ER / (TEMP_KB * temp_k))
+        arrhenius_ref = np.exp(TEMP_R_ER / (TEMP_KB * TEMP_REF))
+        arrhenius_t = np.exp(TEMP_R_ER / (TEMP_KB * temp_k))
         return self.R0 * (arrhenius_t / arrhenius_ref)
 
     def terminal_voltage(self, soc, current, temp_k):

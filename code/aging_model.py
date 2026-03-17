@@ -161,10 +161,10 @@ class BatteryModel:
         logistic_t = 1.0 / (1.0 + np.exp(TEMP_Q_A + TEMP_Q_B / temp_k))
         temp_factor_q = logistic_t / logistic_ref
 
-        # R(T) = R0 * exp(-Er/(kB*T))
+        # R(T) = R0 * exp(+Er/(kB*T))  [Arrhenius: R increases at low T]
         # Normalize to 1 at reference temperature
-        arrhenius_ref = np.exp(-TEMP_R_ER / (TEMP_KB * TEMP_REF))
-        arrhenius_t = np.exp(-TEMP_R_ER / (TEMP_KB * temp_k))
+        arrhenius_ref = np.exp(TEMP_R_ER / (TEMP_KB * TEMP_REF))
+        arrhenius_t = np.exp(TEMP_R_ER / (TEMP_KB * temp_k))
         temp_factor_r = arrhenius_t / arrhenius_ref
 
         q_eff_mah = self.q_nom_mah * aging_factor_q * temp_factor_q
@@ -234,8 +234,11 @@ class BatteryModel:
         else:
             # Backward compatibility: bright = B*η combined
             bright = get_val("brightness", t)
-            # Estimate: if bright > 1.0, assume high refresh η=1.3
-            if bright > 1.0:
+            # When brightness=0, screen is OFF → η=0, P_screen=0
+            if bright <= 0:
+                eta = 0.0
+                B = 0.0
+            elif bright > 1.0:
                 eta = 1.3
                 B = bright / eta
             else:

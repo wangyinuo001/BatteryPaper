@@ -18,7 +18,7 @@ SCRIPTS = [
     ("fig_dynamic_scenario", "Fig 8: Dynamic mixed-usage"),
     ("fig_residual_analysis", "Fig 9: Residual analysis + SOC-segmented error"),
     ("fig_soc_scenarios", "Fig 10: SOC discharge trajectories"),
-    ("fig_energy_management", "Fig 11: Adaptive energy management"),
+    ("fig_energy_management_v2", "Fig 11: Adaptive energy management"),
 ]
 
 

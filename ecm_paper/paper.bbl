@@ -62,8 +62,8 @@
   \bibinfo{title}{Electrochemical Systems}, \bibinfo{edition}{3rd} ed.,
   \bibinfo{publisher}{John Wiley \& Sons}, \bibinfo{year}{2004}.
 %Type = Article
-\bibitem[{Mama et~al.(2024)Mama, Sola\"{i}, Capurso, Danlos, and
-  Khelladi}]{Mama2024}
+\bibitem[{Mama et~al.(2025)Mama, Sola\"{i}, Capurso, Danlos, and
+  Khelladi}]{Mama2025}
 \bibinfo{author}{M.~Mama}, \bibinfo{author}{E.~Sola\"{i}},
   \bibinfo{author}{T.~Capurso}, \bibinfo{author}{A.~Danlos},
   \bibinfo{author}{S.~Khelladi},
@@ -71,7 +71,7 @@
   batteries modeling: From electro-chemical dynamics up to heat transfer in
   battery thermal management system},
 \newblock \bibinfo{journal}{Energy Conversion and Management}
-  \bibinfo{volume}{322} (\bibinfo{year}{2024}) \bibinfo{pages}{119223}.
+  \bibinfo{volume}{325} (\bibinfo{year}{2025}) \bibinfo{pages}{119223}.
   \DOIprefix\doi{10.1016/j.enconman.2024.119223}.
 %Type = Article
 \bibitem[{Chemali et~al.(2018)Chemali, Kollmeyer, Preindl, Ahmed, and
@@ -95,12 +95,14 @@
   (\bibinfo{year}{2017}) \bibinfo{pages}{209--219}.
   \DOIprefix\doi{10.1016/j.jpowsour.2017.05.004}.
 %Type = Article
-\bibitem[{Dai et~al.(2011)Dai, Wei, and Sun}]{Dai2011}
-\bibinfo{author}{H.~Dai}, \bibinfo{author}{X.~Wei}, \bibinfo{author}{Z.~Sun},
-\newblock \bibinfo{title}{State of charge estimation for lithium-ion batteries
-  based on a combined model of extended kalman filter and neural network},
+\bibitem[{Xu et~al.(2012)Xu, Wang, and Chen}]{Xu2012ECM}
+\bibinfo{author}{L.~Xu}, \bibinfo{author}{J.~Wang}, \bibinfo{author}{Q.~Chen},
+\newblock \bibinfo{title}{Kalman filtering state of charge estimation for
+  battery management system based on a stochastic fuzzy neural network battery
+  model},
 \newblock \bibinfo{journal}{Energy Conversion and Management}
-  (\bibinfo{year}{2011}). \DOIprefix\doi{10.1016/j.enconman.2011.06.003}.
+  \bibinfo{volume}{53} (\bibinfo{year}{2012}) \bibinfo{pages}{33--39}.
+  \DOIprefix\doi{10.1016/j.enconman.2011.06.003}.
 %Type = Article
 \bibitem[{Hu et~al.(2012)Hu, Li, and Peng}]{Hu2012}
 \bibinfo{author}{X.~Hu}, \bibinfo{author}{S.~Li}, \bibinfo{author}{H.~Peng},
@@ -316,13 +318,13 @@
   (\bibinfo{year}{2021}) \bibinfo{pages}{2428}.
   \DOIprefix\doi{10.3390/electronics10192428}.
 %Type = Article
-\bibitem[{Tian et~al.(2020)Tian, Xiong, and Shen}]{Tian2020}
+\bibitem[{Tian et~al.(2019)Tian, Xiong, and Shen}]{Tian2019}
 \bibinfo{author}{J.~Tian}, \bibinfo{author}{R.~Xiong},
   \bibinfo{author}{W.~Shen},
 \newblock \bibinfo{title}{A review on state of health estimation for lithium
   ion batteries in photovoltaic systems},
 \newblock \bibinfo{journal}{eTransportation} \bibinfo{volume}{2}
-  (\bibinfo{year}{2020}) \bibinfo{pages}{100028}.
+  (\bibinfo{year}{2019}) \bibinfo{pages}{100028}.
   \DOIprefix\doi{10.1016/j.etran.2019.100028}.
 %Type = Article
 \bibitem[{Xiong et~al.(2018)Xiong, Li, and Tian}]{Xiong2018}
@@ -334,7 +336,7 @@
   \DOIprefix\doi{10.1016/j.jpowsour.2018.10.019}.
 %Type = Article
 \bibitem[{Wang et~al.(2020)Wang, Tian, Sun, Wang, Xu, Li, and
-  Chen}]{Wang2024ECM}
+  Chen}]{Wang2020RSER}
 \bibinfo{author}{Y.~Wang}, \bibinfo{author}{J.~Tian}, \bibinfo{author}{Z.~Sun},
   \bibinfo{author}{L.~Wang}, \bibinfo{author}{R.~Xu}, \bibinfo{author}{M.~Li},
   \bibinfo{author}{Z.~Chen},
@@ -345,7 +347,7 @@
   \DOIprefix\doi{10.1016/j.rser.2020.110015}.
 %Type = Article
 \bibitem[{Lipu et~al.(2021)Lipu, Hannan, Karim, Hussain, Saad, Ayob, Miah, and
-  Mahlia}]{Lipu2022}
+  Mahlia}]{Lipu2021}
 \bibinfo{author}{M.~S.~H. Lipu}, \bibinfo{author}{M.~A. Hannan},
   \bibinfo{author}{T.~F. Karim}, \bibinfo{author}{A.~Hussain},
   \bibinfo{author}{M.~H.~M. Saad}, \bibinfo{author}{A.~Ayob},

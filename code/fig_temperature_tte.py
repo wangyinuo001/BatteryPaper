@@ -78,45 +78,43 @@ def main():
         zorder=5,
     )
 
-    # Annotate peak
+    # Annotate peak — place text to the left to avoid overlap with right-side label
     ax.annotate(
-        f"Peak: {peak_tte:.1f} h at {peak_t}°C",
+        f"Peak: {peak_tte:.1f} h\nat {peak_t} °C",
         xy=(peak_t, peak_tte),
-        xytext=(peak_t + 12, peak_tte + 0.15),
+        xytext=(peak_t - 22, peak_tte + 0.25),
         fontsize=7,
         fontweight="bold",
         color=COLORS["shepherd"],
         arrowprops=dict(arrowstyle="->", color=COLORS["gray"], lw=0.6),
     )
 
-    # Region labels
+    # Region labels — position below the curve to avoid clashing with peak annotation
     ax.text(
         -5,
-        ttes[0] + 0.35,
+        ttes[0] - 0.40,
         "Capacity loss\n(low $T$)",
-        fontsize=6,
+        fontsize=7,
         ha="center",
+        va="top",
         style="italic",
         color=COLORS["accent"],
     )
     ax.text(
-        45,
-        ttes[-1] + 0.35,
+        47,
+        ttes[-1] - 0.40,
         "Leakage rise\n(high $T$)",
-        fontsize=6,
+        fontsize=7,
         ha="center",
+        va="top",
         style="italic",
         color=COLORS["accent"],
     )
 
     ax.set_xlabel("Ambient temperature (°C)")
     ax.set_ylabel("Time-to-empty (h)")
-    ax.set_title(
-        "Temperature impact on TTE\n(Video Streaming, 5000 mAh, new battery)",
-        fontweight="bold",
-        pad=6,
-    )
     ax.set_xlim(-12, 52)
+    ax.set_ylim(ttes.min() - 1.0, peak_tte + 0.8)
 
     save_fig(fig, "fig_temperature_tte", results_dir)
 

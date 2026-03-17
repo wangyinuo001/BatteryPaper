@@ -107,7 +107,7 @@ def run_full_model(scenario_name, scenario, aging_level, temperature_c=25):
     main_model.Q0 *= q_retention
     main_model.R0 *= r_factor
 
-    inputs = build_inputs(scenario, temperature_c)
+    inputs = build_inputs(scenario, temperature_c=temperature_c)
     power_w = get_power_w(power_model, inputs)
     temp_k = temperature_c + 273.15
     tte = compute_tte(main_model, power_w, temp_k)
@@ -130,7 +130,7 @@ def run_no_temperature(scenario_name, scenario, aging_level, temperature_c=25):
     main_model.get_capacity_at_temp = lambda t: main_model.Q0
     main_model.get_resistance_at_temp = lambda t: main_model.R0
 
-    inputs = build_inputs(scenario, temperature_c)
+    inputs = build_inputs(scenario, temperature_c=temperature_c)
     power_w = get_power_w(power_model, inputs)
     tte = compute_tte(main_model, power_w, 298.15)  # Force 25°C
     return tte, power_w
@@ -141,7 +141,7 @@ def run_no_aging(scenario_name, scenario, aging_level, temperature_c=25):
     power_model = BatteryModel(cycle_count=0, calendar_time_hours=0)  # No aging
     main_model = MainBatteryModel(Q0=5.0)  # Fresh capacity
 
-    inputs = build_inputs(scenario, temperature_c)
+    inputs = build_inputs(scenario, temperature_c=temperature_c)
     power_w = get_power_w(power_model, inputs)
     temp_k = temperature_c + 273.15
     tte = compute_tte(main_model, power_w, temp_k)
@@ -160,7 +160,7 @@ def run_no_decomposition(scenario_name, scenario, aging_level, temperature_c=25)
     main_model.Q0 *= q_retention
     main_model.R0 *= r_factor
 
-    inputs = build_inputs(scenario, temperature_c)
+    inputs = build_inputs(scenario, temperature_c=temperature_c)
     power_w = get_lumped_power(inputs)
     temp_k = temperature_c + 273.15
     tte = compute_tte(main_model, power_w, temp_k)
@@ -180,7 +180,7 @@ def run_no_polarization(scenario_name, scenario, aging_level, temperature_c=25):
     main_model.R0 *= r_factor
     main_model.K = 0.0  # Remove polarization term
 
-    inputs = build_inputs(scenario, temperature_c)
+    inputs = build_inputs(scenario, temperature_c=temperature_c)
     power_w = get_power_w(power_model, inputs)
     temp_k = temperature_c + 273.15
     tte = compute_tte(main_model, power_w, temp_k)

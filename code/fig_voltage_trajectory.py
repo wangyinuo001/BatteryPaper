@@ -136,7 +136,7 @@ def main():
 
     # ═══════ Panel (b): Error comparison ═══════
     ax_b.fill_between(
-        t_h, -20, 20, color="#43A047", alpha=0.08, zorder=0, label="±20 mV band"
+        t_h, -20, 20, color=COLORS["thev1"], alpha=0.08, zorder=0, label="±20 mV band"
     )
     ax_b.plot(
         t_h,
@@ -160,17 +160,17 @@ def main():
     ax_b.set_xlabel("Time (h)")
     ax_b.set_ylabel("Prediction error (mV)")
     ax_b.set_xlim(t_h[0], t_h[-1])
-    ax_b.legend(loc="upper left", fontsize=6, framealpha=0.85)
+    ax_b.legend(loc="upper left", fontsize=6.5, framealpha=0.85)
     label_panel(ax_b, "b")
 
     # ═══════ Panel (c): Multi-battery RMSE bar chart ═══════
     model_order = ["Shepherd (Proposed)", "NBM", "Rint", "Thevenin-1RC", "Thevenin-2RC"]
     model_labels = [
-        "Shepherd\n(Proposed)",
+        "Shepherd",
         "NBM",
         "Rint",
-        "Thévenin\n1-RC",
-        "Thévenin\n2-RC",
+        "1-RC",
+        "2-RC",
     ]
 
     means, stds = [], []
@@ -207,18 +207,18 @@ def main():
         )
 
     ax_c.set_xticks(x_pos)
-    ax_c.set_xticklabels(model_labels, fontsize=6.5)
+    ax_c.set_xticklabels(model_labels, fontsize=6.5, rotation=0, ha="center")
     ax_c.set_ylabel("RMSE (mV)")
     ax_c.set_ylim(0, max(means) + max(stds) + 12)
     bars[0].set_edgecolor(COLORS["shepherd"])
     bars[0].set_linewidth(1.8)
     label_panel(ax_c, "c")
 
-    # Annotation arrow
+    # Annotation arrow — place text in the gap between Rint (~40) and NBM (~73)
     ax_c.annotate(
         f"Best: {means[0]:.1f} mV",
-        xy=(0, means[0]),
-        xytext=(1.8, means[0] + 20),
+        xy=(0, means[0] + stds[0] + 6),
+        xytext=(-0.5, 55),
         fontsize=6.5,
         fontweight="bold",
         color=COLORS["shepherd"],
@@ -226,7 +226,7 @@ def main():
             arrowstyle="->",
             color=COLORS["shepherd"],
             lw=1.0,
-            connectionstyle="arc3,rad=-0.2",
+            connectionstyle="arc3,rad=-0.15",
         ),
     )
 

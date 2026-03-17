@@ -7,8 +7,10 @@ venv/
 *.egg-info/
 
 # Data files (large)
-data/XJTU battery dataset/
-data/Battery_dataset.csv
+data/
+
+# Large PDFs not part of the paper
+ECM-D-16-05575R1.pdf
 
 # OS
 Thumbs.db

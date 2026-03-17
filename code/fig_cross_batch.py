@@ -70,7 +70,6 @@ def main():
     ax.set_xticks([1, 2])
     ax.set_xticklabels(["Same-batch\n(Batch-1, 2C)", "Cross-batch\n(Batch-2, 3C)"])
     ax.set_ylabel("RMSE (mV)")
-    ax.set_title("Cross-batch generalisation", fontweight="bold", pad=6)
 
     # Annotate means
     for vals, pos, clr in [(same, 1, COLORS["shepherd"]), (cross, 2, COLORS["accent"])]:

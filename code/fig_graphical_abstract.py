@@ -21,7 +21,7 @@ import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
 from matplotlib.patches import FancyBboxPatch, FancyArrowPatch
 import numpy as np
-from pub_style import apply_style, COLORS
+from pub_style import apply_style, COLORS, save_fig
 
 RESULTS_DIR = os.path.join(os.path.dirname(__file__), "..", "results")
 
@@ -116,12 +116,12 @@ def generate():
     ax.set_ylim(0, 1)
     ax.axis("off")
 
-    # ─── Colour definitions ───
-    c_input = "#1565C0"  # blue
-    c_model = "#C62828"  # red
-    c_output = "#2E7D32"  # green
-    c_metric = "#00838F"  # teal
-    c_data = "#6A1B9A"  # purple
+    # ─── Colour definitions (from unified palette) ───
+    c_input = COLORS["nbm"]  # deep blue
+    c_model = COLORS["shepherd"]  # deep red
+    c_output = COLORS["thev1"]  # deep green
+    c_metric = COLORS["accent"]  # teal
+    c_data = COLORS["thev2"]  # deep purple
 
     # ─── Title ───
     ax.text(
@@ -186,7 +186,7 @@ def generate():
     # ─── Row 2: Submodel boxes (4 small boxes under MODEL) ───
     sub_w, sub_h = 0.14, 0.10
     sub_y = 0.42
-    sub_colors = ["#EF5350", "#FF7043", "#FFA726", "#FFCA28"]  # warm gradient
+    sub_colors = [COLORS["shepherd"], COLORS["rint"], COLORS["accent"], COLORS["thev2"]]
     sub_labels = [
         "Shepherd\nVoltage",
         "Power\nDecomp.",
@@ -206,8 +206,8 @@ def generate():
             sc,
             fontsize=7,
             fontweight="normal",
-            text_color="#1a1a1a",
-            alpha=0.85,
+            text_color="white",
+            alpha=0.90,
         )
 
     # Arrows from submodels up to the model box
@@ -222,16 +222,28 @@ def generate():
             color="#999999",
         )
 
-    # ─── Row 2 side: Data box ───
+    # ─── Row 2 side: Data boxes ───
+    draw_rounded_box(
+        ax,
+        0.04,
+        sub_y + sub_h / 2 + 0.005,
+        0.06,
+        sub_h / 2,
+        "XJTU\nCC",
+        c_data,
+        fontsize=5.5,
+        fontweight="bold",
+        text_color="white",
+    )
     draw_rounded_box(
         ax,
         0.04,
         sub_y - 0.01,
         0.06,
-        sub_h + 0.02,
-        "XJTU\nData",
-        c_data,
-        fontsize=6.5,
+        sub_h / 2,
+        "NASA\nRW",
+        "#E15759",
+        fontsize=5.5,
         fontweight="bold",
         text_color="white",
     )
@@ -260,14 +272,15 @@ def generate():
     )
     ax.add_patch(bar_bg)
 
-    # 4 metric blocks
+    # 5 metric blocks
     metrics = [
-        ("RMSE", "17.85 mV", "75% better\nthan Nernst"),
-        ("Speed", "0.009 ms/sim-s", "9000× faster\nthan P2D"),
+        ("CC RMSE", "17.85 mV", "75% better\nthan Nernst"),
+        ("Dynamic RMSE", "63.5 mV", "NASA random-walk\n200 cycles"),
         ("Cross-batch", "20.36 mV", "No re-fitting\nB1→B2"),
-        ("Energy Mgmt", "+42% runtime", "Adaptive\nthrottling"),
+        ("Speed", "0.009 ms/s", "Real-time\nembedded"),
+        ("Energy Mgmt", "+42%", "Adaptive\nthrottling"),
     ]
-    metric_colors = [c_model, c_metric, c_input, c_output]
+    metric_colors = [c_model, "#E15759", c_metric, c_input, c_output]
     n = len(metrics)
     gap = 0.92 / n
     for i, (title, val, desc) in enumerate(metrics):
@@ -298,18 +311,13 @@ def generate():
             desc,
             ha="center",
             va="center",
-            fontsize=5.5,
+            fontsize=6,
             color="#666666",
             style="italic",
         )
 
     # Save
-    os.makedirs(RESULTS_DIR, exist_ok=True)
-    for fmt in ("pdf", "png"):
-        path = os.path.join(RESULTS_DIR, f"graphical_abstract.{fmt}")
-        fig.savefig(path, format=fmt, dpi=600, bbox_inches="tight", pad_inches=0.03)
-    plt.close(fig)
-    print(f"  Saved: graphical_abstract.pdf/png")
+    save_fig(fig, "graphical_abstract", RESULTS_DIR)
 
 
 main = generate

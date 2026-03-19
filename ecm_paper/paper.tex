@@ -11,9 +11,8 @@
 \usepackage{algorithm}
 \usepackage{algorithmic}
 \usepackage{graphicx}
-\usepackage{stfloats}  % Allow figure*/table* at bottom of pages ([b] placement)
-\raggedbottom          % Prevent LaTeX from stretching vertical glue to fill columns
-% Maximally permissive float placement — eliminate white space
+\usepackage{stfloats}
+\raggedbottom          
 \renewcommand{\topfraction}{0.95}
 \renewcommand{\bottomfraction}{0.95}
 \renewcommand{\textfraction}{0.02}
@@ -35,8 +34,7 @@
 \definecolor{supercolor}{RGB}{96,160,216}
 \usepackage[colorlinks=true,linkcolor=supercolor,citecolor=supercolor,urlcolor=supercolor,filecolor=supercolor]{hyperref}
 
-% Force hyperref colors after elsarticle/natbib may override them
-% Also color citation brackets [] and separators , to match citecolor
+
 \makeatletter
 \AtBeginDocument{%
   \hypersetup{linkcolor=supercolor,citecolor=supercolor,urlcolor=supercolor,filecolor=supercolor}%
@@ -47,13 +45,12 @@
 }
 \makeatother
 
-% Suppress standalone DOI text in bibliography (hyperlinked via BST)
+
 \providecommand{\doi}[1]{}
 
-% Bibliography text coloring is handled directly by BST (\color{supercolor})
 \usepackage{etoolbox}
 
-% Colored cross-reference commands (prefix + number in supercolor)
+
 \newcommand{\figref}[1]{\textcolor{supercolor}{Figure~\ref{#1}}}
 \newcommand{\tabref}[1]{\textcolor{supercolor}{Table~\ref{#1}}}
 \newcommand{\secref}[1]{\textcolor{supercolor}{Section~\ref{#1}}}
@@ -65,7 +62,7 @@
 \newcommand{\eqnsref}[2]{\textcolor{supercolor}{Eqs.~\eqref{#1}--\eqref{#2}}}
 \newcommand{\refsref}[2]{\textcolor{supercolor}{Eqs.~\ref{#1}--\ref{#2}}}
 
-\graphicspath{{./}}
+\graphicspath{{./}{figures/}}
 \sisetup{
     separate-uncertainty = true,
     multi-part-units = single
@@ -75,7 +72,7 @@
 
 \setlength{\emergencystretch}{2em}
 
-% Suppress hyperref warnings regarding author marks in bookmarks
+
 \pdfstringdefDisableCommands{
     \let\fnmark\relax
     \let\cormark\relax
@@ -153,13 +150,13 @@ The present work retains Fuller's core advantage---physical transparency of the 
 
 Several studies have characterised smartphone power consumption at the component level~\cite{Carroll2010,Chen2014,Murmuria2012}, revealing that screen, SoC, and radio subsystems dominate energy usage.
 Recent work has extended these analyses to 5G and WiFi power profiling~\cite{Xu2020,Lauridsen2014,Sun2018,Negri2006}, but the coupling between load decomposition and electrochemical state evolution remains largely ad hoc.
-On the aging front, capacity fade and resistance growth in lithium-ion cells have been modelled via power-law cycling degradation and Arrhenius-accelerated calendar aging~\cite{Vetter2005,Benson2012,Li2019,Kou2017}, while temperature effects on capacity and internal resistance are well characterised~\cite{Ali2020,Chen2025,He2017,Tang2019ECM}.
+On the aging front, capacity fade and resistance growth in lithium-ion cells have been modelled via power-law cycling degradation and Arrhenius-accelerated calendar aging~\cite{Vetter2005,Whittingham2012,Li2019,Kou2017}, while temperature effects on capacity and internal resistance are well characterised~\cite{Ali2020,Chen2025,He2017,Tang2019ECM}.
 Liu et al.~\cite{Liu2019ECM} addressed battery charging management considering degradation costs, and Liu et al.~\cite{Liu2018ECM} optimised multi-objective charging patterns---both within the energy conversion and management community---yet neither integrates real-time TTE prediction under heterogeneous loads.
 
 Despite the maturity of individual submodels, their joint integration into a unified continuous-time TTE framework with component-level power coupling and experimentally validated cross-condition generalisation remains largely unexplored~\cite{Tian2019,Xiong2018,Mama2025}.
 Critically, this gap is not merely one of implementation convenience: the coupling itself produces \emph{non-additive} effects---for example, the interaction between temperature-reduced capacity and aging-induced resistance growth yields TTE deviations that cannot be predicted by either submodel in isolation (see the ablation study in \secref{sec:ablation}).
-This paper addresses the gap with the following contributions:
-\begin{enumerate}
+The main research contents of this paper are as follows.
+\begin{enumerate}\renewcommand{\labelenumi}{(\arabic{enumi})}
     \item \textbf{Unified continuous-time simulation framework.}
     To our knowledge, this is the first framework to embed all four submodels---an electrochemically interpretable voltage formulation, hardware-component-level power disaggregation, logistic--Arrhenius temperature response, and power-law cycle/calendar aging---into a single coupled ODE system with a closed-form TTE computation (\secref{sec:model}).
     The electrochemical parameters are identified and validated on real cell data from the XJTU dataset~\cite{XJTU2020}; component-level load profiles are constructed from published smartphone hardware power measurements~\cite{Carroll2010,Chen2014,Lu2008} and applied as synthetic inputs to the validated electrochemical core.
@@ -172,7 +169,7 @@ This paper addresses the gap with the following contributions:
     Bootstrap confidence intervals confirm that all reported metrics are statistically robust (\secref{sec:crossbatch}).
     \item \textbf{Model-predictive energy management.}
     We formulate discharge-side power scheduling as a receding-horizon MPC problem (\eqnrefp{eq:mpc}) with SOC-tracking and quality-of-service objectives, using the Shepherd model as the internal prediction engine.  The MPC extends simulated runtime by up to \SI{58}{\percent} (TTE $= \SI{6.0}{\hour}$ vs.\ $\SI{3.8}{\hour}$ baseline) and improves energy efficiency by \SI{56}{\percent}, outperforming a rule-based threshold strategy ($+40\%$) while producing a smooth, continuous power trajectory---a qualitative advantage over the abrupt mode switches common in commercial OSes.
-    A computational cost of \SI{0.009}{\milli\second} per simulated second (\tabref{tab:efficiency}) confirms suitability for embedded deployment on low-power microcontrollers (\secref{sec:energy_mgmt}).
+    A computational cost of \SI{0.009}{\milli\second} per simulated second confirms suitability for embedded deployment on low-power microcontrollers (\secref{sec:energy_mgmt}).
 \end{enumerate}
 
 The remainder of this paper is organised as follows.
@@ -195,7 +192,7 @@ While Fuller's model provides an instructive precedent for analytically tractabl
 On the load side, Carroll and Heiser~\cite{Carroll2010} and Chen et al.~\cite{Chen2014} provided comprehensive smartphone power breakdowns, identifying screen, SoC, and radio as dominant consumers.
 Subsequent work characterised LTE~\cite{Lauridsen2014}, 5G~\cite{Xu2020}, WiFi~\cite{Sun2018}, and Bluetooth~\cite{Negri2006} profiles.
 However, these studies report measurements in isolation, without coupling to electrochemical state evolution.
-On the degradation front, temperature effects on capacity and resistance are well characterised via logistic and Arrhenius models~\cite{Ali2020,Chen2025,He2017,Benson2012,Tang2019ECM}, while cycle aging follows power-law relations~\cite{Vetter2005,Kou2017,Li2019} and calendar aging exhibits $\sqrt{t}$ dependence~\cite{Vetter2005}.
+On the degradation front, temperature effects on capacity and resistance are well characterised via logistic and Arrhenius models~\cite{Ali2020,Chen2025,He2017,Whittingham2012,Tang2019ECM}, while cycle aging follows power-law relations~\cite{Vetter2005,Kou2017,Li2019} and calendar aging exhibits $\sqrt{t}$ dependence~\cite{Vetter2005}.
 Liu et al.~\cite{Liu2019ECM} proposed a coupled electrothermal-aging model for economy-conscious battery charging management that jointly captures electrical, thermal, and degradation dynamics across different timescales using a second-order RC circuit, a lumped thermal model, and a power-law capacity-loss submodel.
 Their multi-timescale coupling architecture---fast electrical dynamics within a single charging cycle, slow aging dynamics across cycles---is a direct methodological precursor to the present work.
 However, Liu et al.'s framework is designed for the \emph{charging} side in \emph{electric-vehicle} applications, and it does not address (a)~discharge-side TTE prediction, (b)~component-level load decomposition for heterogeneous portable-device workloads, or (c)~the use of electrochemically interpretable voltage models (Shepherd) in place of abstract RC circuits.
@@ -240,7 +237,7 @@ The model comprises four coupled submodels---terminal-voltage dynamics (\ssref{s
 \subsection{Terminal-voltage submodel}\label{sec:shepherd}
 \subsubsection{Physical basis of the Shepherd formulation}
 The terminal voltage of a lithium-ion cell during discharge is governed by three concurrent phenomena~\cite{Shepherd1965}:
-\begin{enumerate}
+\begin{enumerate}\renewcommand{\labelenumi}{(\roman{enumi})}
     \item \emph{Thermodynamic equilibrium.} The open-circuit voltage~$E_0$ reflects the Gibbs free-energy difference between the electrode active materials at full charge.
     \item \emph{Mass-transport polarisation.} As discharge proceeds, lithium-ion depletion near the electrode surface creates a concentration gradient.  The resulting overpotential is proportional to the current~$I$ and inversely proportional to the remaining charge fraction~SOC, yielding a term~$K I/\mathrm{SOC}$.  Physically, $K$ (V$\cdot$s/Ah) encapsulates the effective diffusion resistance of the intercalation host.
     \item \emph{Ohmic loss and initial transient.}  Series resistance~$R$ produces an instantaneous $IR$ drop, while the exponential zone ($A$, $B$) captures the initial voltage relaxation associated with double-layer charging and surface-film effects during early discharge.
@@ -325,9 +322,9 @@ This reflects the thermodynamic freezing-out of available lattice sites, consist
 \subsubsection{Resistance--temperature response}
 The temperature dependence of the total internal resistance is governed by the Arrhenius law for thermally activated charge-transfer and ion-transport processes:
 \begin{equation}\label{eq:RT}
-R^{\mathrm{th}}(T) = R_0\exp\!\biggl(\frac{E_r}{k_B}\Bigl(\frac{1}{T} - \frac{1}{T_0}\Bigr)\biggr),
+R^{\mathrm{th}}(T) = R_0\exp\ \biggl(\frac{E_r}{k_B}\Bigl(\frac{1}{T} - \frac{1}{T_0}\Bigr)\biggr),
 \end{equation}
-where $E_r = \SI{0.005}{\electronvolt}$ is the effective activation energy, $k_B$ is the Boltzmann constant, and $T_0 = \SI{298.15}{\kelvin}$ is the reference temperature~\cite{Benson2012,He2017,Jeon2011ECM}.
+where $E_r = \SI{0.005}{\electronvolt}$ is the effective activation energy, $k_B$ is the Boltzmann constant, and $T_0 = \SI{298.15}{\kelvin}$ is the reference temperature~\cite{Whittingham2012,He2017,Jeon2011ECM}.
 $R_0$ denotes the resistance at $T_0$.
 The small value of $E_r$ indicates that temperature-induced resistance variation is modest ($<2\%$ over the operating range), with TTE sensitivity to temperature dominated instead by the logistic capacity response (\eqnrefp{eq:Q0T}).
 
@@ -444,36 +441,7 @@ For stiff thermal--electrical couplings in future extensions, adaptive Runge--Ku
 
 \subsubsection{Computational cost}\label{sec:comp_cost}
 Each time step requires one EMA fixed-point update plus one Euler step.
-\tabref{tab:efficiency} summarises the wall-clock performance of all models on an Intel i7-12700H laptop (Python 3.10, NumPy 1.26).
-\begin{table}[!tb]
-\caption{Computational efficiency comparison.}\label{tab:efficiency}
-\centering
-{\small
-\begin{tabular}{@{}lccc@{}}
-\toprule
-Model & Params & ms/sim-s & vs.\ P2D \\
-\midrule
-\textbf{Shepherd (Proposed)} & \textbf{5} & \textbf{0.009} & $\mathbf{\sim\!10^{4}\times}$ \\
-Rint & 9 & 0.010 & $\sim$7900$\times$ \\
-Th\'{e}venin-1RC & 10 & 0.010 & $\sim$8000$\times$ \\
-Th\'{e}venin-2RC & 12 & 0.012 & $\sim$6500$\times$ \\
-NBM & 4 & 0.011 & $\sim$6900$\times$ \\
-P2D (COMSOL)\textsuperscript{a} & 50+ & $\sim$78 & 1$\times$ \\
-LSTM inference\textsuperscript{a} & $\sim$10k & $\sim$0.5 & --- \\
-\bottomrule
-\end{tabular}
-}
-\end{table}
-\textsuperscript{a}Literature reference values~\cite{Doyle1993,Chemali2018}; included for order-of-magnitude context only. P2D timing reflects COMSOL finite-element solvers on workstation-class hardware; LSTM timing reflects GPU-accelerated inference. These values are \emph{not} directly comparable to the analytical models benchmarked on the same laptop (Intel i7-12700H, 16\,GB RAM, Python 3.10, NumPy 1.26), as differences in hardware, implementation language, and problem dimensionality preclude fair comparison.
-The proposed model simulates a full 6.4\,h discharge in \SI{0.20}{\second} (wall clock), corresponding to \SI{0.009}{\milli\second} per simulated second---approximately four orders of magnitude faster than finite-element P2D solvers and comparable to compiled ECM implementations.
-This positions the framework for real-time deployment in embedded BMS or mobile OS power managers with negligible computational overhead~\cite{Xiong2018,Wang2020RSER}.
-
-\paragraph{Rationale for the Shepherd formulation over P2D.}
-The computational advantage over physics-based models is not merely quantitative but reflects a fundamental trade-off surveyed across the multi-scale battery modelling literature~\cite{Mama2025}.
-Pseudo-two-dimensional (P2D) models solve coupled partial differential equations for solid- and electrolyte-phase lithium transport, requiring spatial discretisation across electrodes and separator, temperature-dependent transport properties, and iterative nonlinear solvers at each time step~\cite{Doyle1993,Newman2004}.
-While P2D models capture internal concentration gradients and electrode-level heterogeneity with high fidelity, they demand 50+ parameters (many measurable only through specialised electrochemical impedance spectroscopy or half-cell experiments) and wall-clock times on the order of minutes per discharge cycle even on workstation hardware~\cite{Mama2025}.
-For the present application---real-time TTE estimation on an embedded microcontroller---such computational and parameterisation costs are prohibitive.
-The Shepherd formulation achieves the essential voltage--SOC mapping with five parameters identifiable from a single constant-current discharge curve, at a computational cost four orders of magnitude lower (\tabref{tab:efficiency}), while sacrificing only the ability to resolve internal concentration profiles that are not directly observable in a portable-device BMS context.
+The proposed model simulates a full 6.4\,h discharge in \SI{0.20}{\second} (wall clock), corresponding to \SI{0.009}{\milli\second} per simulated second---approximately four orders of magnitude faster than finite-element P2D solvers~\cite{Doyle1993,Newman2004,Mama2025} and comparable to compiled ECM implementations, enabling real-time deployment on embedded hardware~\cite{Xiong2018,Wang2020RSER}.
 
 % ============================================================
 \section{Experimental Setup}\label{sec:experiments}
@@ -513,7 +481,7 @@ No Batch-2 data is used for fitting or hyperparameter selection.
 
 \subsection{Baseline models}\label{sec:baselines}
 We compare the proposed Shepherd-based framework against four voltage models spanning the interpretability--complexity spectrum:
-\begin{enumerate}
+\begin{enumerate}\renewcommand{\labelenumi}{(\roman{enumi})}
     \item \textbf{Nernst-Based Model (NBM):}
     A thermodynamically motivated OCV model augmented with an exponential correction:
     \begin{equation}\label{eq:nbm}
@@ -531,7 +499,7 @@ All ECM parameters are identified using differential-evolution global optimisati
 
 \paragraph{Note on data-driven baselines.}
 We do not include purely data-driven models (e.g., LSTM, XGBoost) in the quantitative voltage-tracking comparison because (i)~such models require representative training data from each target operating condition, whereas the proposed framework generalises from a single constant-current discharge curve; (ii)~data-driven models do not provide the component-level power attribution or interpretable temperature--aging coupling that underpins the energy management strategy (\secref{sec:energy_mgmt}); and (iii)~the XJTU dataset's constant-current protocol does not supply the diverse load profiles needed to train a competitive data-driven predictor.
-An LSTM inference time is included in \tabref{tab:efficiency} for computational-cost context only.
+An LSTM inference time is not included in the main comparison, as differences in hardware and implementation preclude fair benchmarking.
 
 \begin{figure*}[!tbp]
 \centering
@@ -547,23 +515,11 @@ Third, \emph{statistical robustness} is quantified through 95\% bootstrap confid
 
 \subsection{Ablation protocol}\label{sec:ablation_protocol}
 To quantify each submodel's contribution, five configurations are evaluated:
-\begin{table}[!tb]
-\caption{Ablation study configurations.}\label{tab:ablation_config}
-\centering
-\resizebox{\columnwidth}{!}{
-\begin{tabular}{@{}ll@{}}
-\toprule
-Configuration & Modification \\
-\midrule
-Full Model & All submodels active \\
-w/o Temperature & $T$ fixed at \SI{25}{\degreeCelsius}; $R^{\mathrm{th}} = R_0$, $Q_0^{\mathrm{th}} = Q_0^{\mathrm{nom}}$ \\
-w/o Aging & $N = 0$, $t_s = 0$ (no degradation) \\
-w/o Component Decomp. & Flat average power replacing \eqnref{eq:ptotal} \\
-w/o Polarisation & $K = 0$ in \eqnref{eq:shepherd} \\
-\bottomrule
-\end{tabular}
-}
-\end{table}
+(i)~\emph{Full Model} with all submodels active;
+(ii)~\emph{w/o Temperature}, fixing $T = \SI{25}{\degreeCelsius}$ ($R^{\mathrm{th}} = R_0$, $Q_0^{\mathrm{th}} = Q_0^{\mathrm{nom}}$);
+(iii)~\emph{w/o Aging}, setting $N = 0$, $t_s = 0$;
+(iv)~\emph{w/o Component Decomposition}, replacing \eqnref{eq:ptotal} with flat average power;
+and (v)~\emph{w/o Polarisation}, setting $K = 0$ in \eqnref{eq:shepherd}.
 Each configuration is evaluated across a $3 \times 3$ grid: temperatures $T \in \{0, 25, 40\}$\,\si{\degreeCelsius} and aging levels $N \in \{0, 300, 800\}$ equivalent full cycles, under the Reading scenario.
 
 \subsection{Usage scenarios}\label{sec:scenarios}
@@ -630,25 +586,12 @@ The exponential transient zone ($A$, $B$) further accounts for the initial volta
 The Shepherd equation dates to 1965, yet its selection here is deliberate rather than retrograde.
 More recent approaches---fractional-order ECMs, physics-informed neural networks, electrochemical impedance spectroscopy (EIS)-parameterised models---offer richer dynamics but at the cost of $>$20 parameters, specialised measurement equipment (EIS analysers), or GPU-accelerated training data that conflict with the portable-deployment objective of this work.
 The present contribution is not a new voltage model \emph{per se}, but a \emph{system-level integration} that couples a right-sized voltage core with temperature, aging, and component-level load submodels to solve the discharge-side energy management problem.
-We argue that model complexity should be \emph{commensurate with the application}: for the 1-second TTE update loop envisioned on an ARM Cortex-M microcontroller, the Shepherd formulation occupies the Pareto-optimal point of accuracy vs.\ computational cost (\tabref{tab:efficiency}), achieving lower RMSE than all ECM baselines with the fewest parameters (5 vs.\ 9--12).
+We argue that model complexity should be \emph{commensurate with the application}: for the 1-second TTE update loop envisioned on an ARM Cortex-M microcontroller, the Shepherd formulation occupies the Pareto-optimal point of accuracy vs.\ computational cost, achieving lower RMSE than all ECM baselines with the fewest parameters (5 vs.\ 9--12).
 
 \subsubsection{Cross-batch generalisation}\label{sec:crossbatch}
 To test transferability, we apply the parameters fitted on Batch-1 (2\,C, 8 cells) directly to Batch-2 (3\,C, 15 cells) without any re-fitting.
-\begin{table}[!tb]
-\caption{Cross-batch validation: Batch-1 $\to$ Batch-2 (no re-fitting).}\label{tab:crossbatch}
-\centering
-\resizebox{\columnwidth}{!}{\small
-\begin{tabular}{@{}lcccc@{}}
-\toprule
-Evaluation & $N_{\mathrm{cells}}$ & RMSE (mV) & MAE (mV) & MaxErr (mV) \\
-\midrule
-Same-batch (B1$\to$B1) & 8 & $21.58 \pm 1.78$ & $14.71 \pm 1.98$ & 280.1 \\
-Cross-batch (B1$\to$B2) & 15 & $20.36 \pm 3.68$ & $12.96 \pm 4.71$ & 284.0 \\
-\bottomrule
-\end{tabular}
-}
-\end{table}
-The cross-batch RMSE (\SI{20.36}{\milli\volt}) is marginally \emph{lower} than the same-batch value (\SI{21.58}{\milli\volt}), with the bootstrap-estimated gap of $\Delta = -1.22$\,mV (95\% CI: $[-3.88, +0.07]$\,mV) spanning zero.
+The same-batch RMSE is $21.58 \pm 1.78$\,mV (MAE $14.71 \pm 1.98$\,mV, MaxErr 280.1\,mV), while the cross-batch result is $20.36 \pm 3.68$\,mV (MAE $12.96 \pm 4.71$\,mV, MaxErr 284.0\,mV).
+The cross-batch RMSE is marginally \emph{lower} than the same-batch value, with the bootstrap-estimated gap of $\Delta = -1.22$\,mV (95\% CI: $[-3.88, +0.07]$\,mV) spanning zero.
 This confirms that the model generalises across C-rates without accuracy degradation.
 \figref{fig:cross_batch} shows the per-cell RMSE distributions for both conditions.
 \begin{figure}[!htb]
@@ -700,28 +643,8 @@ Nonetheless, a sub-\SI{100}{\milli\volt} RMSE across 200 dynamic cycles---achiev
 For applications requiring higher fidelity under dynamic conditions, a Th\'{e}venin RC branch or a neural residual corrector could be incorporated as a modular extension (\secref{sec:conclusion}).
 
 \subsubsection{Bootstrap confidence intervals}\label{sec:bootstrap}
-\tabref{tab:bootstrap} presents 95\% bootstrap CIs for key metrics (500 parametric perturbation samples, $\pm5\%$ uniform noise on each parameter).
-\begin{table}[!tb]
-\caption{Bootstrap 95\% confidence intervals (500 samples).}\label{tab:bootstrap}
-\centering
-\resizebox{\columnwidth}{!}{\small
-\begin{tabular}{@{}lccc@{}}
-\toprule
-Metric & Estimate & 95\% CI Lower & 95\% CI Upper \\
-\midrule
-Shepherd RMSE (mV) & 21.58 & 19.99 & 22.38 \\
-TTE -- Standby (h) & 22.65 & 21.87 & 23.51 \\
-TTE -- Navigation (h) & 9.03 & 8.71 & 9.37 \\
-TTE -- Gaming (h) & 3.80 & 3.67 & 3.94 \\
-TTE -- Video (h) & 6.38 & 6.16 & 6.62 \\
-TTE -- Reading (h) & 9.65 & 9.32 & 10.02 \\
-Cross-batch gap (mV) & $-1.22$ & $-3.88$ & $+0.07$ \\
-\bottomrule
-\end{tabular}
-}
-\end{table}
-All CIs are narrow (typically $< 8\%$ of the point estimate), confirming statistical reliability.
-The TTE CIs for high-power scenarios (Gaming: $\pm 3.6\%$) are tighter than low-power ones (Standby: $\pm 3.7\%$), consistent with the sensitivity analysis showing that TTE uncertainty scales linearly with $Q_0$ and $E_0$ uncertainty, which are amplified at longer runtimes.
+Bootstrap 95\% CIs (500 parametric perturbation samples, $\pm5\%$ uniform noise on each parameter) confirm statistical reliability: Shepherd RMSE $= 21.58$\,mV [19.99, 22.38]; TTE ranges from $3.80$\,h [3.67, 3.94] (Gaming) to $22.65$\,h [21.87, 23.51] (Standby); cross-batch gap $= -1.22$\,mV [$-3.88$, $+0.07$].
+All CIs are narrow (typically $< 8\%$ of the point estimate).
 
 \begin{figure*}[!tbp]
 \centering
@@ -755,31 +678,18 @@ Reading & 1.727 & 9.64 \\
 \end{tabular}
 \end{table}
 \figref{fig:scenario_comparison} visualises TTE and component-level power for all five scenarios.
+
+Online gaming depletes the battery $5.9\times$ faster than standby, driven by simultaneous high utilisation of SoC (100\%), screen at 120\,Hz (90\% brightness), and cellular radio (95\%).
+Navigation's TTE (\SI{9.02}{\hour}) is close to Reading (\SI{9.64}{\hour}) despite notably different load compositions: Navigation draws more radio power ($\xi_2 = 30\%$ vs.\ 20\%) but a similar SoC and screen profile, yielding only a \SI{6.8}{\percent} difference in total power (\SI{1.845}{\watt} vs.\ \SI{1.727}{\watt}) and hence comparable runtimes.
+
 \begin{figure*}[!tbp]
 \centering
 \includegraphics[width=\textwidth]{fig_scenario_comparison.pdf}
 \caption{(a)~Time-to-empty for five usage scenarios (\SI{5000}{\milli\ampere\hour} cell, \SI{25}{\degreeCelsius}, new battery). Bar labels show TTE (top) and total power (centre). (b)~Stacked component power decomposition revealing which subsystem dominates each scenario.}\label{fig:scenario_comparison}
 \end{figure*}
-Online gaming depletes the battery $5.9\times$ faster than standby, driven by simultaneous high utilisation of SoC (100\%), screen at 120\,Hz (90\% brightness), and cellular radio (95\%).
-Navigation's TTE (\SI{9.02}{\hour}) is close to Reading (\SI{9.64}{\hour}) despite notably different load compositions: Navigation draws more radio power ($\xi_2 = 30\%$ vs.\ 20\%) but a similar SoC and screen profile, yielding only a \SI{6.8}{\percent} difference in total power (\SI{1.845}{\watt} vs.\ \SI{1.727}{\watt}) and hence comparable runtimes.
 
 \paragraph{Component power breakdown.}
-\tabref{tab:power_breakdown} illustrates the power distribution for Video Streaming, where the radio subsystem consumes \SI{40.6}{\percent} of total power, consistent with sustained data-streaming demands.
-\begin{table}[!tb]
-\caption{Component power breakdown for Video Streaming.}\label{tab:power_breakdown}
-\centering
-\begin{tabular}{@{}lcc@{}}
-\toprule
-Component & Power (mW) & Share (\%) \\
-\midrule
-Radio (90\%) & 1055.7 & 40.6 \\
-SoC (30\%) & 612.0 & 23.6 \\
-Screen (80\%) & 510.6 & 19.7 \\
-GPS (On) & 300.0 & 11.5 \\
-Baseline & 120.0 & 4.6 \\
-\bottomrule
-\end{tabular}
-\end{table}
+For Video Streaming, the radio subsystem dominates at 1055.7\,mW (40.6\%), followed by SoC at 612.0\,mW (23.6\%), screen at 510.6\,mW (19.7\%), GPS at 300.0\,mW (11.5\%), and the baseline at 120.0\,mW (4.6\%), consistent with sustained data-streaming demands.
 
 \subsubsection{Dynamic mixed-usage scenario}\label{sec:dynamic}
 To demonstrate the framework's applicability under realistic, time-varying workloads, we simulate a sequential multi-activity session:
@@ -790,20 +700,13 @@ Phase~4: standby (\SI{0.741}{\watt}) until depletion.
 \figref{fig:dynamic_scenario} shows the resulting voltage and SOC trajectories.
 The total predicted TTE is \SI{15.7}{\hour}---significantly longer than constant gaming (\SI{3.79}{\hour}) but shorter than constant standby (\SI{22.6}{\hour})---illustrating how the framework can compose heterogeneous usage phases via piecewise-constant power scheduling.
 The sharp SOC slope during the gaming phase (Phase~1) and gradual flattening during standby (Phase~4) are clearly visible, demonstrating the model's ability to capture the distinct energy drain rates of different workloads within a single simulation.
-\begin{figure*}[!tbp]
-\centering
-\includegraphics[width=\textwidth]{fig_dynamic_scenario.pdf}
-\caption{Dynamic mixed-usage scenario: 30\,min Gaming $\to$ 60\,min Video $\to$ 90\,min Reading $\to$ Standby until depletion. Top panel: terminal voltage trajectory with phase-coloured background shading. Bottom panel: SOC evolution. The different slopes reflect the distinct power demands of each usage phase.}\label{fig:dynamic_scenario}
-\end{figure*}
+
 
 \subsection{Sensitivity, ablation, and multi-condition analysis}\label{sec:multi_analysis}
 \subsubsection{Ablation study}\label{sec:ablation}
 \figref{fig:ablation_heatmap} displays the resulting TTE error heatmaps, and \tabref{tab:ablation} reports the corresponding numerical values across a $3 \times 3$ temperature--aging grid under the Reading scenario.
-\begin{figure*}[!tbp]
-\centering
-\includegraphics[width=\textwidth]{fig_ablation_heatmap.pdf}
-\caption{Ablation heatmaps showing TTE error (\%) when each submodel is removed, across a $3\times3$ temperature--aging grid (Reading scenario). (a)~Without temperature coupling: up to $+70\%$ error at \SI{0}{\degreeCelsius}. (b)~Without aging: up to $+55\%$ at 800 cycles. (c)~Without component decomposition: $\approx +22\%$ (up to $+43\%$ for Gaming). (d)~Without polarisation ($K=0$): $<1\%$.}\label{fig:ablation_heatmap}
-\end{figure*}
+
+
 \begin{table}[!tb]
 \caption{Ablation study: TTE error (\%) introduced by removing each submodel (Reading scenario).}\label{tab:ablation}
 \centering
@@ -831,6 +734,19 @@ Temp.\ & Aging & w/o Temp.\ & w/o Aging & w/o Comp.\ & w/o Polar.\ \\
 \end{tabular}
 }
 \end{table}
+
+\begin{figure*}[!tbp]
+\centering
+\includegraphics[width=\textwidth]{fig_dynamic_scenario.pdf}
+\caption{Dynamic mixed-usage scenario: 30\,min Gaming $\to$ 60\,min Video $\to$ 90\,min Reading $\to$ Standby until depletion. Top panel: terminal voltage trajectory with phase-coloured background shading. Bottom panel: SOC evolution. The different slopes reflect the distinct power demands of each usage phase.}\label{fig:dynamic_scenario}
+\end{figure*}
+
+\begin{figure*}[!tbp]
+\centering
+\includegraphics[width=\textwidth]{fig_ablation_heatmap.pdf}
+\caption{Ablation heatmaps showing TTE error (\%) when each submodel is removed, across a $3\times3$ temperature--aging grid (Reading scenario). (a)~Without temperature coupling: up to $+70\%$ error at \SI{0}{\degreeCelsius}. (b)~Without aging: up to $+55\%$ at 800 cycles. (c)~Without component decomposition: $\approx +22\%$ (up to $+43\%$ for Gaming). (d)~Without polarisation ($K=0$): $<1\%$.}\label{fig:ablation_heatmap}
+\end{figure*}
+
 \paragraph{Temperature coupling.}
 This is the dominant submodel at off-nominal temperatures: ablation at \SI{0}{\degreeCelsius} causes a $+70\%$ TTE overestimate (the model falsely assumes room-temperature capacity), while ablation at \SI{40}{\degreeCelsius} causes a $-18\%$ underestimate (missing the capacity gain from increased lattice occupancy, partially offset by leakage).
 The asymmetry ($|+70\%| \gg |-18\%|$) reflects the nonlinear logistic shape of $Q_0(T)$, which is steeper below $T_m$ than above.
@@ -880,21 +796,8 @@ This hierarchy has practical implications: for TTE estimation, accurate calibrat
 
 
 \subsubsection{Temperature impact on TTE}\label{sec:temp_tte}
-\tabref{tab:temp_tte} shows TTE variation with ambient temperature under the Video Streaming scenario.
-\begin{table}[!tb]
-\caption{Temperature impact on TTE (Video Streaming, new battery).}\label{tab:temp_tte}
-\centering
-\resizebox{\columnwidth}{!}{\small
-\begin{tabular}{@{}lcccccc@{}}
-\toprule
-$T$ (\si{\degreeCelsius}) & $-10$ & 0 & 10 & 25 & 40 & 50 \\
-\midrule
-TTE (h) & 3.44 & 4.48 & 5.44 & 6.37 & 6.35 & 5.82 \\
-\bottomrule
-\end{tabular}
-}
-\end{table}
-The unimodal pattern---peaking near \SI{35}{\degreeCelsius}---arises from the competition between two temperature-dependent effects.
+Under the Video Streaming scenario, TTE varies from 3.44\,h at $-10\,^\circ$C to a peak of $\sim$6.37\,h near $25$--$35\,^\circ$C, before declining to 5.82\,h at $50\,^\circ$C.
+The unimodal pattern arises from the competition between two temperature-dependent effects.
 Below \SI{35}{\degreeCelsius}, reduced ionic conductivity and contracted lattice occupancy decrease effective capacity and increase resistance, compressing TTE; the effect is severe, with TTE at $-10\,^\circ$C reaching only 53\% of the peak value.
 Above \SI{35}{\degreeCelsius}, although capacity continues to increase modestly, rapidly rising SoC leakage power (\eqnrefp{eq:leak}; incremental $+\SI{0.35}{\watt}$ at \SI{35}{\degreeCelsius} vs.\ $+\SI{1.22}{\watt}$ at \SI{50}{\degreeCelsius} relative to the \SI{25}{\degreeCelsius} reference) more than offsets the capacity gain, causing TTE to decline.
 This non-monotonic behaviour is consistent with field observations that smartphones shut down prematurely in both extreme cold and extreme heat.
@@ -918,7 +821,7 @@ The super-linear growth exponent ($\gamma = 1.085$) indicates accelerating degra
 \subsection{Engineering implications and energy management}\label{sec:eng_mgmt}
 \subsubsection{Engineering implications}\label{sec:engineering}
 The results yield several actionable insights for power management:
-\begin{enumerate}
+\begin{enumerate}\renewcommand{\labelenumi}{(\roman{enumi})}
     \item \textbf{Load-aware scheduling.}
     Since gaming depletes the battery $5.9\times$ faster than standby, OS-level awareness of load composition enables proactive low-battery warnings and adaptive quality-of-service adjustments.
     The component decomposition framework provides the necessary attribution for identifying which subsystem to throttle.
@@ -940,11 +843,13 @@ To demonstrate the framework's utility as a \emph{model-predictive control} (MPC
 Let $T_{\mathrm{des}}$ denote the user's desired runtime (e.g., $T_{\mathrm{des}} = \SI{6}{\hour}$).
 At each control instant $t_k$ (period $\Delta t_c = \SI{120}{\second}$), the MPC solves:
 \begin{equation}\label{eq:mpc}
+\begin{aligned}
 \min_{\mathbf{u}_k} \; J_k = \sum_{j=0}^{N_p - 1} \Bigl[
-  \underbrace{\alpha \Bigl(\frac{P_{\max} - u_{k+j}}{P_{\max}}\Bigr)^{\!2}}_{\text{QoS loss}}
-+ \underbrace{\beta \bigl(\hat{s}_{k+j} - s_{k+j}^{\mathrm{ref}}\bigr)^{2}}_{\text{SOC tracking}}
-+ \underbrace{\gamma \Bigl(\frac{u_{k+j} - u_{k+j-1}}{P_{\max}}\Bigr)^{\!2}}_{\text{smoothness}}
+& \underbrace{\alpha \Bigl(\frac{P_{\max} - u_{k+j}}{P_{\max}}\Bigr)^{\!2}}_{\text{QoS loss}}
++ \underbrace{\beta \bigl(\hat{s}_{k+j} - s_{k+j}^{\mathrm{ref}}\bigr)^{2}}_{\text{SOC tracking}} \\
+& + \underbrace{\gamma \Bigl(\frac{u_{k+j} - u_{k+j-1}}{P_{\max}}\Bigr)^{\!2}}_{\text{smoothness}}
 \Bigr]
+\end{aligned}
 \end{equation}
 subject to:
 \begin{align}
@@ -980,16 +885,17 @@ Threshold (rule-based) & 5.32 & $+40$ & 16.4 & $+39$ \\
 \end{tabular}
 }
 \end{table}
-The MPC strategy achieves a TTE of \SI{5.99}{\hour}---within \SI{0.2}{\percent} of the target---extending runtime by \SI{58}{\percent} relative to the baseline.
-This exceeds the threshold strategy (\SI{5.32}{\hour}, $+40\%$) by an additional \SI{18}{pp} because the MPC \emph{anticipates} the energy budget:
-it begins gradually reducing power well before the SOC thresholds, producing a smooth, monotonically decreasing power profile (\figref{fig:energy_mgmt}b) rather than the abrupt step changes of the rule-based approach.
-The SOC trajectory (\figref{fig:energy_mgmt}a) closely tracks the linear reference budget, confirming that the receding-horizon controller successfully regulates energy consumption to meet the target runtime.
 
 \begin{figure}[!htb]
 \centering
 \includegraphics[width=\columnwidth]{fig_sensitivity_tornado.pdf}
 \caption{Tornado chart of parameter sensitivity ($\pm 5\%$ perturbation, Video Streaming scenario). TTE is dominated by three energy-budget parameters ($P_{\mathrm{total}}$, $Q_0$, $E_0$); internal Shepherd parameters contribute $<0.3\%$ each.}\label{fig:sensitivity_tornado}
 \end{figure}
+
+The MPC strategy achieves a TTE of \SI{5.99}{\hour}---within \SI{0.2}{\percent} of the target---extending runtime by \SI{58}{\percent} relative to the baseline.
+This exceeds the threshold strategy (\SI{5.32}{\hour}, $+40\%$) by an additional 18 percentage points because the MPC \emph{anticipates} the energy budget:
+it begins gradually reducing power well before the SOC thresholds, producing a smooth, monotonically decreasing power profile (\figref{fig:energy_mgmt}b) rather than the abrupt step changes of the rule-based approach.
+The SOC trajectory (\figref{fig:energy_mgmt}a) closely tracks the linear reference budget, confirming that the receding-horizon controller successfully regulates energy consumption to meet the target runtime.
 
 \paragraph{Discussion.}
 The MPC formulation offers three structural advantages over threshold strategies.
@@ -1018,29 +924,9 @@ If the full MPC session (\SI{5.99}{\hour}) is considered, the energy efficiency-
 Note that these figures are simulated values under idealised load assumptions; real-world gains will depend on load-profile accuracy and user acceptance of quality-of-service degradation.
 
 \paragraph{Comparison with commercial strategies.}
-\tabref{tab:mgmt_compare} places the proposed MPC strategy alongside representative commercial approaches.
-\begin{table}[!tb]
-\caption{Capability comparison of energy management strategies.}\label{tab:mgmt_compare}
-\centering
-{\small
-\resizebox{\columnwidth}{!}{
-\begin{tabular}{@{}lccccc@{}}
-\toprule
-Strategy & Continuous & Target-aware & T/Aging aware & Component attr.\ & MPC \\
-\midrule
-Android Battery Saver\textsuperscript{a} & No & No & No & No & No \\
-iOS Low Power Mode\textsuperscript{a} & No & No & No & No & No \\
-Samsung Adaptive Power\textsuperscript{a} & Partial & No & No & No & No \\
-Threshold (this work) & No & No & Yes & Yes & No \\
-\textbf{MPC (this work)} & \textbf{Yes} & \textbf{Yes} & \textbf{Yes} & \textbf{Yes} & \textbf{Yes} \\
-\bottomrule
-\end{tabular}
-}
-}
-\par\vspace{2pt}
-{\footnotesize \textsuperscript{a}Based on publicly available documentation; commercial implementations may include undisclosed adaptive features.  Runtime gains are not compared directly as no standardised test protocol exists and the proposed results are simulated.}
-\end{table}
-The principal differentiator is the MPC's ability to accept an explicit target runtime, incorporate battery health state $(T, N)$ into the optimisation, and produce a smooth power trajectory---capabilities absent from current commercial implementations.
+Existing commercial power-saving modes---such as Android Battery Saver, iOS Low Power Mode, and Samsung Adaptive Power Saving---typically apply fixed or coarsely staged power reductions that are neither target-runtime-aware nor responsive to battery health state; their internal implementations are proprietary and not publicly benchmarked under standardised conditions.
+By contrast, the proposed MPC accepts an explicit target runtime as input, incorporates the battery's current temperature and aging state into the optimisation via the Shepherd prediction model, and produces a continuous power trajectory rather than abrupt step changes.
+These structural differences are complementary rather than competitive: the MPC logic could in principle be integrated into existing OS-level power managers to improve their adaptiveness.
 The computational overhead is negligible: each MPC solve requires $< 60$ L-BFGS-B iterations over 10 decision variables, completing in $< \SI{1}{\milli\second}$ on a single ARM core, well within the \SI{120}{\second} control interval.
 
 \begin{figure*}[!tbp]
@@ -1053,15 +939,13 @@ The computational overhead is negligible: each MPC solve requires $< 60$ L-BFGS-
 % ============================================================
 \section{Conclusions and Future Work}\label{sec:conclusion}
 This paper presented a unified continuous-time simulation framework for portable-device battery TTE prediction that integrates a modified Shepherd voltage model, five-component power decomposition, logistic capacity--temperature and Arrhenius resistance--temperature coupling, and power-law cycle/calendar aging into a single differential-algebraic system.
-The key findings are as follows.
-\begin{enumerate}
-    \item The Shepherd-based formulation achieves a voltage RMSE of \SI{17.85 \pm 0.44}{\milli\volt}, reducing error by \SI{75.5}{\percent} relative to the Nernst baseline and \SI{55}{\percent} relative to Th\'{e}venin-1RC on XJTU Batch-1.
-    \item Cross-batch validation (Batch-1$\to$Batch-2, no re-fitting) confirms generalisability across C-rates, with a statistically non-significant RMSE gap ($-1.22$\,mV, 95\% CI spanning zero).
-    \item Dynamic-load validation on the NASA random-walk dataset~\cite{Bole2014} yields a voltage RMSE of \SI{63.5 \pm 27.6}{\milli\volt} across 200 cycles with currents spanning 0.5--\SI{4}{\ampere}, using parameters identified solely from constant-current data---demonstrating that the Shepherd formulation transfers to time-varying loads without re-identification.
-    \item Multi-condition ablation across a $3 \times 3$ temperature--aging grid quantifies each module's contribution: temperature coupling up to \SI{70}{\percent}, aging up to \SI{55}{\percent}, component decomposition up to \SI{43}{\percent}, and polarisation $<\SI{1}{\percent}$ of TTE error.
-    \item A receding-horizon model-predictive control (MPC) energy management strategy, formulated as a constrained optimisation with SOC-tracking and quality-of-service objectives (\eqnrefp{eq:mpc}), extends simulated runtime by up to \SI{58}{\percent} (TTE $= \SI{6.0}{\hour}$ vs.\ $\SI{3.8}{\hour}$ baseline) and improves energy efficiency by \SI{56}{\percent}, outperforming the threshold-based strategy ($+40\%$) by an additional \SI{18}{pp} while producing a smooth, continuous power profile.
-    \item A computation cost of \SI{0.009}{\milli\second} per simulated second (\tabref{tab:efficiency}) confirms suitability for real-time deployment on embedded hardware, including ARM Cortex-M class low-power microcontrollers (\SI{<1}{\milli\watt} computational overhead).
-\end{enumerate}
+The Shepherd-based formulation achieves a voltage RMSE of \SI{17.85 \pm 0.44}{\milli\volt}, reducing error by \SI{75.5}{\percent} relative to the Nernst baseline and \SI{55}{\percent} relative to Th\'{e}venin-1RC on XJTU Batch-1.
+Cross-batch validation (Batch-1$\to$Batch-2, no re-fitting) confirms generalisability across C-rates, with a statistically non-significant RMSE gap ($-1.22$\,mV, 95\% CI spanning zero).
+Dynamic-load validation on the NASA random-walk dataset~\cite{Bole2014} yields a voltage RMSE of \SI{63.5 \pm 27.6}{\milli\volt} across 200 cycles with currents spanning 0.5--\SI{4}{\ampere}, using parameters identified solely from constant-current data, demonstrating that the Shepherd formulation transfers to time-varying loads without re-identification.
+
+Multi-condition ablation across a $3 \times 3$ temperature--aging grid quantifies each module's contribution: temperature coupling up to \SI{70}{\percent}, aging up to \SI{55}{\percent}, component decomposition up to \SI{43}{\percent}, and polarisation $<\SI{1}{\percent}$ of TTE error.
+A receding-horizon MPC energy management strategy extends simulated runtime by up to \SI{58}{\percent} (TTE $= \SI{6.0}{\hour}$ vs.\ $\SI{3.8}{\hour}$ baseline) and improves energy efficiency by \SI{56}{\percent}, outperforming the threshold-based strategy ($+40\%$) by an additional 18 percentage points while producing a smooth, continuous power profile.
+The framework's computation cost of \SI{0.009}{\milli\second} per simulated second confirms suitability for real-time deployment on embedded hardware.
 
 \paragraph{Scope and limitations.}
 This work is positioned as a \emph{simulation framework} validated on cell-level electrochemical data.
@@ -1070,18 +954,13 @@ Although the TTE predictions under these synthetic loads cannot be directly veri
 Importantly, the synthetic load profiles are not arbitrary---they are constructed by combining individually measured component powers from peer-reviewed hardware studies, and they are applied as inputs to an independently validated electrochemical model.
 This decoupled validation approach (electrochemistry on real cell data, loads from literature) is common in the battery modelling literature~\cite{Fuller2014,Mama2025} and provides a rigorous basis for scenario exploration.
 The framework's modular load interface (\ssref{sec:power}) is designed as a plug-and-play architecture: replacing the synthetic profiles with real telemetry data (e.g., from Android's BatteryStats API or iOS's Energy Diagnostics) requires only substituting the $\xi_i(t)$ time series, with no changes to the electrochemical or thermal submodels.
-Additional limitations include:
-\begin{enumerate}
-    \item \emph{Quasi-static temperature:}  The model assumes a constant ambient temperature per simulation; rapid thermal transients from SoC self-heating are not captured.
-    As emphasised in the multi-scale modelling review by Mama et al.~\cite{Mama2025}, electrochemical-thermal coupled (ECTC) models---which solve a heat-generation equation alongside the electrochemical dynamics---are essential for accurately predicting temperature-dependent degradation under sustained high-power loads.
-    The absence of such coupling in the present framework means that self-heating-induced capacity reduction during intensive usage phases (e.g., gaming at \SI{4.3}{\watt}) may be underestimated, potentially leading to optimistic TTE predictions at high power levels.
-    Liu et al.~\cite{Liu2019ECM} demonstrated that even a lumped two-state thermal model (internal and surface temperature) significantly improves the fidelity of coupled electrothermal predictions; Jeon and Baek~\cite{Jeon2011ECM} and Liu et al.~\cite{Liu2017ECM} further established thermal modelling methodologies for lithium-ion cells during discharge. Incorporating a similar thermal ODE into the present framework is a natural next step.
-    \item \emph{Quasi-static voltage model:}  The dynamic validation (\secref{sec:dynamic_val}) demonstrates reasonable accuracy under random-walk loads (RMSE $\sim$\SI{64}{\milli\volt}), but the algebraic Shepherd formulation does not capture RC-type transient relaxation dynamics.  Incorporating a Th\'{e}venin RC branch or re-identifying parameters on standardised dynamic profiles (e.g., DST, UDDS) could further reduce the dynamic RMSE.
-    \item \emph{No Peukert-type rate derating:}  The present model treats nominal capacity $Q_0$ as a function of temperature and aging only (\eqnrefp{eq:Q0T}); it does not incorporate a Peukert-style correction for the reduction in effective capacity at high discharge rates~\cite{Fuller2014}.
-    For portable-device cells operating predominantly between 0.3C and 1.5C, this omission has limited practical impact; however, under pulsed high-C-rate loads (e.g., camera flash, peak SoC bursts), the model may slightly overestimate the available capacity and hence TTE.
-    \item \emph{Homogeneous aging:}  Cell-to-cell variability and electrode-level spatial heterogeneity are not modelled.
-    \item \emph{Single chemistry:}  Results are on NMC/graphite cells; other chemistries (LFP, NCA, solid-state) require re-parameterisation.
-\end{enumerate}
+Additional limitations are noted below.
+The model assumes a constant ambient temperature per simulation; rapid thermal transients from SoC self-heating are not captured.
+As emphasised by Mama et al.~\cite{Mama2025}, electrochemical-thermal coupled (ECTC) models are essential for accurately predicting temperature-dependent degradation under sustained high-power loads.
+Liu et al.~\cite{Liu2019ECM} demonstrated that even a lumped two-state thermal model significantly improves fidelity; Jeon and Baek~\cite{Jeon2011ECM} and Liu et al.~\cite{Liu2017ECM} further established thermal modelling methodologies for lithium-ion cells during discharge. Incorporating a similar thermal ODE is a natural next step.
+Moreover, the algebraic Shepherd formulation does not capture RC-type transient relaxation dynamics; incorporating a Th\'{e}venin RC branch or re-identifying parameters on standardised dynamic profiles (e.g., DST, UDDS) could further reduce the dynamic RMSE.
+The present model treats nominal capacity $Q_0$ as a function of temperature and aging only (\eqnrefp{eq:Q0T}) without a Peukert-style correction for reduced effective capacity at high discharge rates~\cite{Fuller2014}; for portable-device cells operating predominantly between 0.3C and 1.5C this omission has limited practical impact.
+Finally, cell-to-cell variability and electrode-level spatial heterogeneity are not modelled, and results are on NMC/graphite cells---other chemistries (LFP, NCA, solid-state) require re-parameterisation.
 
 \paragraph{Future work.}
 Planned extensions include:
@@ -1106,7 +985,7 @@ The authors declare that they have no known competing financial interests or per
 The XJTU battery dataset is publicly available~\cite{XJTU2020}. The NASA Randomized Battery Usage Dataset is available from the NASA Prognostics Data Repository~\cite{Bole2014}. Code and processed data supporting this study are available at \url{https://github.com/wangyinuo001/BatteryPaper}.
 
 \section*{Acknowledgements}
-The authors gratefully acknowledge the XJTU research group for making their battery dataset publicly available.
+The authors gratefully acknowledge the XJTU research group for making their battery dataset publicly available, and the NASA Prognostics Center of Excellence for providing the Randomized Battery Usage Dataset.
 
 % ============================================================
 \appendix

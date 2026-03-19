@@ -102,7 +102,7 @@ def main():
         1.4,
         "Submodel 1: Shepherd Voltage\n"
         "$V = E_0 - R\\!\\cdot\\! I - K\\frac{I}{SOC}$\n"
-        "$\\quad + A\\,e^{-B(1-SOC)}$",
+        "$\\quad + A\\,\\exp(-B(1-SOC))$",
         "#D6E4F0",
         "#4E79A7",
         fontsize=6,
@@ -159,7 +159,7 @@ def main():
         "$I = \\frac{P_{\\mathrm{total}}}{V}$",
         "#E8D8E8",
         "#B07AA1",
-        fontsize=5.5,
+        fontsize=6.5,
     )
 
     # ── Output block  (2 lines, h=1.1) ──
@@ -191,14 +191,14 @@ def main():
     )
 
     # ── Arrows (start/end at box edges) ──
-    draw_arrow(ax, 5, 13.45, 5, 12.85)        # Input → Shepherd
-    draw_arrow(ax, 3.5, 11.45, 2.7, 10.35)    # Shepherd → Temp
-    draw_arrow(ax, 6.5, 11.45, 7.3, 10.35)    # Shepherd → Component
-    draw_arrow(ax, 2.7, 8.95, 3.5, 8.0)       # Temp → Aging
-    draw_arrow(ax, 7.3, 8.95, 6.5, 8.0)       # Component → Aging
-    draw_arrow(ax, 5, 6.9, 5, 6.05)           # Aging → Integration
-    draw_arrow(ax, 5, 4.85, 5, 4.1)           # Integration → Output
-    draw_arrow(ax, 5, 3.0, 5, 2.2)            # Output → Validation
+    draw_arrow(ax, 5, 13.45, 5, 12.85)  # Input → Shepherd
+    draw_arrow(ax, 3.5, 11.45, 2.7, 10.35)  # Shepherd → Temp
+    draw_arrow(ax, 6.5, 11.45, 7.3, 10.35)  # Shepherd → Component
+    draw_arrow(ax, 2.7, 8.95, 3.5, 8.0)  # Temp → Aging
+    draw_arrow(ax, 7.3, 8.95, 6.5, 8.0)  # Component → Aging
+    draw_arrow(ax, 5, 6.9, 5, 6.05)  # Aging → Integration
+    draw_arrow(ax, 5, 4.85, 5, 4.1)  # Integration → Output
+    draw_arrow(ax, 5, 3.0, 5, 2.2)  # Output → Validation
 
     # ── Side annotations ──
     ax.text(

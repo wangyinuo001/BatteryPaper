@@ -76,6 +76,11 @@ def simulate_mixed_usage(model, temp_k=298.15, dt=1.0, soc_init=1.0):
         dur = phase["duration"]
         phase_t0 = t
 
+        # Reset current estimate at phase transition to avoid voltage discontinuity
+        V_est = model.terminal_voltage(soc, I_avg, temp_k)
+        if V_est > 0:
+            I_avg = P / V_est
+
         while soc > 0.05:
             V = model.terminal_voltage(soc, I_avg, temp_k)
             if V < model.V_cutoff:

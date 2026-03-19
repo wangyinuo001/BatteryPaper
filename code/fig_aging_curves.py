@@ -97,11 +97,12 @@ def main():
             ax2.annotate(
                 f"{pct:+.0f}%",
                 xy=(n, tte),
-                xytext=(0, -12),
+                xytext=(0, -14),
                 textcoords="offset points",
                 fontsize=7,
                 ha="center",
                 color=COLORS["gray"],
+                bbox=dict(facecolor="white", edgecolor="none", alpha=0.8, pad=1.0),
             )
 
     ax2.set_xlabel("Equivalent full cycles $N$")

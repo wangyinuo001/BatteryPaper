@@ -1,0 +1,74 @@
+\documentclass[12pt]{article}
+\usepackage[a4paper,margin=2.5cm]{geometry}
+\usepackage{times}
+\usepackage{hyperref}
+\usepackage{parskip}
+\pagestyle{empty}
+
+\begin{document}
+
+\begin{flushright}
+Chengdu, \today
+\end{flushright}
+
+\noindent
+Editorial Office\\
+\emph{Journal of Power Sources}\\
+Elsevier
+
+\bigskip
+\noindent Dear Editors,
+
+Please consider the enclosed manuscript entitled \textbf{``A Modified Shepherd Electrochemical Model with Coupled Temperature--Aging Dynamics for Lithium-Ion Cells under Constant-Current and Random-Walk Discharge''} for publication in the \emph{Journal of Power Sources} as a research article.
+
+The work develops a modified Shepherd-based electrochemical modelling framework for lithium-ion cells under the dynamic, heterogeneous discharge regimes characteristic of portable electronic systems, and validates it on two independent public datasets.
+Three contributions are central to the manuscript and align directly with the scope of \emph{Journal of Power Sources}:
+\begin{enumerate}
+    \item \textbf{An improved Shepherd voltage formulation with retained physical interpretability.}
+    The five-parameter modified Shepherd equation preserves the one-to-one mapping between coefficients and electrochemical phenomena (open-circuit potential, mass-transport polarisation, ohmic loss, exponential transient zone), and is coupled with a logistic capacity--temperature submodel, an Arrhenius resistance--temperature submodel, and power-law cycle/$\sqrt{t}$ calendar aging into a single continuous-time differential-algebraic system.
+    On the XJTU lithium-ion dataset the formulation achieves a voltage-tracking RMSE of 17.85\,mV under constant-current discharge, reducing error by over 55\% relative to a Th\'{e}venin-1RC ECM and 75\% relative to a Nernst baseline.
+    \item \textbf{Cross-batch generalisation across C-rates.}
+    Parameters fitted on XJTU Batch-1 (2\,C, 15 cells) are applied directly to Batch-2 (3\,C) without re-identification, with a statistically non-significant RMSE gap (95\% bootstrap CI spanning zero).
+    To our knowledge this transferability test---explicitly requested in many \emph{Journal of Power Sources} reviews of empirical voltage models---has not previously been reported for Shepherd-type formulations on lithium-ion chemistries.
+    \item \textbf{Dynamic-load validation on the NASA Randomized Battery Usage Dataset.}
+    Using the same parameters identified from constant-current data, the framework is validated against random-walk currents spanning 0.5--4\,A over 200 cycles, yielding a voltage RMSE of 63.5\,mV with no re-fitting.
+    This demonstrates that the Shepherd formulation extends from idealised CC discharges to realistic time-varying loads---a key concern for any battery model intended for deployment in modern portable systems.
+\end{enumerate}
+
+A systematic ablation across a $3{\times}3$ temperature--aging grid further quantifies the non-additive coupling between submodels (temperature contributing up to 70\% TTE error, aging up to 55\%, with non-trivial interaction terms).
+A receding-horizon MPC strategy built on the Shepherd prediction core illustrates one downstream application, extending simulated runtime by up to 58\% with a computational cost of 0.009\,ms per simulated second, suitable for embedded BMS deployment.
+The modelling and validation results stand independently of this control study.
+
+We believe the manuscript fits the scope of \emph{Journal of Power Sources} because it advances the empirical/electrochemical modelling of lithium-ion cells, provides quantitative cross-batch and dynamic-load validation on widely used public datasets (XJTU, NASA), and reports parameters and code that the lithium-ion battery community can directly reuse.
+
+This manuscript has not been published previously and is not under consideration elsewhere.
+All authors have approved the manuscript and agree with its submission.
+No conflicts of interest exist.
+
+\bigskip
+\noindent\textbf{Suggested reviewers}
+\begin{itemize}
+    \item Prof.\ David A.\ Howey, Department of Engineering Science, University of Oxford, UK --- expertise in lithium-ion modelling, ECM identification, and Gaussian-process battery state estimation; cited in the manuscript (Birkl, Richardson).
+    \item Prof.\ Dirk Uwe Sauer, ISEA, RWTH Aachen University, Germany --- expertise in lithium-ion aging modelling and characterisation; corresponding author of the holistic NMC aging model cited in the manuscript (Schmalstieg \emph{et al.}, JPS 2014).
+    \item Prof.\ Gregory L.\ Plett, Department of Electrical and Computer Engineering, University of Colorado Colorado Springs, USA --- expertise in ECM-based battery state estimation for HEV battery packs; cited in the manuscript (Plett, JPS 2004).
+    \item Prof.\ Xiaosong Hu, College of Mechanical and Vehicle Engineering, Chongqing University, China --- expertise in comparative ECM studies and battery management; cited in the manuscript (Hu \emph{et al.}, JPS 2012).
+    \item Prof.\ Rui Xiong, School of Mechanical Engineering, Beijing Institute of Technology, China --- expertise in lithium-ion state-of-health monitoring and battery management systems; cited in the manuscript (Xiong \emph{et al.}, JPS 2018).
+\end{itemize}
+We have no conflicting relationship with any of the suggested reviewers.
+
+\bigskip
+\noindent Cordially yours,
+
+\medskip
+\noindent Prof.\ Zhiqiang Li\\
+Corresponding author
+
+\bigskip
+\noindent\textit{P.S.}\ For any questions and future correspondence, the corresponding and contact author will be:\\
+Prof.\ Zhiqiang Li\\
+E-mail: \texttt{zhiqiangli@scu.edu.cn}\\
+College of Physics, Sichuan University\\
+No.\ 24 South Section 1, Yihuan Road\\
+Chengdu 610064, China
+
+\end{document}

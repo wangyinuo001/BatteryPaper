@@ -27,7 +27,14 @@ import scipy.io as sio
 import matplotlib.pyplot as plt
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
-from pub_style import apply_style, COLORS
+from pub_style import (
+    apply_style,
+    save_fig,
+    label_panel,
+    embed_metric,
+    COLORS,
+    DOUBLE_COL_TALL,
+)
 
 _PALETTE = [
     COLORS["exp"],
@@ -283,7 +290,11 @@ def make_figure(results, params, battery_name, save=True):
     r = results[mid]
 
     fig, axes = plt.subplots(
-        3, 1, figsize=(7, 6.5), sharex=True, gridspec_kw={"height_ratios": [3, 2, 2]}
+        3,
+        1,
+        figsize=DOUBLE_COL_TALL,
+        sharex=True,
+        gridspec_kw={"height_ratios": [3, 1.6, 1.6], "hspace": 0.12},
     )
 
     t_min = r["t"] / 60.0  # seconds → minutes
@@ -291,41 +302,47 @@ def make_figure(results, params, battery_name, save=True):
     # (a) Voltage
     ax = axes[0]
     ax.plot(
-        t_min, r["V_meas"], "-", color=_PALETTE[0], lw=1.2, label="Measured", alpha=0.85
+        t_min, r["V_meas"], "-", color=_PALETTE[0], lw=1.0, label="Measured", alpha=0.85
     )
     ax.plot(
-        t_min, r["V_pred"], "--", color=_PALETTE[1], lw=1.2, label="Shepherd prediction"
+        t_min, r["V_pred"], "--", color=_PALETTE[1], lw=1.1, label="Shepherd prediction"
     )
     ax.set_ylabel("Terminal voltage (V)")
-    ax.legend(loc="upper right", fontsize=8)
-    ax.set_title(
-        f"NASA {battery_name} – Random-walk cycle {r['cycle']+1}  "
-        f"(RMSE = {r['rmse_mV']:.1f} mV)",
-        fontsize=9,
+    ax.legend(loc="lower left", fontsize=7, ncol=2)
+    embed_metric(
+        ax,
+        f"RMSE = {r['rmse_mV']:.1f} mV   MAE = {r['mae_mV']:.1f} mV",
+        x=0.97,
+        y=0.05,
     )
+    ax.set_title(
+        f"NASA {battery_name} \u2014 random-walk cycle {r['cycle']+1}",
+        fontsize=8.5,
+    )
+    label_panel(ax, "a")
 
     # (b) Current
     ax = axes[1]
-    ax.plot(t_min, r["I"], "-", color=_PALETTE[2], lw=0.8)
+    ax.plot(t_min, r["I"], "-", color=_PALETTE[2], lw=0.7)
     ax.set_ylabel("Current (A)")
-    ax.axhline(0, color="grey", lw=0.5, ls=":")
+    ax.axhline(0, color="grey", lw=0.4, ls=":")
+    label_panel(ax, "b")
 
     # (c) Error
     ax = axes[2]
-    ax.plot(t_min, r["err"] * 1000, "-", color=_PALETTE[3], lw=0.7)
-    ax.axhline(0, color="grey", lw=0.5, ls=":")
+    ax.plot(t_min, r["err"] * 1000, "-", color=_PALETTE[3], lw=0.6)
+    ax.axhline(0, color="grey", lw=0.4, ls=":")
+    ax.fill_between(
+        t_min, r["err"] * 1000, 0, color=_PALETTE[3], alpha=0.15, linewidth=0
+    )
     ax.set_ylabel("Voltage error (mV)")
     ax.set_xlabel("Time (min)")
+    label_panel(ax, "c")
 
-    for ax in axes:
-        ax.grid(True, alpha=0.3, lw=0.5)
     fig.align_ylabels(axes)
-    plt.tight_layout()
 
     if save:
-        out = FIG_DIR / "fig_nasa_dynamic_validation.pdf"
-        fig.savefig(str(out), dpi=300, bbox_inches="tight")
-        print(f"  Figure saved → {out}")
+        save_fig(fig, "fig_nasa_dynamic_validation", str(FIG_DIR))
     return fig
 
 
@@ -333,7 +350,7 @@ def make_summary_figure(all_battery_results, save=True):
     """Box-plot of RMSE across batteries and cycles."""
     apply_style()
 
-    fig, ax = plt.subplots(figsize=(5, 3.5))
+    fig, ax = plt.subplots(figsize=(3.54, 3.0))
     data_plot = []
     labels = []
     for bname, res_list in all_battery_results.items():

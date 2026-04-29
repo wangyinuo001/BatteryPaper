@@ -31,7 +31,8 @@ def main():
         "w/o Polarization (K=0)",
     ]
     temps = [0, 25, 40]
-    agings = ["New (0 cycles)", "300 cycles", "800 cycles"]
+    agings = ["New (0 cycles)", "Moderate (300 cycles)", "Aged (800 cycles)"]
+    aging_labels = ["0 cyc", "300 cyc", "800 cyc"]
 
     fig, axes = plt.subplots(2, 2, figsize=DOUBLE_COL_TALL)
     axes = axes.flatten()
@@ -75,7 +76,7 @@ def main():
                 )
 
         ax.set_xticks([0, 1, 2])
-        ax.set_xticklabels(["0 cyc", "300 cyc", "800 cyc"], fontsize=6.5)
+        ax.set_xticklabels(aging_labels, fontsize=6.5)
         ax.set_yticks([0, 1, 2])
         ax.set_yticklabels(["0°C", "25°C", "40°C"], fontsize=6.5)
         ax.set_title(title, fontsize=8, fontweight="bold", pad=4)

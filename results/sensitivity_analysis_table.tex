@@ -1,0 +1,25 @@
+% Sensitivity Analysis Table
+\begin{table}[h]
+\centering
+\caption{Sensitivity of discharge time to temperature, capacity, and power load}
+\label{tab:sensitivity}
+\begin{tabular}{llrrrr}
+\hline
+Case & Category & Power (W) & Temp ($^\circ$C) & $Q_0$ (Ah) & $\Delta t$ (\%)\\
+\hline
+baseline & baseline & 5.00 & 25 & 5.000 & 0.0\\
+temp_-10C & temperature & 5.00 & -10 & 5.000 & -56.3\\
+temp_0C & temperature & 5.00 & 0 & 5.000 & -41.3\\
+temp_10C & temperature & 5.00 & 10 & 5.000 & -24.9\\
+temp_25C & temperature & 5.00 & 25 & 5.000 & 0.0\\
+temp_40C & temperature & 5.00 & 40 & 5.000 & 22.7\\
+temp_50C & temperature & 5.00 & 50 & 5.000 & 35.5\\
+q0_90pct & capacity & 5.00 & 25 & 4.500 & -9.5\\
+q0_100pct & capacity & 5.00 & 25 & 5.000 & 0.0\\
+q0_110pct & capacity & 5.00 & 25 & 5.500 & 9.5\\
+power_80pct & power & 4.00 & 25 & 5.000 & 26.1\\
+power_100pct & power & 5.00 & 25 & 5.000 & 0.0\\
+power_120pct & power & 6.00 & 25 & 5.000 & -17.5\\
+\hline
+\end{tabular}
+\end{table}

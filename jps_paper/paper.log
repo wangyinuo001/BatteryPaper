@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.2) (preloaded format=pdflatex 2026.3.11)  29 APR 2026 11:42
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.2) (preloaded format=pdflatex 2026.3.11)  29 APR 2026 17:22
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -978,17 +978,17 @@ LaTeX Font Info:    Trying to load font information for U+txsyc on input line 1
 File: utxsyc.fd 2000/12/15 v3.1
 )
 LaTeX Font Info:    Trying to load font information for TS1+txr on input line 1
-32.
+33.
 
 (C:\Users\wangy\AppData\Local\Programs\MiKTeX\tex/latex/txfonts\ts1txr.fd
 File: ts1txr.fd 2000/12/15 v3.1
 )
-Underfull \hbox (badness 7777) in paragraph at lines 132--133
+Underfull \hbox (badness 7777) in paragraph at lines 133--134
 []\T1/txr/m/n/10 Modified five-parameter Shep-herd model achieves
  []
 
 
-Overfull \hbox (1.03333pt too wide) in paragraph at lines 133--134
+Overfull \hbox (1.03333pt too wide) in paragraph at lines 134--135
 []\T1/txr/m/n/10 55--75% RMSE re-duc-tion over Thévenin-1RC, Thévenin-
  []
 
@@ -998,39 +998,39 @@ Overfull \hbox (1.03333pt too wide) in paragraph at lines 133--134
 y/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc}
 
 ]
-Underfull \hbox (badness 2617) in paragraph at lines 151--159
+Underfull \hbox (badness 2617) in paragraph at lines 152--160
 \T1/txr/m/n/10 clas-si-cal Shep-herd for-mu-la-tion [][[][][]][] of-fers ex-pli
 cit terms
  []
 
 
-Underfull \hbox (badness 1024) in paragraph at lines 151--159
+Underfull \hbox (badness 1024) in paragraph at lines 152--160
 \T1/txr/m/n/10 haviour with clear phys-i-cal cor-re-spon-dence, but has been
  []
 
 
-Underfull \hbox (badness 3612) in paragraph at lines 151--159
+Underfull \hbox (badness 3612) in paragraph at lines 152--160
 \T1/txr/m/n/10 demon-strated a Shepherd-type model for constant-power
  []
 
 
-Underfull \hbox (badness 2111) in paragraph at lines 151--159
+Underfull \hbox (badness 2111) in paragraph at lines 152--160
 \T1/txr/m/n/10 dis-charge with rate ef-fects, yet with-out multi-component
  []
 
 
-Underfull \hbox (badness 1259) in paragraph at lines 151--159
+Underfull \hbox (badness 1259) in paragraph at lines 152--160
 \T1/txr/m/n/10 pro-files and ag-ing mech-a-nisms; (ii) in-cor-po-rates Peukert-
 
  []
 
 
-Underfull \hbox (badness 1259) in paragraph at lines 151--159
+Underfull \hbox (badness 1259) in paragraph at lines 152--160
 \T1/txr/m/n/10 with-out component-level dis-ag-gre-ga-tion that would en-able
  []
 
 
-Underfull \hbox (badness 1253) in paragraph at lines 151--159
+Underfull \hbox (badness 1253) in paragraph at lines 152--160
 \T1/txr/m/n/10 advantage---physical trans-parency of the Shep-herd volt-age
  []
 
@@ -1039,130 +1039,130 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.159 
+l.160 
        [1
 
 
 ]
-Underfull \hbox (badness 2460) in paragraph at lines 160--164
+Underfull \hbox (badness 2460) in paragraph at lines 161--165
 \T1/txr/m/n/10 charg-ing man-age-ment con-sid-er-ing degra-da-tion costs, and
  []
 
 
-Underfull \hbox (badness 7851) in paragraph at lines 169--172
+Underfull \hbox (badness 7851) in paragraph at lines 170--173
 \T1/txr/m/n/10 elec-tro-chem-i-cally in-ter-pretable form---open-circuit po-
  []
 
 
-Underfull \hbox (badness 2486) in paragraph at lines 169--172
+Underfull \hbox (badness 2486) in paragraph at lines 170--173
 \T1/txr/m/n/10 and ex-po-nen-tial tran-sient zone---and demon-strate that,
  []
 
 
-Underfull \hbox (badness 3612) in paragraph at lines 169--172
+Underfull \hbox (badness 3612) in paragraph at lines 170--173
 \T1/txr/m/n/10 af-ter differential-evolution iden-ti-fi-ca-tion on the XJTU
  []
 
 
-Underfull \hbox (badness 2126) in paragraph at lines 169--172
+Underfull \hbox (badness 2126) in paragraph at lines 170--173
 \T1/txr/m/n/10 dataset [][[][][]][], it achieves a voltage-tracking RMSE of
  []
 
 
-Underfull \hbox (badness 3158) in paragraph at lines 172--175
+Underfull \hbox (badness 3158) in paragraph at lines 173--176
 \T1/txr/m/n/10 estimated cross-batch RMSE gap is sta-tis-ti-cally non-
  []
 
 
-Underfull \hbox (badness 1990) in paragraph at lines 175--177
+Underfull \hbox (badness 1990) in paragraph at lines 176--178
 \T1/txr/m/n/10 1RC ECM iden-ti-fied un-der the same CC-fit$\OMS/txsy/m/n/10 !$\
 T1/txr/m/n/10 RW-test
  []
 
 
-Underfull \hbox (badness 3769) in paragraph at lines 177--180
+Underfull \hbox (badness 3769) in paragraph at lines 178--181
 []\T1/txr/m/it/10 Coupled temperature--aging sub-mod-els with quan-ti-fied
  []
 
 [2]
-Underfull \hbox (badness 5203) in paragraph at lines 195--202
+Underfull \hbox (badness 5203) in paragraph at lines 196--203
 \T1/txr/m/n/10 mod-els (e.g., the pseudo-two-dimensional Doyle--Fuller--
  []
 
 
-Underfull \hbox (badness 2591) in paragraph at lines 195--202
+Underfull \hbox (badness 2591) in paragraph at lines 196--203
 \T1/txr/m/n/10 power dis-charge of pri-mary al-ka-line cells, in-cor-po-rat-ing
 
  []
 
 
-Underfull \hbox (badness 6792) in paragraph at lines 203--214
+Underfull \hbox (badness 6792) in paragraph at lines 204--215
 \T1/txr/m/n/10 pro-vided com-pre-hen-sive smart-phone power break-downs,
  []
 
 
-Underfull \hbox (badness 1509) in paragraph at lines 203--214
+Underfull \hbox (badness 1509) in paragraph at lines 204--215
 \T1/txr/m/n/10 electrothermal-aging model for economy-conscious bat-tery
  []
 
 
-Underfull \hbox (badness 1412) in paragraph at lines 203--214
+Underfull \hbox (badness 1412) in paragraph at lines 204--215
 \T1/txr/m/n/10 power-law capacity-loss sub-model. Their multi-timescale
  []
 
 <fig_framework.pdf, id=401, 203.1061pt x 292.25987pt>
 File: fig_framework.pdf Graphic file (type pdf)
 <use fig_framework.pdf>
-Package pdftex.def Info: fig_framework.pdf  used on input line 244.
+Package pdftex.def Info: fig_framework.pdf  used on input line 245.
 (pdftex.def)             Requested size: 252.0pt x 362.63484pt.
 
-Underfull \hbox (badness 2884) in paragraph at lines 239--247
+Underfull \hbox (badness 2884) in paragraph at lines 240--248
 \T1/txr/m/n/10 terminal-voltage dy-nam-ics ([][]Ÿ3.1[][][]), component-level po
 wer
  []
 
 
-Underfull \hbox (badness 1701) in paragraph at lines 239--247
+Underfull \hbox (badness 1701) in paragraph at lines 240--248
 \T1/txr/m/n/10 and ag-ing dy-nam-ics ([][]Ÿ3.4[][][])---which are as-sem-bled i
 nto a
  []
 
-
-Underfull \hbox (badness 3229) in paragraph at lines 253--254
+[3]
+Underfull \hbox (badness 3229) in paragraph at lines 254--255
 []\T1/txr/m/it/10 Mass-transport po-lar-i-sa-tion. \T1/txr/m/n/10 As dis-charge
  pro-ceeds,
  []
 
-[3]
-Underfull \hbox (badness 2351) in paragraph at lines 259--263
+
+Underfull \hbox (badness 2351) in paragraph at lines 260--264
 \T1/txr/m/n/10 right, the open-circuit volt-age, po-lar-i-sa-tion over-po-ten-t
 ial,
  []
 
-
-Underfull \hbox (badness 2617) in paragraph at lines 306--307
+[4 <./fig_framework.pdf>]
+Underfull \hbox (badness 2617) in paragraph at lines 307--308
  []\T1/txr/m/it/10 Computational, com-mu-ni-ca-tion, and base-line sub-sys-tems
 .[]
  []
 
-[4 <./fig_framework.pdf>]
-Underfull \hbox (badness 2753) in paragraph at lines 355--357
+
+Underfull \hbox (badness 2753) in paragraph at lines 356--358
 []\T1/txr/m/n/10 Repeated charge--discharge cy-cling de-grades cell per-
  []
 
 
-Underfull \hbox (badness 1297) in paragraph at lines 355--357
+Underfull \hbox (badness 1297) in paragraph at lines 356--358
 \T1/txr/m/n/10 for-mance through SEI layer growth, lithium plat-ing, and
  []
 
 [5]
-Underfull \hbox (badness 1082) in paragraph at lines 401--402
+Underfull \hbox (badness 1082) in paragraph at lines 402--403
 \T1/txr/m/n/10 treated as slowly vary-ing ex-ter-nal pa-ram-e-ters (quasi-stati
 c
  []
 
 
-Underfull \hbox (badness 1281) in paragraph at lines 415--424
+Underfull \hbox (badness 1281) in paragraph at lines 416--425
 \OMS/txsy/m/n/10 f\OT1/txr/m/n/10 1\OML/txmi/m/it/10 :\OT1/txr/m/n/10 0  \OMS/t
 xsy/m/n/10 ^^B  \OT1/txr/m/n/10 10[]\OML/txmi/m/it/10 ;  \OT1/txr/m/n/10 2\OML/
 txmi/m/it/10 :\OT1/txr/m/n/10 9  \OMS/txsy/m/n/10 ^^B  \OT1/txr/m/n/10 10[]\OML
@@ -1174,233 +1174,227 @@ txmi/m/it/10 ;  \OT1/txr/m/n/10 24\OML/txmi/m/it/10 :\OT1/txr/m/n/10 9\OMS/txsy
  []
 
 [6]
-Underfull \hbox (badness 1590) in paragraph at lines 463--467
+Underfull \hbox (badness 1590) in paragraph at lines 465--469
 \T1/txr/m/n/10 volt-age, cur-rent, tem-per-a-ture, and ca-pac-ity mea-sure-ment
 s
  []
 
 
-Underfull \hbox (badness 1365) in paragraph at lines 469--474
+Underfull \hbox (badness 1365) in paragraph at lines 471--476
 \T1/txr/m/n/10 real-time smart-phone hard-ware teleme-try (e.g., con-cur-rent
  []
 
 
-Underfull \hbox (badness 1668) in paragraph at lines 484--489
+Underfull \hbox (badness 1668) in paragraph at lines 486--491
  []\T1/txr/m/it/10 Data pre-pro-cess-ing.[] \T1/txr/m/n/10 Dis-charge seg-ments
  are ex-tracted by
  []
 
-
-Underfull \hbox (badness 2103) in paragraph at lines 496--497
+[7]
+Underfull \hbox (badness 2103) in paragraph at lines 498--499
 []\T1/txr/m/n/10 We com-pare the pro-posed Shepherd-based frame-work
  []
 
 
-Underfull \hbox (badness 1297) in paragraph at lines 496--497
+Underfull \hbox (badness 1297) in paragraph at lines 498--499
 \T1/txr/m/n/10 against four volt-age mod-els span-ning the interpretability--
  []
 
-[7]
-Underfull \hbox (badness 1005) in paragraph at lines 514--516
+
+Underfull \hbox (badness 1005) in paragraph at lines 516--518
 \T1/txr/m/n/10 or in-ter-pretable temperature--aging cou-pling that un-der-pins
 
  []
 
-<fig_voltage_trajectory.pdf, id=568, 483.81384pt x 320.47182pt>
+<fig_voltage_trajectory.pdf, id=562, 483.81384pt x 320.47182pt>
 File: fig_voltage_trajectory.pdf Graphic file (type pdf)
 <use fig_voltage_trajectory.pdf>
-Package pdftex.def Info: fig_voltage_trajectory.pdf  used on input line 519.
+Package pdftex.def Info: fig_voltage_trajectory.pdf  used on input line 521.
 (pdftex.def)             Requested size: 522.0pt x 345.7621pt.
 LaTeX Font Info:    Font shape `T1/txr/b/n' in size <9> not available
-(Font)              Font shape `T1/txr/bx/n' tried instead on input line 580.
-
-Underfull \hbox (badness 1184) in paragraph at lines 599--600
+(Font)              Font shape `T1/txr/bx/n' tried instead on input line 582.
+[8]
+Underfull \hbox (badness 1184) in paragraph at lines 601--602
 \T1/txr/m/n/10 op-ti-mum and that in-tro-duc-ing the ad-di-tional pa-ram-e-ter 
 is
  []
 
-[8] [9 <./fig_voltage_trajectory.pdf>]
-Underfull \hbox (badness 1496) in paragraph at lines 605--609
+[9 <./fig_voltage_trajectory.pdf>]
+Underfull \hbox (badness 1496) in paragraph at lines 607--611
 \T1/txr/m/n/10 ECMs, physics-informed neu-ral net-works, elec-tro-chem-i-cal
  []
 
 
-Underfull \hbox (badness 1205) in paragraph at lines 605--609
+Underfull \hbox (badness 1205) in paragraph at lines 607--611
 \T1/txr/m/n/10 impedance spec-troscopy (EIS)-parameterised models---offer
  []
 
-<fig_cross_batch.pdf, id=617, 224.42232pt x 221.7151pt>
+<fig_cross_batch.pdf, id=614, 224.42232pt x 221.7151pt>
 File: fig_cross_batch.pdf Graphic file (type pdf)
 <use fig_cross_batch.pdf>
-Package pdftex.def Info: fig_cross_batch.pdf  used on input line 621.
+Package pdftex.def Info: fig_cross_batch.pdf  used on input line 623.
 (pdftex.def)             Requested size: 252.0pt x 248.97552pt.
-<fig_nasa_dynamic_validation.pdf, id=618, 484.37845pt x 320.44756pt>
+[10 <./fig_cross_batch.pdf>]
+<fig_nasa_dynamic_validation.pdf, id=642, 484.37845pt x 320.44756pt>
 File: fig_nasa_dynamic_validation.pdf Graphic file (type pdf)
 <use fig_nasa_dynamic_validation.pdf>
 Package pdftex.def Info: fig_nasa_dynamic_validation.pdf  used on input line 63
-0.
+2.
 (pdftex.def)             Requested size: 522.0pt x 345.33498pt.
-[10 <./fig_cross_batch.pdf>]
-Underfull \hbox (badness 1210) in paragraph at lines 668--674
+
+Underfull \hbox (badness 1210) in paragraph at lines 670--676
 \T1/txr/m/n/10 1RC ECM, de-spite car-ry-ing an ex-tra dy-namic state $\OML/txmi
 /m/it/10 V[]$\T1/txr/m/n/10 ,
  []
 
 
-Underfull \hbox (badness 1231) in paragraph at lines 668--674
+Underfull \hbox (badness 1231) in paragraph at lines 670--676
 \OT1/txr/m/n/10 3\OML/txmi/m/it/10 :\OT1/txr/m/n/10 2\OMS/txsy/m/n/10 ^^B$ \T1/
 txr/m/n/10 worse than the Shep-herd model un-der the iden-ti-cal
  []
 
 [11 <./fig_nasa_dynamic_validation.pdf>]
-Overfull \hbox (22.81606pt too wide) in paragraph at lines 681--691
- [][] 
- []
-
-<fig_residual_analysis.pdf, id=676, 456.39172pt x 320.55637pt>
+(../results/nasa_aging_validation_table.tex)
+<fig_residual_analysis.pdf, id=677, 456.39172pt x 320.55637pt>
 File: fig_residual_analysis.pdf Graphic file (type pdf)
 <use fig_residual_analysis.pdf>
-Package pdftex.def Info: fig_residual_analysis.pdf  used on input line 696.
+Package pdftex.def Info: fig_residual_analysis.pdf  used on input line 702.
 (pdftex.def)             Requested size: 522.0pt x 366.6462pt.
-
-Underfull \hbox (badness 1694) in paragraph at lines 705--710
+ [12]
+Underfull \hbox (badness 1694) in paragraph at lines 711--716
 \T1/txr/m/n/10 age pre-dic-tions be-yond ag-gre-gate met-rics, we per-form a
  []
 
-<fig_scenario_comparison.pdf, id=680, 457.72351pt x 220.66377pt>
+[13 <./fig_residual_analysis.pdf>]
+<fig_scenario_comparison.pdf, id=745, 457.72351pt x 220.66377pt>
 File: fig_scenario_comparison.pdf Graphic file (type pdf)
 <use fig_scenario_comparison.pdf>
-Package pdftex.def Info: fig_scenario_comparison.pdf  used on input line 736.
+Package pdftex.def Info: fig_scenario_comparison.pdf  used on input line 742.
 (pdftex.def)             Requested size: 522.0pt x 251.66704pt.
-[12] [13 <./fig_residual_analysis.pdf> <./fig_scenario_comparison.pdf>]
-Overfull \hbox (5.27206pt too wide) in paragraph at lines 763--785
- [][] 
- []
-
-<fig_dynamic_scenario.pdf, id=762, 503.36804pt x 320.99413pt>
+<fig_dynamic_scenario.pdf, id=749, 503.36804pt x 320.99413pt>
 File: fig_dynamic_scenario.pdf Graphic file (type pdf)
 <use fig_dynamic_scenario.pdf>
-Package pdftex.def Info: fig_dynamic_scenario.pdf  used on input line 789.
+Package pdftex.def Info: fig_dynamic_scenario.pdf  used on input line 795.
 (pdftex.def)             Requested size: 522.0pt x 332.91008pt.
-<fig_ablation_heatmap.pdf, id=763, 457.07423pt x 319.64671pt>
+<fig_ablation_heatmap.pdf, id=750, 457.07423pt x 319.64671pt>
 File: fig_ablation_heatmap.pdf Graphic file (type pdf)
 <use fig_ablation_heatmap.pdf>
-Package pdftex.def Info: fig_ablation_heatmap.pdf  used on input line 795.
+Package pdftex.def Info: fig_ablation_heatmap.pdf  used on input line 801.
 (pdftex.def)             Requested size: 522.0pt x 365.05948pt.
 
-Underfull \hbox (badness 3635) in paragraph at lines 804--806
+Underfull \hbox (badness 3635) in paragraph at lines 810--812
  []\T1/txr/m/it/10 Aging dy-nam-ics.[] \T1/txr/m/n/10 Ag-ing im-por-tance grows
  mono-ton-i-cally
  []
 
 
-Underfull \hbox (badness 4846) in paragraph at lines 808--810
+Underfull \hbox (badness 4846) in paragraph at lines 814--816
  []\T1/txr/m/it/10 Component de-com-po-si-tion.[] \T1/txr/m/n/10 Re-plac-ing th
 e five-component
  []
 
-
-Underfull \hbox (badness 1199) in paragraph at lines 821--845
+[14 <./fig_scenario_comparison.pdf>]
+Underfull \hbox (badness 1199) in paragraph at lines 827--851
 []\T1/txr/m/n/10 A lo-cal one-at-a-time sen-si-tiv-ity anal-y-sis is con-ducted
 
  []
 
 
-Underfull \hbox (badness 1337) in paragraph at lines 821--845
+Underfull \hbox (badness 1337) in paragraph at lines 827--851
 \T1/txr/m/n/10 by per-turb-ing each pa-ram-e-ter by $\OMS/txsy/m/n/10 ^^F\OT1/t
 xr/m/n/10 5%$ \T1/txr/m/n/10 around the Video
  []
 
-<fig_temperature_tte.pdf, id=771, 223.23569pt x 222.92357pt>
+[15 <./fig_dynamic_scenario.pdf>]
+<fig_temperature_tte.pdf, id=822, 223.23569pt x 222.92357pt>
 File: fig_temperature_tte.pdf Graphic file (type pdf)
 <use fig_temperature_tte.pdf>
-Package pdftex.def Info: fig_temperature_tte.pdf  used on input line 856.
+Package pdftex.def Info: fig_temperature_tte.pdf  used on input line 862.
 (pdftex.def)             Requested size: 252.0pt x 251.64555pt.
-[14]
-Underfull \hbox (badness 1902) in paragraph at lines 879--882
+
+Underfull \hbox (badness 1902) in paragraph at lines 885--888
 []\T1/txr/bx/n/10 Health-aware bud-get-ing. \T1/txr/m/n/10 Af-ter 800 cy-cles, 
 TTE
  []
 
-
-Underfull \hbox (badness 3229) in paragraph at lines 889--891
+[16 <./fig_ablation_heatmap.pdf>]
+Underfull \hbox (badness 3229) in paragraph at lines 895--897
 []\T1/txr/m/n/10 To demon-strate the frame-work's util-ity as a \T1/txr/m/it/10
  model-
  []
 
-[15 <./fig_dynamic_scenario.pdf>]
-<fig_sensitivity_tornado.pdf, id=832, 205.66196pt x 173.64989pt>
+<fig_sensitivity_tornado.pdf, id=875, 205.66196pt x 173.64989pt>
 File: fig_sensitivity_tornado.pdf Graphic file (type pdf)
 <use fig_sensitivity_tornado.pdf>
-Package pdftex.def Info: fig_sensitivity_tornado.pdf  used on input line 913.
+Package pdftex.def Info: fig_sensitivity_tornado.pdf  used on input line 919.
 (pdftex.def)             Requested size: 252.0pt x 212.7799pt.
- [16 <./fig_ablation_heatmap.pdf>]
-<fig_aging_curves.pdf, id=889, 454.66344pt x 224.3174pt>
+[17 <./fig_temperature_tte.pdf> <./fig_sensitivity_tornado.pdf>]
+<fig_aging_curves.pdf, id=950, 454.66344pt x 224.3174pt>
 File: fig_aging_curves.pdf Graphic file (type pdf)
 <use fig_aging_curves.pdf>
-Package pdftex.def Info: fig_aging_curves.pdf  used on input line 956.
+Package pdftex.def Info: fig_aging_curves.pdf  used on input line 962.
 (pdftex.def)             Requested size: 522.0pt x 257.55911pt.
 
-Underfull \hbox (badness 1226) in paragraph at lines 967--971
+Underfull \hbox (badness 1226) in paragraph at lines 973--977
  []\T1/txr/m/it/10 Connection to prior battery-management work.[] \T1/txr/m/n/1
 0 The MPC
  []
 
 
-Overfull \hbox (1.58006pt too wide) in paragraph at lines 967--971
+Overfull \hbox (1.58006pt too wide) in paragraph at lines 973--977
 \T1/txr/m/n/10 strat-egy rep-re-sents a \T1/txr/m/it/10 discharge-side \T1/txr/
 m/n/10 coun-ter-part to the economy-
  []
 
-[17 <./fig_temperature_tte.pdf> <./fig_sensitivity_tornado.pdf>]
-<fig_energy_management.pdf, id=958, 484.37845pt x 316.97557pt>
+[18 <./fig_aging_curves.pdf>]
+<fig_energy_management.pdf, id=996, 484.37845pt x 316.97557pt>
 File: fig_energy_management.pdf Graphic file (type pdf)
 <use fig_energy_management.pdf>
-Package pdftex.def Info: fig_energy_management.pdf  used on input line 988.
+Package pdftex.def Info: fig_energy_management.pdf  used on input line 994.
 (pdftex.def)             Requested size: 522.0pt x 341.59332pt.
 
-Underfull \hbox (badness 6691) in paragraph at lines 995--999
+Underfull \hbox (badness 6691) in paragraph at lines 1001--1005
 \T1/txr/m/n/10 power de-com-po-si-tion, lo-gis-tic capacity--temperature and
  []
 
 
-Underfull \hbox (badness 1496) in paragraph at lines 995--999
+Underfull \hbox (badness 1496) in paragraph at lines 1001--1005
 \T1/txr/m/n/10 Ar-rhe-nius resistance--temperature cou-pling, and power-law
  []
 
 
-Underfull \hbox (badness 1009) in paragraph at lines 995--999
+Underfull \hbox (badness 1009) in paragraph at lines 1001--1005
 \T1/txr/m/n/10 iden-ti-fied solely from constant-current data, demon-strat-ing
  []
 
 
-Underfull \hbox (badness 1895) in paragraph at lines 1000--1003
+Underfull \hbox (badness 1895) in paragraph at lines 1006--1009
 []\T1/txr/m/n/10 Multi-condition ab-la-tion across a $\OT1/txr/m/n/10 3 \OMS/tx
 sy/m/n/10 ^^B \OT1/txr/m/n/10 3$ \T1/txr/m/n/10 temperature--
  []
 
 
-Underfull \hbox (badness 1824) in paragraph at lines 1005--1018
+Underfull \hbox (badness 1824) in paragraph at lines 1011--1024
 \T1/txr/m/n/10 on real cell data---both un-der constant-current con-di-tions
  []
 
 
-Underfull \hbox (badness 1242) in paragraph at lines 1005--1018
+Underfull \hbox (badness 1242) in paragraph at lines 1011--1024
 \T1/txr/m/n/10 tem-per-a-ture per sim-u-la-tion; rapid ther-mal tran-sients fro
 m
  []
 
 
-Underfull \hbox (badness 1253) in paragraph at lines 1005--1018
+Underfull \hbox (badness 1253) in paragraph at lines 1011--1024
 \T1/txr/m/n/10 al-ge-braic Shep-herd for-mu-la-tion does not cap-ture RC-type
  []
 
-[18 <./fig_aging_curves.pdf>] [19 <./fig_energy_management.pdf>] (paper.bbl
+[19 <./fig_energy_management.pdf>] (paper.bbl
 Underfull \hbox (badness 1158) in paragraph at lines 17--27
 []\T1/txr/m/n/10 E. Benkhe-lifa, T. Welsh, L. Tawal-beh, Y. Jarar-weh,
  []
 
-
+[20]
 Underfull \hbox (badness 1033) in paragraph at lines 62--72
 \T1/txr/m/n/10 J. O. Be-sen-hard, M. Win-ter, M. Wohlfahrt-Mehrens,
  []
@@ -1415,7 +1409,7 @@ Underfull \hbox (badness 5374) in paragraph at lines 73--81
 \T1/txr/m/n/10 ing of gal-vano-s-tatic charge and dis-charge of the
  []
 
-[20]
+[21]
 Underfull \hbox (badness 1708) in paragraph at lines 332--340
 []\T1/txr/m/n/10 Xi'an Jiao-tong Uni-ver-sity, XJTU lithium-ion bat-tery
  []
@@ -1432,9 +1426,7 @@ Underfull \hbox (badness 3118) in paragraph at lines 332--340
 ry cy-cling
  []
 
-[21]) [22
-
-] (paper.aux)
+) [22] (paper.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-01-19>
@@ -1443,13 +1435,13 @@ Package rerunfilecheck Info: File `paper.out' has not changed.
 (rerunfilecheck)             Checksum: 33BD1D1BE5E82F64530F13A506A65F11;10308.
  ) 
 Here is how much of TeX's memory you used:
- 17990 strings out of 467867
- 336051 string characters out of 5418334
- 744548 words of memory out of 5000000
- 46365 multiletter control sequences out of 15000+600000
+ 18001 strings out of 467867
+ 336432 string characters out of 5418334
+ 740407 words of memory out of 5000000
+ 46369 multiletter control sequences out of 15000+600000
  704939 words of font info for 183 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,18n,88p,1522b,1259s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,18n,88p,1907b,1263s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\wangy\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt
 1000.pk> <C:\Users\wangy\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi60
 0\ectt0800.pk><C:/Users/wangy/AppData/Local/Programs/MiKTeX/fonts/type1/public/
@@ -1465,9 +1457,9 @@ ocal/Programs/MiKTeX/fonts/type1/public/txfonts/txsy.pfb><C:/Users/wangy/AppDat
 a/Local/Programs/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><C:/Users/wangy/AppDat
 a/Local/Programs/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><C:/Users/wangy/AppDat
 a/Local/Programs/MiKTeX/fonts/type1/urw/times/utmri8a.pfb>
-Output written on paper.pdf (23 pages, 1361226 bytes).
+Output written on paper.pdf (23 pages, 1365947 bytes).
 PDF statistics:
- 1225 PDF objects out of 1440 (max. 8388607)
- 232 named destinations out of 1000 (max. 500000)
+ 1228 PDF objects out of 1440 (max. 8388607)
+ 234 named destinations out of 1000 (max. 500000)
  477 words of extra memory for PDF output out of 10000 (max. 10000000)
 

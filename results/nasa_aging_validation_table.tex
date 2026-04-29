@@ -1,0 +1,18 @@
+\begin{table}[ht]
+\centering
+\small
+\caption{Independent validation of the cycle-aging law $Q_0(N)=Q_0(0)(1-\alpha N^{\beta})$ on NASA random-walk cells. Per-cell parameters are obtained by NASA-only L-BFGS-B fits; the rightmost columns evaluate the XJTU-fitted parameters $(\alpha=2.56\times 10^{-4},\beta=1.085)$ on the same NASA data without retraining.}
+\label{tab:nasa_aging}
+\resizebox{\columnwidth}{!}{\begin{tabular}{lccccccc}
+\hline
+Cell & $N_{\max}$ & $Q_0(0)$ (Ah) & $\alpha$ ($\times 10^{-4}$) & $\beta$ & RMSE (mAh) & XJTU RMSE (mAh) & XJTU rel.\,err.\,(\%) \\
+\hline
+RW3 & 5440 & 2.006 & 0.27 & 1.12 & 42.8 & 3218.4 & 208.61 \\
+RW4 & 4563 & 1.974 & 0.70 & 1.02 & 45.3 & 2593.7 & 164.44 \\
+RW5 & 4850 & 1.966 & 0.26 & 1.13 & 37.0 & 2819.5 & 181.44 \\
+RW6 & 2860 & 1.924 & 0.12 & 1.27 & 26.7 & 1400.6 & 79.39 \\
+\hline
+Mean & -- & -- & 0.34$\pm$0.25 & 1.14$\pm$0.10 & 38.0 & 2508.0 & 158.47 \\
+\hline
+\end{tabular}}
+\end{table}

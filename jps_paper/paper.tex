@@ -124,6 +124,7 @@ A five-parameter Shepherd voltage formulation---retaining one-to-one physical co
 Parameters identified from the XJTU lithium-ion battery dataset yield a voltage-tracking RMSE of \SI{17.85}{\milli\volt} under constant-current discharge, reducing error by over 55\% relative to the Th\'{e}venin-1RC model and by 75\% relative to a Nernst baseline.
 Cross-batch validation transfers parameters from Batch-1 (2\,C) to Batch-2 (3\,C) with no re-fitting and a statistically non-significant RMSE gap, confirming C-rate generalisability.
 Dynamic-load validation on the NASA Randomized Battery Usage Dataset---random-walk currents spanning 0.5--\SI{4}{\ampere} over 200 cycles---yields \SI{63.5}{\milli\volt} RMSE using the same constant-current parameters, approximately $3.2\times$ smaller than a Th\'{e}venin-1RC ECM identified on the same reference data, demonstrating that the Shepherd formulation transfers to time-varying loads without re-identification.
+The central claim of the work is therefore that a five-parameter physics-grounded voltage core, when correctly coupled to temperature, component, and aging submodels, generalises from a single end-of-line CC characterisation to arbitrary dynamic loads with no per-deployment retraining---a property that, in our head-to-head benchmarks, neither equivalent-circuit nor data-driven surrogates of comparable size achieve.
 Ablation across a $3{\times}3$ temperature--aging grid quantifies the non-additive coupling between submodels: temperature coupling contributes up to 70\% TTE error and aging up to 55\%, with synergistic interaction terms not predictable from either submodel in isolation.
 A receding-horizon model-predictive control strategy built on the Shepherd prediction core extends simulated runtime by up to 58\% with a computational cost of \SI{0.009}{\milli\second} per simulated second, enabling embedded deployment.
 \end{abstract}
@@ -454,7 +455,8 @@ For stiff thermal--electrical couplings in future extensions, adaptive Runge--Ku
 
 \subsubsection{Computational cost}\label{sec:comp_cost}
 Each time step requires one EMA fixed-point update plus one Euler step.
-The proposed model simulates a full 6.4\,h discharge in \SI{0.20}{\second} (wall clock), corresponding to \SI{0.009}{\milli\second} per simulated second---approximately four orders of magnitude faster than finite-element P2D solvers~\cite{Doyle1993,Newman2004,Mama2025} and comparable to compiled ECM implementations, enabling real-time deployment on embedded hardware~\cite{Xiong2018,Wang2020RSER}.
+The proposed model simulates a full 6.4\,h discharge in \SI{0.20}{\second} (wall clock), corresponding to \SI{0.009}{\milli\second} per simulated second---approximately four orders of magnitude faster than finite-element P2D solvers~\cite{Doyle1993,Newman2004,Mama2025} and comparable to compiled ECM implementations.
+Extrapolating from this desktop figure to a \SI{100}{\mega\hertz} ARM Cortex-M4 microcontroller, with a representative $\sim\!10\times$ slowdown for fixed-point arithmetic and lack of vector instructions, suggests an estimated cost of $\lesssim 0.1$\,ms per simulated second, leaving comfortable headroom for the 1\,Hz BMS update loop typical of consumer electronics. We stress that this is a back-of-the-envelope projection: on-target benchmarking on a representative MCU is left to future work, and the Cortex-class budget is invoked here only to motivate the parameter-parsimony argument, not as a measured number.
 
 % ============================================================
 \section{Experimental Setup}\label{sec:experiments}
@@ -607,7 +609,7 @@ More recent approaches---fractional-order ECMs, physics-informed neural networks
 The present contribution is not a new voltage model \emph{per se}, but a \emph{system-level integration} that couples a right-sized voltage core with temperature, aging, and component-level load submodels to solve the discharge-side energy management problem.
 We argue that model complexity should be \emph{commensurate with the application}: for the 1-second TTE update loop envisioned on an ARM Cortex-M microcontroller, the Shepherd formulation occupies the Pareto-optimal point of accuracy vs.\ computational cost, achieving lower RMSE than all ECM baselines with the fewest parameters (5 vs.\ 9--12).
 
-\paragraph{A practical guideline for picking the right model}
+\paragraph{Which model should be used when?}
 Reading \tabref{tab:baseline} and \tabref{tab:nasa_val} side by side, a fairly clear decision rule falls out. If the load is quasi-steady or piecewise-constant---portable electronics, low-frequency grid storage, slow EV cruising---the proposed Shepherd model is the right pick: it sits on the Pareto front of accuracy versus parameter count, and nothing in our results suggests it would be worth the extra complexity to go elsewhere. The picture changes when the dominant frequency content of the load climbs above $\sim\!1/\tau_{RC} \approx \SI{0.1}{\hertz}$, which is the regime of urban EV drive cycles, frequency-regulation duty, and pulsed DC fast-charging. There the diffusion-limited transient becomes visible and a single Th\'{e}venin RC branch grafted onto the Shepherd voltage core recovers the missing dynamic fidelity while still keeping the five Shepherd parameters interpretable; we mention this Shepherd--RC hybrid as the natural next step, not as a finished result. Finally, for off-line lifetime simulation on a workstation, design-of-experiment studies, or anything else where neither parameter parsimony nor real-time execution is a hard constraint, the single-particle and pseudo-2D electrochemical models~\cite{Doyle1993,Mama2025} remain the reference and should be used. The present paper targets the first regime, and \secref{sec:dynamic_val} delineates its boundary by reporting honestly how the model degrades when pushed into the second.
 
 \subsubsection{Cross-batch generalisation}\label{sec:crossbatch}
@@ -678,7 +680,7 @@ It is fair to ask how a five-parameter physics-grounded model holds up against t
 \centering
 \caption{Data-driven surrogates compared with the proposed Shepherd model on held-out NASA random-walk cycles 11--50. The data-driven baselines were additionally calibrated on RW cycles 1--10 of each cell; the Shepherd model saw only the reference CC discharges. Mean $\pm$ std across $4 \times 40 = 160$ cycles.}\label{tab:datadriven}
 {\footnotesize
-\begin{tabular}{@{}lrrr@{}}
+\resizebox{\columnwidth}{!}{\begin{tabular}{@{}lrrr@{}}
 \toprule
 Model & \#~params & RMSE (mV) & RW data needed \\
 \midrule
@@ -686,10 +688,14 @@ Shepherd (proposed)        &  5 & $62.2 \pm 28.2$ & none \\
 Polynomial-3 ridge surrogate & 10 & $28.0 \pm \phantom{0}6.1$ & 10 calib.\ cycles per cell \\
 MLP (2--5--1) surrogate    & 21 & $26.5 \pm \phantom{0}6.2$ & 10 calib.\ cycles per cell \\
 \bottomrule
-\end{tabular}
+\end{tabular}}
 }
 \end{table}
 Once they are allowed to see in-domain RW data, both surrogates do beat Shepherd on raw RMSE, by a factor of about $2.4\times$. This is what universal approximators are supposed to do, and we are not surprised. The cost of that gain, though, comes in three forms. First, parameter count: $2$--$4\times$ more than Shepherd. Second, the calibration requirement---ten labelled RW cycles per cell, which a deployed BMS often simply does not have. Third, and to us the most consequential, the loss of any handle on temperature, aging, or component decomposition of the kind that \secref{sec:model} couples through physical parameters. A surrogate would need to relearn all of that, separately, for every new $(T, N, \text{usage})$ combination it meets in the field. Read in this light, the $62$\,mV is not a defeat. It is a different operating point: only the Shepherd model generalises from CC data alone---five numbers per cell, obtainable from a single end-of-line characterisation discharge---to arbitrary random-walk loads with no retraining. And in the embedded scenario we are after (\secref{sec:comp_cost}), neither polynomial expansion nor neural inference fits the Cortex-M execution budget for sub-second updates over the lifetime of the cell. We pay $\sim\!35$\,mV of additional voltage RMSE for parsimony, zero-calibration transfer, and physical interpretability. We think the trade is worth making.
+
+\paragraph{Does the cycle-aging law also transfer to NASA?}
+A fair question is whether the cycle-aging coefficients of \eqnsref{eq:Raging}{eq:Qaging}, fitted on XJTU Batch-1, retain any predictive value on a different cell chemistry. We took the four NASA cells and, from each, extracted every \emph{reference discharge} segment performed periodically throughout the cell's life---these CC discharges to \SI{3.2}{\volt} act as in-situ capacity probes. Plotting the resulting effective capacity $Q_\mathrm{eff}(N)$ against the cumulative count of intervening random-walk cycles gives a per-cell aging trajectory; we then fit the law $Q_0(N)=Q_0(0)(1-\alpha N^{\beta})$ on each cell independently. \tabref{tab:nasa_aging} reports the result. Two findings stand out. The functional form transfers: across all four cells the exponent settles at $\beta = 1.14 \pm 0.10$, statistically indistinguishable from the XJTU value $\beta = 1.085$. The rate constant does not: the NASA-fitted $\alpha = (3.4 \pm 2.5)\!\times\!10^{-5}$ is roughly an order of magnitude smaller than the XJTU $\alpha = 2.56\!\times\!10^{-4}$, and applying the XJTU coefficients to NASA without recalibration overestimates fade by $\sim\!158\%$ on average. The reason is straightforward---the two datasets are using different units of ``one cycle''. XJTU counts full $0$--$100\%$ DoD constant-current cycles; we count NASA random-walk cycles, which spend most of their time in mid-SOC and exact a much milder per-cycle stress. After per-cell recalibration, the NASA fit reduces residual capacity error to $38$\,mAh ($1.7$--$2.5\%$). Read together, these numbers support a modest but useful claim: the power-law structure of $Q_0(N)$ is portable, but $\alpha$ is a chemistry-and-protocol-specific number and must be re-identified from a handful of reference discharges per deployment context. We treat this as a transparency item, not a contradiction.
+\input{../results/nasa_aging_validation_table.tex}
 
 \begin{figure*}[!tbp]
 \centering
@@ -760,7 +766,7 @@ The sharp SOC slope during the gaming phase (Phase~1) and gradual flattening dur
 \caption{Ablation study: TTE error (\%) introduced by removing each submodel (Reading scenario).}\label{tab:ablation}
 \centering
 {\footnotesize
-\begin{tabular}{@{}llrrrr@{}}
+\resizebox{\columnwidth}{!}{\begin{tabular}{@{}llrrrr@{}}
 \toprule
 Temp.\ & Aging & w/o Temp.\ & w/o Aging & w/o Comp.\ & w/o Polar.\ \\
        &       & (\%)       & (\%)      & (\%)       & (\%)       \\
@@ -780,7 +786,7 @@ Temp.\ & Aging & w/o Temp.\ & w/o Aging & w/o Comp.\ & w/o Polar.\ \\
 & 300 cyc. & $-18.4$ & $+14.0$ & $+21.9$ & $+0.9$ \\
 & 800 cyc. & $-18.2$ & $+54.8$ & $+22.0$ & $+0.9$ \\
 \bottomrule
-\end{tabular}
+\end{tabular}}
 }
 \end{table}
 

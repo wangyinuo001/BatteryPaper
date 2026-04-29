@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.2) (preloaded format=pdflatex 2026.3.11)  29 APR 2026 11:12
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.2) (preloaded format=pdflatex 2026.3.11)  29 APR 2026 11:42
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1229,17 +1229,6 @@ Underfull \hbox (badness 1205) in paragraph at lines 605--609
 \T1/txr/m/n/10 impedance spec-troscopy (EIS)-parameterised models---offer
  []
 
-
-Overfull \hbox (2.34944pt too wide) in paragraph at lines 611--612
- []\T1/txr/m/it/10 A prac-ti-cal model-selection guide-line.[] \T1/txr/m/n/10 C
-om-bin-ing the constant-
- []
-
-
-Underfull \hbox (badness 1521) in paragraph at lines 611--612
-\T1/txr/m/n/10 currents---portable elec-tron-ics, low-frequency grid stor-age,
- []
-
 <fig_cross_batch.pdf, id=617, 224.42232pt x 221.7151pt>
 File: fig_cross_batch.pdf Graphic file (type pdf)
 <use fig_cross_batch.pdf>
@@ -1268,12 +1257,6 @@ Overfull \hbox (22.81606pt too wide) in paragraph at lines 681--691
  [][] 
  []
 
-
-Underfull \hbox (badness 7759) in paragraph at lines 676--693
- []\T1/txr/m/it/10 Comparison against generic data-driven sur-ro-gates.[] \T1/t
-xr/m/n/10 To
- []
-
 <fig_residual_analysis.pdf, id=676, 456.39172pt x 320.55637pt>
 File: fig_residual_analysis.pdf Graphic file (type pdf)
 <use fig_residual_analysis.pdf>
@@ -1294,12 +1277,12 @@ Overfull \hbox (5.27206pt too wide) in paragraph at lines 763--785
  [][] 
  []
 
-<fig_dynamic_scenario.pdf, id=761, 503.36804pt x 320.99413pt>
+<fig_dynamic_scenario.pdf, id=762, 503.36804pt x 320.99413pt>
 File: fig_dynamic_scenario.pdf Graphic file (type pdf)
 <use fig_dynamic_scenario.pdf>
 Package pdftex.def Info: fig_dynamic_scenario.pdf  used on input line 789.
 (pdftex.def)             Requested size: 522.0pt x 332.91008pt.
-<fig_ablation_heatmap.pdf, id=762, 457.07423pt x 319.64671pt>
+<fig_ablation_heatmap.pdf, id=763, 457.07423pt x 319.64671pt>
 File: fig_ablation_heatmap.pdf Graphic file (type pdf)
 <use fig_ablation_heatmap.pdf>
 Package pdftex.def Info: fig_ablation_heatmap.pdf  used on input line 795.
@@ -1328,7 +1311,7 @@ Underfull \hbox (badness 1337) in paragraph at lines 821--845
 xr/m/n/10 5%$ \T1/txr/m/n/10 around the Video
  []
 
-<fig_temperature_tte.pdf, id=770, 223.23569pt x 222.92357pt>
+<fig_temperature_tte.pdf, id=771, 223.23569pt x 222.92357pt>
 File: fig_temperature_tte.pdf Graphic file (type pdf)
 <use fig_temperature_tte.pdf>
 Package pdftex.def Info: fig_temperature_tte.pdf  used on input line 856.
@@ -1346,13 +1329,13 @@ Underfull \hbox (badness 3229) in paragraph at lines 889--891
  []
 
 [15 <./fig_dynamic_scenario.pdf>]
-<fig_sensitivity_tornado.pdf, id=831, 205.66196pt x 173.64989pt>
+<fig_sensitivity_tornado.pdf, id=832, 205.66196pt x 173.64989pt>
 File: fig_sensitivity_tornado.pdf Graphic file (type pdf)
 <use fig_sensitivity_tornado.pdf>
 Package pdftex.def Info: fig_sensitivity_tornado.pdf  used on input line 913.
 (pdftex.def)             Requested size: 252.0pt x 212.7799pt.
  [16 <./fig_ablation_heatmap.pdf>]
-<fig_aging_curves.pdf, id=891, 454.66344pt x 224.3174pt>
+<fig_aging_curves.pdf, id=889, 454.66344pt x 224.3174pt>
 File: fig_aging_curves.pdf Graphic file (type pdf)
 <use fig_aging_curves.pdf>
 Package pdftex.def Info: fig_aging_curves.pdf  used on input line 956.
@@ -1370,7 +1353,7 @@ m/n/10 coun-ter-part to the economy-
  []
 
 [17 <./fig_temperature_tte.pdf> <./fig_sensitivity_tornado.pdf>]
-<fig_energy_management.pdf, id=957, 484.37845pt x 316.97557pt>
+<fig_energy_management.pdf, id=958, 484.37845pt x 316.97557pt>
 File: fig_energy_management.pdf Graphic file (type pdf)
 <use fig_energy_management.pdf>
 Package pdftex.def Info: fig_energy_management.pdf  used on input line 988.
@@ -1466,7 +1449,7 @@ Here is how much of TeX's memory you used:
  46365 multiletter control sequences out of 15000+600000
  704939 words of font info for 183 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,18n,88p,1502b,1259s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,18n,88p,1522b,1259s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\wangy\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt
 1000.pk> <C:\Users\wangy\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi60
 0\ectt0800.pk><C:/Users/wangy/AppData/Local/Programs/MiKTeX/fonts/type1/public/
@@ -1482,9 +1465,9 @@ ocal/Programs/MiKTeX/fonts/type1/public/txfonts/txsy.pfb><C:/Users/wangy/AppDat
 a/Local/Programs/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><C:/Users/wangy/AppDat
 a/Local/Programs/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><C:/Users/wangy/AppDat
 a/Local/Programs/MiKTeX/fonts/type1/urw/times/utmri8a.pfb>
-Output written on paper.pdf (23 pages, 1359492 bytes).
+Output written on paper.pdf (23 pages, 1361226 bytes).
 PDF statistics:
- 1224 PDF objects out of 1440 (max. 8388607)
+ 1225 PDF objects out of 1440 (max. 8388607)
  232 named destinations out of 1000 (max. 500000)
  477 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -177,11 +177,11 @@
 \newlabel{tab:scenarios}{{2}{9}{Component utilisation profiles ($\xi _i$) for five usage scenarios}{table.2}{}}
 \@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Voltage prediction accuracy on XJTU Batch-1 (mean $\pm $ std, 8 cells).}}{9}{table.3}\protected@file@percent }
 \newlabel{tab:baseline}{{3}{9}{Voltage prediction accuracy on XJTU Batch-1 (mean $\pm $ std, 8 cells)}{table.3}{}}
-\@writefile{toc}{\contentsline {paragraph}{Physical interpretation of $p^{*} \approx 1$}{9}{section*.18}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Why does $p^{*}$ land so close to one?}{9}{section*.18}\protected@file@percent }
 \citation{Doyle1993,Mama2025}
 \citation{Bole2014}
 \@writefile{toc}{\contentsline {paragraph}{On the choice of a classical formulation}{10}{section*.19}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{A practical model-selection guideline}{10}{section*.20}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{A practical guideline for picking the right model}{10}{section*.20}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {5.1.2}Cross-batch generalisation}{10}{subsubsection.5.1.2}\protected@file@percent }
 \newlabel{sec:crossbatch}{{5.1.2}{10}{Cross-batch generalisation}{subsubsection.5.1.2}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Per-cell RMSE distributions for same-batch (Batch-1, 2\,C) and cross-batch (Batch-2, 3\,C, no re-fitting) evaluation. Individual data points overlaid on violin plots. The distributions overlap substantially, confirming transferability.}}{10}{figure.3}\protected@file@percent }
@@ -194,11 +194,11 @@
 \newlabel{tab:nasa_val}{{4}{11}{Dynamic validation on NASA random-walk data: the proposed Shepherd model versus a Th\'{e}venin-1RC ECM, both calibrated only on the reference CC discharges and applied to the random-walk cycles \emph {without re-fitting}. Values are mean $\pm $ std across cycles; aggregate is over all 200 cycles}{table.4}{}}
 \@writefile{lot}{\contentsline {table}{\numberline {5}{\ignorespaces Data-driven surrogates compared with the proposed Shepherd model on held-out NASA random-walk cycles 11--50. The data-driven baselines were additionally calibrated on RW cycles 1--10 of each cell; the Shepherd model saw only the reference CC discharges. Mean $\pm $ std across $4 \times 40 = 160$ cycles.}}{12}{table.5}\protected@file@percent }
 \newlabel{tab:datadriven}{{5}{12}{Data-driven surrogates compared with the proposed Shepherd model on held-out NASA random-walk cycles 11--50. The data-driven baselines were additionally calibrated on RW cycles 1--10 of each cell; the Shepherd model saw only the reference CC discharges. Mean $\pm $ std across $4 \times 40 = 160$ cycles}{table.5}{}}
-\@writefile{toc}{\contentsline {paragraph}{Comparison against generic data-driven surrogates}{12}{section*.21}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.1.4}Bootstrap confidence intervals}{12}{subsubsection.5.1.4}\protected@file@percent }
-\newlabel{sec:bootstrap}{{5.1.4}{12}{Bootstrap confidence intervals}{subsubsection.5.1.4}{}}
+\@writefile{toc}{\contentsline {paragraph}{How does the model fare against generic data-driven surrogates?}{12}{section*.21}\protected@file@percent }
 \@writefile{lot}{\contentsline {table}{\numberline {6}{\ignorespaces Predicted TTE and total power for each scenario (\SI {5000}{\milli \ampere \hour } cell, \SI {25}{\degreeCelsius }, new battery).}}{12}{table.6}\protected@file@percent }
 \newlabel{tab:tte}{{6}{12}{Predicted TTE and total power for each scenario (\SI {5000}{\milli \ampere \hour } cell, \SI {25}{\degreeCelsius }, new battery)}{table.6}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.1.4}Bootstrap confidence intervals}{12}{subsubsection.5.1.4}\protected@file@percent }
+\newlabel{sec:bootstrap}{{5.1.4}{12}{Bootstrap confidence intervals}{subsubsection.5.1.4}{}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {5.1.5}Residual analysis}{12}{subsubsection.5.1.5}\protected@file@percent }
 \newlabel{sec:residual}{{5.1.5}{12}{Residual analysis}{subsubsection.5.1.5}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.2}TTE prediction and scenario analysis}{12}{subsection.5.2}\protected@file@percent }
@@ -206,8 +206,6 @@
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {5.2.1}Steady-state usage scenarios}{12}{subsubsection.5.2.1}\protected@file@percent }
 \newlabel{sec:tte}{{5.2.1}{12}{Steady-state usage scenarios}{subsubsection.5.2.1}{}}
 \@writefile{toc}{\contentsline {paragraph}{Component power breakdown}{12}{section*.22}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.2.2}Dynamic mixed-usage scenario}{12}{subsubsection.5.2.2}\protected@file@percent }
-\newlabel{sec:dynamic}{{5.2.2}{12}{Dynamic mixed-usage scenario}{subsubsection.5.2.2}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Residual diagnostics for the Shepherd model (Batch-1, Battery-1). (a)~Voltage error vs.\ time, coloured by SOC (\%). (b)~Error histogram with fitted normal overlay and Shapiro--Wilk test. (c)~SOC-segmented RMSE and MAE with mean bias (red diamonds, right axis).}}{13}{figure.5}\protected@file@percent }
 \newlabel{fig:residual_analysis}{{5}{13}{Residual diagnostics for the Shepherd model (Batch-1, Battery-1). (a)~Voltage error vs.\ time, coloured by SOC (\%). (b)~Error histogram with fitted normal overlay and Shapiro--Wilk test. (c)~SOC-segmented RMSE and MAE with mean bias (red diamonds, right axis)}{figure.5}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces (a)~Time-to-empty for five usage scenarios (\SI {5000}{\milli \ampere \hour } cell, \SI {25}{\degreeCelsius }, new battery). Bar labels show TTE (top) and total power (centre). (b)~Stacked component power decomposition revealing which subsystem dominates each scenario.}}{13}{figure.6}\protected@file@percent }
@@ -215,6 +213,8 @@
 \citation{VazquezArenas2014ECM}
 \@writefile{lot}{\contentsline {table}{\numberline {7}{\ignorespaces Ablation study: TTE error (\%) introduced by removing each submodel (Reading scenario).}}{14}{table.7}\protected@file@percent }
 \newlabel{tab:ablation}{{7}{14}{Ablation study: TTE error (\%) introduced by removing each submodel (Reading scenario)}{table.7}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.2.2}Dynamic mixed-usage scenario}{14}{subsubsection.5.2.2}\protected@file@percent }
+\newlabel{sec:dynamic}{{5.2.2}{14}{Dynamic mixed-usage scenario}{subsubsection.5.2.2}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.3}Sensitivity, ablation, and multi-condition analysis}{14}{subsection.5.3}\protected@file@percent }
 \newlabel{sec:multi_analysis}{{5.3}{14}{Sensitivity, ablation, and multi-condition analysis}{subsection.5.3}{}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {5.3.1}Ablation study}{14}{subsubsection.5.3.1}\protected@file@percent }
@@ -249,7 +249,6 @@
 \newlabel{eq:mpc_bounds}{{24}{16}{MPC formulation}{equation.24}{}}
 \@writefile{toc}{\contentsline {paragraph}{Threshold baseline}{16}{section*.29}\protected@file@percent }
 \@writefile{toc}{\contentsline {paragraph}{Scenario}{16}{section*.30}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Results}{16}{section*.31}\protected@file@percent }
 \citation{Liu2019ECM,Liu2018ECM}
 \citation{Mama2025}
 \@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces TTE vs.\ ambient temperature for the Video Streaming scenario (\SI {5000}{\milli \ampere \hour }, new battery). The unimodal curve peaks near \SI {35}{\degreeCelsius }; performance degrades sharply in cold environments (capacity loss) and moderately in hot environments (leakage rise).}}{17}{figure.9}\protected@file@percent }
@@ -258,6 +257,7 @@
 \newlabel{fig:sensitivity_tornado}{{10}{17}{Tornado chart of parameter sensitivity ($\pm 5\%$ perturbation, Video Streaming scenario). TTE is dominated by three energy-budget parameters ($P_{\mathrm {total}}$, $Q_0$, $E_0$); internal Shepherd parameters contribute $<0.3\%$ each}{figure.10}{}}
 \@writefile{lot}{\contentsline {table}{\numberline {9}{\ignorespaces Energy management strategy comparison (Gaming, \SI {5000}{\milli \ampere \hour }, \SI {25}{\degreeCelsius }).}}{17}{table.9}\protected@file@percent }
 \newlabel{tab:mgmt_results}{{9}{17}{Energy management strategy comparison (Gaming, \SI {5000}{\milli \ampere \hour }, \SI {25}{\degreeCelsius })}{table.9}{}}
+\@writefile{toc}{\contentsline {paragraph}{Results}{17}{section*.31}\protected@file@percent }
 \@writefile{toc}{\contentsline {paragraph}{Discussion}{17}{section*.32}\protected@file@percent }
 \@writefile{toc}{\contentsline {paragraph}{Connection to prior battery-management work}{17}{section*.33}\protected@file@percent }
 \@writefile{toc}{\contentsline {paragraph}{Energy efficiency quantification}{17}{section*.34}\protected@file@percent }
@@ -300,10 +300,10 @@
 \bibcite{You2018}{{14}{2018}{{You et~al.}}{{You, Bae, Cho, Lee, and Kim}}}
 \bibcite{He2012ECM}{{15}{2012}{{He et~al.}}{{He, Xiong, Guo, and Li}}}
 \bibcite{Shepherd1965}{{16}{1965}{{Shepherd}}{{}}}
-\bibcite{Fuller2014}{{17}{2014}{{Fuller}}{{}}}
 \@writefile{toc}{\let\numberline\tmptocnumberline}
 \@writefile{toc}{\contentsline {section}{\numberline {Appendix~A}Proof of \hyperref  [prop:mono]{\textup  {Proposition~\ref *{prop:mono}}}}{20}{appendix.A}\protected@file@percent }
 \newlabel{app:proof}{{Appendix~A}{20}{Proof of \propref {prop:mono}}{appendix.A}{}}
+\bibcite{Fuller2014}{{17}{2014}{{Fuller}}{{}}}
 \bibcite{Murmuria2012}{{18}{2012}{{Murmuria et~al.}}{{Murmuria, Medsger, Stavrou, and Voas}}}
 \bibcite{Xu2020}{{19}{2020}{{Xu et~al.}}{{Xu, Zhou, Zhang, Wang, Liu, An, Shi, Liu, and Ma}}}
 \bibcite{Lauridsen2014}{{20}{2014}{{Lauridsen et~al.}}{{Lauridsen, No{\"e}l, S{\o }rensen, and Mogensen}}}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.2) (preloaded format=pdflatex 2026.3.11)  22 APR 2026 13:40
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.2) (preloaded format=pdflatex 2026.3.11)  29 APR 2026 11:43
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -298,23 +298,24 @@ age-tracking RMSE of 17.85mV
 
 {C:/Users/wangy/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/wang
 y/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc}]
-LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 5
+LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 6
 1.
 
 (C:\Users\wangy\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ts1ptm.fd
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
 )
-Overfull \hbox (0.94295pt too wide) in paragraph at lines 52--53
+Overfull \hbox (0.94295pt too wide) in paragraph at lines 62--63
 []\OT1/ptm/m/n/12 Prof. Dirk Uwe Sauer, ISEA, RWTH Aachen Uni-ver-sity, Ger-man
 y --- ex-per-tise in lithium-
  []
 
-LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 6
+[2]
+LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 7
 9.
-(C:\Users\wangy\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ot1pcr.fd
+ (C:\Users\wangy\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 )
-[2] (cover_letter.aux)
+[3] (cover_letter.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-01-19>
@@ -323,24 +324,25 @@ Package rerunfilecheck Info: File `cover_letter.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 8217 strings out of 467867
- 129342 string characters out of 5418334
- 552488 words of memory out of 5000000
+ 8218 strings out of 467867
+ 129348 string characters out of 5418334
+ 555488 words of memory out of 5000000
  37033 multiletter control sequences out of 15000+600000
  636181 words of font info for 58 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,6n,79p,524b,439s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,5n,79p,524b,439s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/wangy/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/
 cmmi12.pfb><C:/Users/wangy/AppData/Local/Programs/MiKTeX/fonts/type1/public/ams
 fonts/cm/cmr12.pfb><C:/Users/wangy/AppData/Local/Programs/MiKTeX/fonts/type1/pu
-blic/amsfonts/cm/cmsy10.pfb><C:/Users/wangy/AppData/Local/Programs/MiKTeX/fonts
-/type1/urw/courier/ucrr8a.pfb><C:/Users/wangy/AppData/Local/Programs/MiKTeX/fon
-ts/type1/urw/times/utmb8a.pfb><C:/Users/wangy/AppData/Local/Programs/MiKTeX/fon
-ts/type1/urw/times/utmr8a.pfb><C:/Users/wangy/AppData/Local/Programs/MiKTeX/fon
-ts/type1/urw/times/utmri8a.pfb>
-Output written on cover_letter.pdf (2 pages, 88973 bytes).
+blic/amsfonts/cm/cmr8.pfb><C:/Users/wangy/AppData/Local/Programs/MiKTeX/fonts/t
+ype1/public/amsfonts/cm/cmsy10.pfb><C:/Users/wangy/AppData/Local/Programs/MiKTe
+X/fonts/type1/urw/courier/ucrr8a.pfb><C:/Users/wangy/AppData/Local/Programs/MiK
+TeX/fonts/type1/urw/times/utmb8a.pfb><C:/Users/wangy/AppData/Local/Programs/MiK
+TeX/fonts/type1/urw/times/utmr8a.pfb><C:/Users/wangy/AppData/Local/Programs/MiK
+TeX/fonts/type1/urw/times/utmri8a.pfb>
+Output written on cover_letter.pdf (3 pages, 101654 bytes).
 PDF statistics:
- 54 PDF objects out of 1000 (max. 8388607)
- 6 named destinations out of 1000 (max. 500000)
+ 65 PDF objects out of 1000 (max. 8388607)
+ 7 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

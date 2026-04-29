@@ -39,6 +39,16 @@ A systematic ablation across a $3{\times}3$ temperature--aging grid further quan
 A receding-horizon MPC strategy built on the Shepherd prediction core illustrates one downstream application, extending simulated runtime by up to 58\% with a computational cost of 0.009\,ms per simulated second, suitable for embedded BMS deployment.
 The modelling and validation results stand independently of this control study.
 
+\noindent\textbf{Why this matters beyond portable electronics.}
+Although the discharge profiles studied here originate from a portable-device usage context, the framework is in no sense tied to that application.
+The five-parameter Shepherd voltage core, the logistic $Q_0(T)$ submodel, the Arrhenius $R_0(T)$ submodel and the cycle/calendar aging laws are all formulated as functions of $(I, T, N, t)$ alone, with no smartphone-specific assumption baked into the equations.
+We have therefore deliberately validated the model on the NASA Randomized Battery Usage dataset---an 18650 cell tested under random-walk currents of 0.5--4\,A that resemble light-duty EV drive segments and short-term frequency-regulation duty far more closely than they do mobile-phone usage---and the dataset choice in itself argues for the cross-domain reach of the formulation.
+Three concrete deployment paths follow without modification of the model equations:
+(i)~as the on-board voltage core of a low-cost EV BMS where parameter parsimony and Cortex-class execution are decisive (the same Pareto trade-off we quantify against polynomial-ridge and MLP surrogates in Sec.~4.4);
+(ii)~as the cell-level building block of a low-frequency grid-storage state estimator, where the Shepherd polarisation kernel is appropriate because the dominant time scales lie well below those that would activate diffusion-limited Warburg behaviour;
+(iii)~as a fast surrogate inside design-of-experiment loops for thermal-management studies, where the explicit $Q_0(T)$ coupling exposes the temperature sensitivity that lumped electrothermal models hide.
+The portable-electronics case study should therefore be read as one validation point of a general lithium-ion modelling framework, not as a delimitation of its scope.
+
 We believe the manuscript fits the scope of \emph{Journal of Power Sources} because it advances the empirical/electrochemical modelling of lithium-ion cells, provides quantitative cross-batch and dynamic-load validation on widely used public datasets (XJTU, NASA), and reports parameters and code that the lithium-ion battery community can directly reuse.
 
 This manuscript has not been published previously and is not under consideration elsewhere.

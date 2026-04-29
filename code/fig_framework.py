@@ -1,239 +1,147 @@
 """
 Figure 1: Model framework diagram.
-Professional schematic showing the 4-submodel architecture:
-  Shepherd voltage → Temperature correction → Component decomposition
-  → Aging degradation → TTE integration
+Layered-band layout, three computational tiers (Voltage core / Coupled
+corrections / Numerical integration) plus an I/O strip on top and a
+validation strip on the bottom.
 
-Single-column figure using matplotlib patches + text (no external images).
+Single-column figure built from matplotlib patches + text.
 """
 
 import os, sys
 import matplotlib.pyplot as plt
 from matplotlib.patches import FancyBboxPatch, FancyArrowPatch, Rectangle
-import matplotlib.patheffects as pe
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from pub_style import apply_style, save_fig, SINGLE_COL_TALL
+from pub_style import apply_style, save_fig
 
 apply_style()
 
 
-def draw_box(ax, cx, cy, w, h, text, fc, ec, fontsize=6, bold=True):
-    box = FancyBboxPatch(
-        (cx - w / 2, cy - h / 2),
-        w,
-        h,
-        boxstyle="round,pad=0.08",
-        fc=fc,
-        ec=ec,
-        lw=1.0,
-        zorder=3,
-    )
+# ── Palette tuned to the rest of the paper ──────────────────────────
+BAND = {
+    "io":    {"bg": "#F2F2F2", "stripe": "#9E9895", "fg": "#333333"},
+    "core":  {"bg": "#EEF3F8", "stripe": "#4E79A7", "fg": "#1F3B5C"},
+    "corr":  {"bg": "#FBF1E4", "stripe": "#F28E2B", "fg": "#7A4413"},
+    "num":   {"bg": "#F0E6F0", "stripe": "#B07AA1", "fg": "#5C2D55"},
+    "val":   {"bg": "#E9F1E4", "stripe": "#59A14F", "fg": "#2A4F26"},
+    "aging": {"bg": "#FAE5E5", "stripe": "#E15759", "fg": "#7A2A2B"},
+}
+
+
+def draw_band(ax, y_lo, y_hi, key, label):
+    bg = BAND[key]
+    ax.add_patch(Rectangle((0.30, y_lo), 9.40, y_hi - y_lo,
+                            fc=bg["bg"], ec="none", zorder=0))
+    # left coloured stripe
+    ax.add_patch(Rectangle((0.30, y_lo), 0.18, y_hi - y_lo,
+                            fc=bg["stripe"], ec="none", zorder=1))
+    ax.text(0.10, (y_lo + y_hi) / 2, label,
+            fontsize=6.2, ha="center", va="center", rotation=90,
+            color=bg["stripe"], fontweight="bold")
+
+
+def draw_card(ax, cx, cy, w, h, title, body, key, fontsize_title=6.6,
+              fontsize_body=6.0):
+    pal = BAND[key]
+    box = FancyBboxPatch((cx - w / 2, cy - h / 2), w, h,
+                          boxstyle="round,pad=0.04,rounding_size=0.10",
+                          fc="white", ec=pal["stripe"], lw=0.9, zorder=3)
     ax.add_patch(box)
-    fw = "bold" if bold else "normal"
-    ax.text(
-        cx,
-        cy,
-        text,
-        fontsize=fontsize,
-        ha="center",
-        va="center",
-        zorder=4,
-        color=ec,
-        fontweight=fw,
-        linespacing=1.3,
-    )
+    # accent strip on top of card
+    ax.add_patch(Rectangle((cx - w / 2 + 0.06, cy + h / 2 - 0.30),
+                            w - 0.12, 0.04,
+                            fc=pal["stripe"], ec="none", alpha=0.95, zorder=4))
+    ax.text(cx, cy + h / 2 - 0.18, title,
+            fontsize=fontsize_title, ha="center", va="center",
+            color=pal["fg"], fontweight="bold", zorder=5)
+    if body:
+        ax.text(cx, cy - 0.05, body,
+                fontsize=fontsize_body, ha="center", va="center",
+                color="#222222", zorder=5, linespacing=1.35)
 
 
-def draw_arrow(ax, x1, y1, x2, y2, color="0.4"):
-    ax.annotate(
-        "",
-        xy=(x2, y2),
-        xytext=(x1, y1),
-        arrowprops=dict(arrowstyle="-|>", color=color, lw=1.0, mutation_scale=10),
-    )
+def arrow(ax, x1, y1, x2, y2, color="#666666", lw=0.9, head=8):
+    a = FancyArrowPatch((x1, y1), (x2, y2),
+                         arrowstyle=f"-|>,head_length={head/12:.2f},"
+                                    f"head_width={head/16:.2f}",
+                         color=color, lw=lw, mutation_scale=head,
+                         zorder=2, shrinkA=2, shrinkB=2)
+    ax.add_patch(a)
 
 
 def main():
     script_dir = os.path.dirname(os.path.abspath(__file__))
     results_dir = os.path.join(script_dir, "..", "results")
 
-    fig, ax = plt.subplots(figsize=(3.54, 5.2))
+    fig, ax = plt.subplots(figsize=(3.54, 5.4))
     ax.set_xlim(0, 10)
-    ax.set_ylim(0, 16)
+    ax.set_ylim(0, 16.0)
     ax.axis("off")
 
-    # ── Box height convention ──
-    # 2-line boxes:  h = 1.1
-    # 3-line boxes:  h = 1.4
-    # 2-line + tall math: h = 1.2
+    # ── Background bands (bottom-up) ──────────────────────────────
+    draw_band(ax,  0.30,  2.40, "val",  "Validation")
+    draw_band(ax,  2.55,  6.55, "num",  "Numerical")
+    draw_band(ax,  6.70, 11.10, "corr", "Coupled corrections")
+    draw_band(ax, 11.25, 13.85, "core", "Voltage core")
+    draw_band(ax, 14.00, 15.70, "io",   "Inputs")
 
-    # ── Title ──
-    ax.text(
-        5,
-        15.5,
-        "Proposed Battery Model Framework",
-        fontsize=9,
-        fontweight="bold",
-        ha="center",
-        va="top",
-        color="#666666",
-    )
+    # ── Cards (top to bottom) ─────────────────────────────────────
+    # Inputs
+    draw_card(ax, 5.00, 14.85, 8.6, 1.30,
+              "Inputs",
+              r"Usage scenario  $\mid$  Temperature $T$  $\mid$  Cycle count $N$",
+              "io", fontsize_title=6.8, fontsize_body=6.0)
 
-    # ── Input block  (2 lines, h=1.1) ──
-    draw_box(
-        ax,
-        5,
-        14.0,
-        7.0,
-        1.1,
-        "Inputs: Usage scenario, Temperature,\nBattery age (cycle count)",
-        "#E8E6E4",
-        "#9E9895",
-        fontsize=6,
-    )
+    # Voltage core (Submodel 1)
+    draw_card(ax, 5.00, 12.55, 8.6, 1.90,
+              r"Submodel 1  $\cdot$  Modified Shepherd voltage",
+              r"$V = E_0 - R_0 I - K\,I/\mathrm{SOC}"
+              r" + A\exp(-B(1-\mathrm{SOC}))$",
+              "core", fontsize_title=6.8, fontsize_body=6.4)
 
-    # ── Submodel 1: Shepherd Voltage  (3 lines, h=1.4) ──
-    draw_box(
-        ax,
-        5,
-        12.15,
-        8.2,
-        1.4,
-        "Submodel 1: Shepherd Voltage\n"
-        "$V = E_0 - R\\!\\cdot\\! I - K\\frac{I}{SOC}$\n"
-        "$\\quad + A\\,\\exp(-B(1-SOC))$",
-        "#D6E4F0",
-        "#4E79A7",
-        fontsize=6,
-    )
+    # Corrections — two side-by-side cards on one row + Aging below
+    draw_card(ax, 2.85, 9.85, 3.7, 1.55,
+              r"Submodel 2 $\cdot$ Temperature",
+              r"$Q_0(T)$: logistic" "\n" r"$R_0(T)$: Arrhenius",
+              "corr", fontsize_body=5.8)
+    draw_card(ax, 7.05, 9.85, 3.7, 1.55,
+              r"Submodel 3 $\cdot$ Components",
+              r"$P_{\mathrm{tot}} = \sum_i P_i(\xi_i)$",
+              "corr", fontsize_body=5.9)
+    draw_card(ax, 5.00, 7.65, 8.6, 1.20,
+              r"Submodel 4 $\cdot$ Aging",
+              r"$Q_0(N)=Q_0(0)(1-\alpha N^{\beta})$,  "
+              r"$R_0(N)=R_0(0)(1+\gamma N)$",
+              "aging", fontsize_body=5.9)
 
-    # ── Submodel 2: Temperature  (3 lines, h=1.4) ──
-    draw_box(
-        ax,
-        2.7,
-        9.65,
-        4.3,
-        1.4,
-        "Submodel 2: Temperature\n$R(T)$: Arrhenius\n$Q_0(T)$: Logistic",
-        "#FDEBD0",
-        "#F28E2B",
-        fontsize=6,
-    )
+    # Numerical integration
+    draw_card(ax, 5.00, 5.55, 8.6, 1.80,
+              r"Coupled DAE  $\cdot$  ODE integration",
+              r"$\dfrac{d\,\mathrm{SOC}}{dt}=-\dfrac{I(t)}{Q_0(T,N)}$,"
+              r"  $I = P_{\mathrm{tot}}/V$",
+              "num", fontsize_body=6.5)
 
-    # ── Submodel 3: Component Decomposition  (3 lines, h=1.4) ──
-    draw_box(
-        ax,
-        7.3,
-        9.65,
-        4.3,
-        1.4,
-        "Submodel 3:\nComponent Decomp.\n$P = \\sum_i P_i(\\xi_i)$",
-        "#DFF0D8",
-        "#59A14F",
-        fontsize=6,
-    )
+    # Outputs (still inside numerical band, lower half)
+    draw_card(ax, 5.00, 3.30, 8.6, 1.20,
+              r"Outputs",
+              r"TTE  $\mid$  SOC$(t)$  $\mid$  $V(t)$  $\mid$  energy profile",
+              "num", fontsize_body=6.0)
 
-    # ── Submodel 4: Aging  (2 lines, h=1.1) ──
-    draw_box(
-        ax,
-        5,
-        7.45,
-        8.2,
-        1.1,
-        "Submodel 4: Aging Degradation\n" "$Q(n) = Q_0(1 - \\alpha \\cdot n^\\beta)$",
-        "#F5D5D5",
-        "#E15759",
-        fontsize=6,
-    )
+    # Validation strip (XJTU + NASA)
+    draw_card(ax, 5.00, 1.45, 8.6, 1.20,
+              r"Validation",
+              r"XJTU CC (8 cells $\times$ 2 batches)  $\mid$  "
+              r"NASA RW (4 cells $\times$ 200 cycles)",
+              "val", fontsize_body=5.9)
 
-    # ── Integration block  (2 lines + tall math, h=1.2) ──
-    draw_box(
-        ax,
-        5,
-        5.45,
-        8.2,
-        1.2,
-        "ODE Integration\n"
-        "$\\frac{dSOC}{dt} = -\\frac{I(t)}{Q_0(T,n)}$,  "
-        "$I = \\frac{P_{\\mathrm{total}}}{V}$",
-        "#E8D8E8",
-        "#B07AA1",
-        fontsize=6.5,
-    )
-
-    # ── Output block  (2 lines, h=1.1) ──
-    draw_box(
-        ax,
-        5,
-        3.55,
-        7.0,
-        1.1,
-        "Outputs: TTE, SOC(t), V(t),\nEnergy consumption profile",
-        "#DFF0D8",
-        "#59A14F",
-        fontsize=6,
-    )
-
-    # ── Validation box  (2 lines, h=1.1) ──
-    draw_box(
-        ax,
-        5,
-        1.65,
-        8.2,
-        1.1,
-        "Validation: XJTU CC (8 cells × 2 batches)\n"
-        "+ NASA random-walk dynamic (4 cells × 200 cycles)",
-        "#FDEBD0",
-        "#F28E2B",
-        fontsize=5.5,
-        bold=False,
-    )
-
-    # ── Arrows (start/end at box edges) ──
-    draw_arrow(ax, 5, 13.45, 5, 12.85)  # Input → Shepherd
-    draw_arrow(ax, 3.5, 11.45, 2.7, 10.35)  # Shepherd → Temp
-    draw_arrow(ax, 6.5, 11.45, 7.3, 10.35)  # Shepherd → Component
-    draw_arrow(ax, 2.7, 8.95, 3.5, 8.0)  # Temp → Aging
-    draw_arrow(ax, 7.3, 8.95, 6.5, 8.0)  # Component → Aging
-    draw_arrow(ax, 5, 6.9, 5, 6.05)  # Aging → Integration
-    draw_arrow(ax, 5, 4.85, 5, 4.1)  # Integration → Output
-    draw_arrow(ax, 5, 3.0, 5, 2.2)  # Output → Validation
-
-    # ── Side annotations ──
-    ax.text(
-        0.2,
-        12.15,
-        "Physics\nLayer",
-        fontsize=6,
-        ha="center",
-        color="#4E79A7",
-        style="italic",
-        rotation=90,
-        va="center",
-    )
-    ax.text(
-        0.2,
-        8.55,
-        "Correction\nLayer",
-        fontsize=6,
-        ha="center",
-        color="#F28E2B",
-        style="italic",
-        rotation=90,
-        va="center",
-    )
-    ax.text(
-        0.2,
-        5.45,
-        "Numerical\nLayer",
-        fontsize=6,
-        ha="center",
-        color="#B07AA1",
-        style="italic",
-        rotation=90,
-        va="center",
-    )
+    # ── Arrows (vertical flow + corrections converging into Aging) ─
+    arrow(ax, 5.00, 14.20, 5.00, 13.55)        # Inputs -> Voltage core
+    arrow(ax, 5.00, 11.55, 5.00, 10.65)        # Voltage core -> corrections row
+    arrow(ax, 2.85,  9.05, 4.10,  8.30)
+    arrow(ax, 7.05,  9.05, 5.90,  8.30)
+    arrow(ax, 5.00,  7.00, 5.00,  6.50)        # aging -> DAE
+    arrow(ax, 5.00,  4.60, 5.00,  3.95)        # DAE -> Outputs
+    arrow(ax, 5.00,  2.65, 5.00,  2.10)        # Outputs -> Validation
 
     save_fig(fig, "fig_framework", results_dir)
     print("Done: fig_framework")
